@@ -1,0 +1,229 @@
+{
+    "@import": "./element.php",
+    "name": "navigator_item",
+    "title": "Item",
+    "width": 500,
+    "placeholder": {
+        "props": {
+            "title": "Title",
+            "question": "Question"
+        }
+    },
+    "templates": {
+        "render": "./templates/template.php",
+        "content": "./templates/content.php"
+    },
+    "fields": {
+        "content": {
+            "label": "Buttons",
+            "type": "content-items",
+            "title": "content",
+            "item": "navigator_buttons"
+        },
+        "modalid": {
+            "label": "Modal ID",
+            "source": true
+        },
+        "title": {
+            "label": "Title",
+            "source": true
+        },
+        "question": {
+            "label": "Modal Title",
+            "source": true
+        },
+        "toptext": {
+            "label": "Top Text",
+            "type": "editor",
+            "source": true
+        },
+        "bottomtext": {
+            "label": "Bottom Text",
+            "type": "editor",
+            "source": true
+        },
+        "grid_column_gap": {
+            "label": "Column Gap",
+            "description": "Set the size of the column gap between multiple buttons.",
+            "type": "select",
+            "options": {
+                "Small": "small",
+                "Medium": "medium",
+                "Default": "",
+                "Large": "large",
+                "None": "collapse"
+            }
+        },
+        "grid_row_gap": {
+            "label": "Row Gap",
+            "description": "Set the size of the row gap between multiple buttons.",
+            "type": "select",
+            "options": {
+                "Small": "small",
+                "Medium": "medium",
+                "Default": "",
+                "Large": "large",
+                "None": "collapse"
+            }
+        },
+        "button_center": {
+            "type": "checkbox",
+            "text": "Zentriert",
+            "source": true
+        },
+        "fullwidth": {
+            "type": "checkbox",
+            "text": "Full width button",
+            "source": true
+        },
+        "show_back": {
+            "type": "checkbox",
+            "text": "Show back button",
+            "source": true
+        },
+        "toptext_style": {
+            "label": "Text Style",
+            "description": "Select a predefined text style, including color, size and font-family.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Meta": "meta",
+                "Lead": "lead",
+                "Small": "small",
+                "Large": "large"
+            }
+        },
+        "toptext_color": {
+            "label": "Text Color",
+            "description": "Select the text color. If the Background option is selected, styles that don't apply a background image use the primary color instead.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Muted": "muted",
+                "Emphasis": "emphasis",
+                "Primary": "primary",
+                "Secondary": "secondary",
+                "Success": "success",
+                "Warning": "warning",
+                "Danger": "danger"
+            }
+        },
+        "toptext_margin": {
+            "label": "Margin Top",
+            "type": "select",
+            "options": {
+                "Small": "small",
+                "Default": "",
+                "Medium": "medium",
+                "Large": "large",
+                "X-Large": "xlarge",
+                "None": "remove"
+            }
+        },
+        "toptext_align": "${builder.text_align_justify}",
+        "bottomtext_style": {
+            "label": "Text Style",
+            "description": "Select a predefined text style, including color, size and font-family.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Meta": "meta",
+                "Lead": "lead",
+                "Small": "small",
+                "Large": "large"
+            }
+        },
+        "bottomtext_color": {
+            "label": "Text Color",
+            "description": "Select the text color. If the Background option is selected, styles that don't apply a background image use the primary color instead.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Muted": "muted",
+                "Emphasis": "emphasis",
+                "Primary": "primary",
+                "Secondary": "secondary",
+                "Success": "success",
+                "Warning": "warning",
+                "Danger": "danger"
+            }
+        },
+        "bottomtext_margin": {
+            "label": "Margin Top",
+            "type": "select",
+            "options": {
+                "Small": "small",
+                "Default": "",
+                "Medium": "medium",
+                "Large": "large",
+                "X-Large": "xlarge",
+                "None": "remove"
+            }
+        },
+        "bottomtext_align": "${builder.text_align_justify}",
+        "status": "${builder.statusItem}",
+        "source": "${builder.source}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": [
+                        "title",
+                        "modalid",
+                        "question",
+                        "toptext",
+                        "content",
+                        "bottomtext",
+                        "show_back"
+                    ]
+                },
+                {
+                    "title": "Settings",
+                    "fields": [
+                        {
+                            "label": "Grid",
+                            "type": "group",
+                            "fields": ["grid_column_gap", "grid_row_gap"]
+                        },
+                        {
+                            "label": "Buttons",
+                            "type": "group",
+                            "fields": ["button_center"]
+                        },
+                        {
+                            "label": "Modal",
+                            "type": "group",
+                            "fields": ["fullwidth"]
+                        },
+                        {
+                            "label": "Top Text",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "toptext_margin",
+                                "toptext_style",
+                                "toptext_color",
+                                "toptext_align"
+                            ]
+                        },
+                        {
+                            "label": "Bottom Text",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "bottomtext_style",
+                                "bottomtext_color",
+                                "bottomtext_margin",
+                                "bottomtext_align"
+                            ]
+                        }
+                    ]
+                },
+                "${builder.advancedItem}"
+            ]
+        }
+    }
+}

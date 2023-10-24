@@ -1,0 +1,48 @@
+{
+  "name": "kickyooaddons_opengraph_item",
+  "title": "Item",
+  "width": 500,
+  "defaults": {
+    "check_exists": true
+  },
+  "fields": {
+    "property": {
+      "label": "Property",
+      "source": true
+    },
+    "content": {
+      "label": "Property Value",
+      "show": "!image",
+      "source": true
+    },
+    "image": {
+      "label": "Image",
+      "show": "!content",
+      "type": "image",
+      "source": true
+    },
+    "check_exists": {
+      "type": "checkbox",
+      "text": "Override property value if already the property exists"
+    },
+    "status": "${builder.statusItem}",
+    "source": "${builder.source}"
+  },
+  "fieldset": {
+    "default": {
+      "type": "tabs",
+      "fields": [
+        {
+          "title": "Content",
+          "fields": [
+            "property",
+            "check_exists",
+            "content",
+            "image"
+          ]
+        },
+        "${builder.advancedItem}"
+      ]
+    }
+  }
+}

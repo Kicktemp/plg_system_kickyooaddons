@@ -1,0 +1,57 @@
+{
+    "@import": "./element.php",
+    "name": "kickyooaddons_opengraph",
+    "title": "Open Graph",
+    "group": "Kicktemp",
+    "icon": "${url:images/icon.svg}",
+    "iconSmall": "${url:images/iconSmall.svg}",
+    "element": true,
+    "container": true,
+    "width": 500,
+    "templates": {
+        "render": "./templates/template.php"
+    },
+    "fields": {
+        "content": {
+            "label": "Properties",
+            "type": "content-items",
+            "item": "kickyooaddons_opengraph_item",
+            "title": "property",
+            "button": "Add Property"
+        },
+        "debug": {
+            "type": "checkbox",
+            "text": "Debug",
+            "description": "Show Meta Tags and Facebook Object Debugger link"
+        },
+        "og_url": {
+            "type": "checkbox",
+            "text": "Add OG Url",
+            "description": "Add og:url property with the current URL"
+        },
+        "facebookid": {
+            "label": "Facebook ID",
+            "description": "Add fb:app:id property with Facebook ID as value"
+        },
+        "name": "${builder.name}",
+        "status": "${builder.status}",
+        "source": "${builder.source}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Item",
+                    "fields": [
+                        "content",
+                        "og_url",
+                        "facebookid",
+                        "debug"
+                    ]
+                },
+                "${builder.advanced}"
+            ]
+        }
+    }
+}

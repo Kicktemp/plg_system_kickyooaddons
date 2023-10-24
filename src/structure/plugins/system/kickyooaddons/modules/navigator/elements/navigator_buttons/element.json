@@ -1,0 +1,125 @@
+{
+    "@import": "./element.php",
+    "name": "navigator_buttons",
+    "title": "Button",
+    "width": 500,
+    "defaults": {
+        "type": "modal",
+        "button_style": "default",
+        "icon_align": "left"
+    },
+    "placeholder": {
+        "props": {
+            "text": "Lorem ipsum"
+        }
+    },
+    "templates": {
+        "render": "./templates/template.php",
+        "content": "./templates/content.php"
+    },
+    "fields": {
+        "type": {
+            "label": "Type",
+            "type": "select",
+            "options": {
+                "Link": "link",
+                "Default": "modal"
+            },
+            "source": true
+        },
+        "content": {
+            "label": "Content",
+            "source": true
+        },
+        "modalid": {
+            "label": "Target",
+            "type": "kicktemp-navigator-list",
+            "show": "type == 'modal'",
+            "source": true
+        },
+        "link": {
+            "label": "Link",
+            "type": "link",
+            "description": "Enter or pick a link, an image or a video file.",
+            "attrs": {
+                "placeholder": "http://"
+            },
+            "show": "type == 'link'",
+            "source": true
+        },
+        "link_target": {
+            "type": "checkbox",
+            "text": "Open the link in a new window",
+            "show": "type == 'link'"
+        },
+        "link_title": "${builder.link_title}",
+        "link_aria_label": "${builder.link_aria_label}",
+        "icon": {
+            "label": "Icon",
+            "description": "Pick an optional icon from the icon library.",
+            "type": "icon",
+            "source": true
+        },
+        "icon_align": {
+            "label": "Alignment",
+            "description": "Choose the icon position.",
+            "type": "select",
+            "options": {
+                "Left": "left",
+                "Right": "right"
+            },
+            "enable": "icon"
+        },
+        "button_size": {
+            "label": "Size",
+            "type": "select",
+            "options": {
+                "Small": "small",
+                "Default": "",
+                "Large": "large"
+            }
+        },
+        "button_style": {
+            "label": "Style",
+            "description": "Set the button style.",
+            "type": "select",
+            "options": {
+                "Default": "default",
+                "Primary": "primary",
+                "Secondary": "secondary",
+                "Danger": "danger",
+                "Text": "text"
+            }
+        },
+        "status": "${builder.statusItem}",
+        "source": "${builder.source}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": ["type", "content", "modalid", "link", "link_target", "link_title", "link_aria_label", "icon"]
+                },
+                {
+                    "title": "Settings",
+                    "fields": [
+                        {
+                            "label": "Button",
+                            "type": "group",
+                            "divider": true,
+                            "fields": ["button_size","button_style"]
+                        },
+                        {
+                            "label": "Icon",
+                            "type": "group",
+                            "fields": ["icon_align"]
+                        }
+                    ]
+                },
+                "${builder.advancedItem}"
+            ]
+        }
+    }
+}

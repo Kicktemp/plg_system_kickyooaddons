@@ -1,0 +1,93 @@
+{
+  "name": "KickYooAddons",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "compile": "rollup -c",
+    "watchjs": "rollup -c --watch",
+    "boilerplate": "cross-env KICK_CONFIG=boilerplate node ./scripts/tasks/copy.js",
+    "copy": "cross-env KICK_CONFIG=copy node ./scripts/tasks/copy.js",
+    "copyrelease": "cross-env KICK_CONFIG=release node ./scripts/tasks/copy.js",
+    "copypackage": "cross-env KICK_CONFIG=package node ./scripts/tasks/copy.js",
+    "watch": "node ./scripts/tasks/watch.js",
+    "cleaner": "node ./scripts/tasks/clean.js",
+    "archives": "cross-env node ./scripts/tasks/archives.js",
+    "buildinternwithjs": "npm run compile && npm run cleaner && npm run copyrelease && npm run copypackage && npm run archives",
+    "buildintern": "npm run cleaner && npm run copyrelease && npm run copypackage && npm run archives",
+    "release": "npm run compile && npm run cleaner && npm run copyrelease && npm run copypackage && npm run archives && npm run updateXML",
+    "updateXML": "node ./scripts/tasks/xml.js",
+    "download:joomla": "sh ./scripts/joomla.sh",
+    "download:joomla4": "sh ./scripts/joomla4.sh",
+    "publishtag": "sh ./scripts/post.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kicktemp/plg_system_kickyooaddons.git"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Kicktemp GmbH",
+    "email": "hello@kicktemp.com",
+    "url": "https://kicktemp.com"
+  },
+  "contributors": [
+    {
+      "name": "Niels Nübel",
+      "email": "niels@kicktemp.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Kicktemp/plg_system_kickyooaddons/issues"
+  },
+  "homepage": "https://github.com/Kicktemp/plg_system_kickyooaddons#readme",
+  "buildconfigs": {
+    "proxy": "http://plg_system_kickyooaddons.kick"
+  },
+  "placeholder": {
+    "[UPDATEURL]": "https://kicktemp.shop/download?e=[PACKAGE_NAME]&v=[VERSION]",
+    "[PACKAGE_NAME]": "plg_system_kickyooaddons",
+    "[PROJECT_NAME]": "plg_system_kickyooaddons",
+    "[PRODUCT_NAME]": "KickYooAddons",
+    "[ALIAS]": "kick-yootheme-pro-addons",
+    "[AUTHOR]": "Kicktemp GmbH",
+    "[AUTHOR_EMAIL]": "hello@kicktemp.com",
+    "[COPYRIGHT]": "Copyright © 2023 Kicktemp GmbH. All rights reserved.",
+    "[LICENSE]": "GNU General Public License version 2 or later; see LICENSE.txt",
+    "[AUTHOR_URL]": "https://kicktemp.com",
+    "[DATE]": "20.09.2023",
+    "[PLUGINTYPE]": "system"
+  },
+  "casesensitive": {
+    "kicktempyootheme": "kickyooaddons",
+    "KickYooAddons": "KickYooAddons",
+    "KICKYOOBOILERPLATE": "KICKYOOBOILERPLATE"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.2.1",
+    "@rollup/plugin-replace": "^5.0.2",
+    "archiver": "^6.0.1",
+    "babel-plugin-lodash": "^3.3.4",
+    "chokidar": "^3.5.3",
+    "cross-env": "^7.0.3",
+    "fs-extra": "^11.1.1",
+    "glob": "^10.3.4",
+    "libxmljs": "^1.0.9",
+    "lodash": "^4.17.21",
+    "path": "^0.12.7",
+    "rollup": "^3.28.1",
+    "rollup-plugin-vue": "^6.0.0"
+  },
+  "overrides": {
+    "babel-plugin-lodash": {
+      "@babel/types": "~7.20.0"
+    }
+  }
+}

@@ -1,0 +1,245 @@
+{
+    "@import": "./element.php",
+    "name": "navigator",
+    "title": "Navigator",
+    "group": "Kicktemp",
+    "icon": "${url:images/icon.svg}",
+    "iconSmall": "${url:images/iconSmall.svg}",
+    "element": true,
+    "container": true,
+    "width": 500,
+    "defaults": {
+        "close_style": "default",
+        "modal_center": false,
+        "modal_container": false,
+        "full_modifier": false,
+        "back_text": "Schritt zurück",
+        "button_style": "default",
+        "icon_align": "left"
+    },
+    "placeholder": {
+        "children": [
+            { "type": "navigator_item", "props": {} },
+            { "type": "navigator_item", "props": {} },
+            { "type": "navigator_item", "props": {} }
+        ]
+    },
+    "templates": {
+        "render": "./templates/template.php",
+        "content": "./templates/content.php"
+    },
+    "fields": {
+        "content": {
+            "label": "Items",
+            "type": "content-items",
+            "item": "navigator_item",
+            "title": "title"
+        },
+        "close_style": {
+            "label": "Close Button Style",
+            "description": "Set the link style.",
+            "type": "select",
+            "enable": "!full_modifier",
+            "options": {
+                "Close Default": "default",
+                "Close Outside": "outside"
+            }
+        },
+        "modal_center": {
+            "type": "checkbox",
+            "text": "Center modal",
+            "enable": "!full_modifier",
+            "source": true
+        },
+        "modal_container": {
+            "type": "checkbox",
+            "text": "Container modifier",
+            "enable": "!full_modifier",
+            "source": true
+        },
+        "full_modifier": {
+            "type": "checkbox",
+            "text": "Full modifier",
+            "source": true
+        },
+        "icon": {
+            "label": "Icon",
+            "description": "Pick an optional icon.",
+            "type": "icon",
+            "source": true
+        },
+        "icon_align": {
+            "label": "Alignment",
+            "description": "Choose the icon position.",
+            "type": "select",
+            "options": {
+                "Left": "left",
+                "Right": "right"
+            },
+            "enable": "icon"
+        },
+        "button_text": {
+            "label": "Content",
+            "source": true
+        },
+        "modalid": {
+            "label": "Target",
+            "type": "kicktemp-navigator-entry",
+            "show": "button_text",
+            "source": true
+        },
+        "button_style": {
+            "label": "Style",
+            "description": "Set the button style.",
+            "type": "select",
+            "options": {
+                "Default": "default",
+                "Primary": "primary",
+                "Secondary": "secondary",
+                "Danger": "danger",
+                "Text": "text",
+                "Link": "",
+                "Link Muted": "link-muted",
+                "Link Text": "link-text"
+            }
+        },
+        "button_fullwidth": {
+            "type": "checkbox",
+            "text": "Full width button"
+        },
+        "button_size": {
+            "label": "Size",
+            "type": "select",
+            "options": {
+                "Small": "small",
+                "Default": "",
+                "Large": "large"
+            }
+        },
+        "back_text": {
+            "label": "Back Button",
+            "description": "Enter the text for the back button."
+        },
+        "position": "${builder.position}",
+        "position_left": "${builder.position_left}",
+        "position_right": "${builder.position_right}",
+        "position_top": "${builder.position_top}",
+        "position_bottom": "${builder.position_bottom}",
+        "position_z_index": "${builder.position_z_index}",
+        "margin": "${builder.margin}",
+        "margin_remove_top": "${builder.margin_remove_top}",
+        "margin_remove_bottom": "${builder.margin_remove_bottom}",
+        "maxwidth": "${builder.maxwidth}",
+        "maxwidth_breakpoint": "${builder.maxwidth_breakpoint}",
+        "block_align": "${builder.block_align}",
+        "block_align_breakpoint": "${builder.block_align_breakpoint}",
+        "block_align_fallback": "${builder.block_align_fallback}",
+        "text_align": "${builder.text_align_justify}",
+        "text_align_breakpoint": "${builder.text_align_breakpoint}",
+        "text_align_fallback": "${builder.text_align_justify_fallback}",
+        "animation": "${builder.animation}",
+        "item_animation": "${builder.item_animation}",
+        "_parallax_button": "${builder._parallax_button}",
+        "visibility": "${builder.visibility}",
+        "container_padding_remove": "${builder.container_padding_remove}",
+        "name": "${builder.name}",
+        "status": "${builder.status}",
+        "id": "${builder.id}",
+        "class": "${builder.cls}",
+        "attributes": "${builder.attrs}",
+        "css": {
+            "label": "CSS",
+            "description": "Enter your own custom CSS. The following selectors will be prefixed automatically for this element: <code>.el-element</code>, <code>.el-nav</code>, <code>.el-item</code>, <code>.el-title</code>, <code>.el-meta</code>, <code>.el-content</code>, <code>.el-image</code>, <code>.el-link</code>",
+            "type": "editor",
+            "editor": "code",
+            "mode": "css",
+            "attrs": {
+                "debounce": 500,
+                "hints": [
+                    ".el-element",
+                    ".el-nav",
+                    ".el-item",
+                    ".el-title",
+                    ".el-meta",
+                    ".el-content",
+                    ".el-image",
+                    ".el-link"
+                ]
+            }
+        },
+        "transform": "${builder.transform}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": [
+                        "content",
+                        "back_text"
+                    ]
+                },
+                {
+                    "title": "Settings",
+                    "fields": [
+                        {
+                            "label": "Modal",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "full_modifier",
+                                "close_style",
+                                "modal_center",
+                                "modal_container"
+                            ]
+                        },
+                        {
+                            "label": "Modal Toggle",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "button_text",
+                                "modalid",
+                                "icon",
+                                "icon_align",
+                                "button_style",
+                                "button_size",
+                                "button_fullwidth"
+                            ]
+                        },
+                        {
+                            "label": "General",
+                            "type": "group",
+                            "fields": [
+                                "position",
+                                "position_left",
+                                "position_right",
+                                "position_top",
+                                "position_bottom",
+                                "position_z_index",
+                                "margin",
+                                "margin_remove_top",
+                                "margin_remove_bottom",
+                                "maxwidth",
+                                "maxwidth_breakpoint",
+                                "block_align",
+                                "block_align_breakpoint",
+                                "block_align_fallback",
+                                "text_align",
+                                "text_align_breakpoint",
+                                "text_align_fallback",
+                                "animation",
+                                "item_animation",
+                                "_parallax_button",
+                                "visibility",
+                                "container_padding_remove"
+                            ]
+                        }
+                    ]
+                },
+                "${builder.advanced}"
+            ]
+        }
+    }
+}

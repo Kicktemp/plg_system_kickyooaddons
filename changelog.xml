@@ -1,0 +1,10 @@
+<changelogs>
+	<changelog>
+		<element>kickyooaddons</element>
+		<type>plugin</type>
+		<version>1.0.0</version>
+		<note>
+			<item>first version</item>
+		</note>
+	</changelog>
+</changelogs>

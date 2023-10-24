@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="system" method="upgrade">
+	<dlid prefix="key="/>
+	<name>PLG_SYSTEM_KICKYOOADDONS</name>
+	<creationDate>[DATE]</creationDate>
+	<author>[AUTHOR]</author>
+	<authorEmail>[AUTHOR_EMAIL]</authorEmail>
+	<authorUrl>[AUTHOR_URL]</authorUrl>
+	<copyright>[COPYRIGHT]</copyright>
+	<license>[LICENSE]</license>
+	<version>[VERSION]</version>
+	<changelogurl>https://kicktemp.shop/changelog/[ALIAS]</changelogurl>
+	<description>PLG_SYSTEM_KICKYOOADDONS_XML_DESCRIPTION</description>
+	<namespace path="src">Kicktemp\Plugin\System\Addons</namespace>
+	<scriptfile>script.php</scriptfile>
+	<files>
+		<filename plugin="kickyooaddons">kickyooaddons.php</filename>
+		<filename>helper.php</filename>
+		<folder>fields</folder>
+		<folder>language</folder>
+		<folder>modules</folder>
+	</files>
+	<config>
+		<fields
+			name="params"
+			addfieldpath="/plugins/system/kickyooaddons/fields">
+			<fieldset
+				name="registerwebsite"
+				label="KICKREGISTERWEBSITE_TAB_LABEL">
+				<field
+					name="registerwebsite"
+					label="KICKREGISTERWEBSITE_LABEL"
+					description="KICKREGISTERWEBSITE_DESC"
+					type="registerwebsite"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+	<updateservers>
+		<server type="extension" priority="1" name="[PROJECT_NAME]">
+			https://kicktemp.shop/update/[ALIAS]
+		</server>
+	</updateservers>
+</extension>
