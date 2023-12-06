@@ -11,7 +11,7 @@
 	<version>[VERSION]</version>
 	<changelogurl>https://kicktemp.shop/changelog/[ALIAS]</changelogurl>
 	<description>PLG_SYSTEM_KICKYOOADDONS_XML_DESCRIPTION</description>
-	<namespace path="src">Kicktemp\Plugin\System\Addons</namespace>
+	<namespace path="modules">Kicktemp\YOOaddons</namespace>
 	<scriptfile>script.php</scriptfile>
 	<files>
 		<filename plugin="kickyooaddons">kickyooaddons.php</filename>
@@ -24,6 +24,22 @@
 		<fields
 			name="params"
 			addfieldpath="/plugins/system/kickyooaddons/fields">
+			<fieldset
+				name="addons"
+				label="PLG_SYSTEM_KICKYOOADDONS_FIELDSET_ADDONS">
+				<field
+						name="form"
+						type="radio"
+						label="PLG_SYSTEM_KICKYOOADDONS_FORM_LABEL"
+						description="PLG_SYSTEM_KICKYOOADDONS_FORM_DESC"
+						class="btn-group btn-group-yesno"
+						default="1"
+						filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+			</fieldset>
 			<fieldset
 				name="registerwebsite"
 				label="KICKREGISTERWEBSITE_TAB_LABEL">

@@ -1,0 +1,36 @@
+{
+    "@import": "./element.php",
+    "name": "faq",
+    "title": "JSON-LD FAQ Page",
+    "group": "Kicktemp",
+    "icon": "${url:images/icon.svg}",
+    "iconSmall": "${url:images/iconSmall.svg}",
+    "element": true,
+    "container": true,
+    "width": 500,
+    "fields": {
+        "content": {
+            "label": "Question",
+            "type": "content-items",
+            "item": "faq_item",
+            "title": "question",
+            "button": "Add Question"
+        },
+        "name": "${builder.name}",
+        "status": "${builder.status}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Question",
+                    "fields": [
+                        "content"
+                    ]
+                },
+                "${builder.advanced}"
+            ]
+        }
+    }
+}

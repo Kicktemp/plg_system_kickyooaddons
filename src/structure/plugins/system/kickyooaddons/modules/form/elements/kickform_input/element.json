@@ -1,0 +1,280 @@
+{
+    "@import": "./element.php",
+    "name": "kickform_input",
+    "title": "Input",
+    "width": 500,
+    "element": false,
+    "container": true,
+    "defaults": {
+        "type": "input"
+    },
+    "placeholder": {
+        "props": {
+            "title": "Name",
+            "type": "input"
+        }
+    },
+    "templates": {
+        "render": "./templates/template.php"
+    },
+    "fields": {
+        "type": {
+            "label": "Type",
+            "type": "select",
+            "options": {
+                "Input": "input",
+                "Textarea": "textarea",
+                "Select": "select",
+                "EMail": "email",
+                "Date": "date",
+                "Hidden": "hidden",
+                "Radio": "radio",
+                "Checkbox": "checkbox",
+                "Text": "text",
+                "File": "file",
+                "Honeypot": "honeypot",
+                "Captcha": "captcha"
+            },
+            "source": true
+        },
+        "options": {
+            "label": "Options",
+            "type": "content-items",
+            "item": "kickselect_option",
+            "title": "text",
+            "show": "type == 'select' || type == 'radio'",
+            "button": "Add Option"
+        },
+        "multiple": {
+            "label": "Multiple",
+            "type": "checkbox",
+            "show": "type == 'select' || type == 'file'",
+            "source": true
+        },
+        "accept": {
+            "label": "Accept",
+            "description": "The accept attribute value is a string that defines the file types the file input should accept. This string is a comma-separated list of unique file type specifiers. Because a given file type may be identified in more than one manner, it's useful to provide a thorough set of type specifiers when you need files of a given format.",
+            "show": "type == 'file'",
+            "source": true
+        },
+        "capture": {
+            "label": "Capture",
+            "description": "The capture attribute value is a string that specifies which camera to use for capture of image or video data, if the accept attribute indicates that the input should be of one of those types. A value of user indicates that the user-facing camera and/or microphone should be used. A value of environment specifies that the outward-facing camera and/or microphone should be used. If this attribute is missing, the user agent is free to decide on its own what to do. If the requested facing mode isn't available, the user agent may fall back to its preferred default mode.",
+            "show": "type == 'file'",
+            "source": true
+        },
+        "autofocus": {
+            "label": "Autofocus",
+            "type": "checkbox",
+            "show": "type == 'select'",
+            "source": true
+        },
+        "mindate": {
+            "label": "Min",
+            "description": "Value can't be less than min.",
+            "show": "type == 'date'",
+            "attrs": {
+                "type": "date"
+            }
+        },
+        "maxdate": {
+            "label": "Max",
+            "description": "Value can't be more than max.",
+            "show": "type == 'date'",
+            "attrs": {
+                "type": "date"
+            }
+        },
+        "height": {
+            "label": "Size",
+            "show": "type == 'select' || type == 'textarea'",
+            "source": true
+        },
+        "title": {
+            "label": "Name",
+            "source": true
+        },
+        "label": {
+            "label": "Label",
+            "show": "type != 'honeypot' && type != 'hidden' && type != 'text' && type != 'checkbox' && type != 'captcha'",
+            "source": true
+        },
+        "mustshowlabel": {
+            "label": "Show Label",
+            "description": "If labels are disabled in the settings, this label will still be displayed",
+            "type": "checkbox",
+            "show": "label && type != 'hidden' && type != 'text' && type != 'captcha' && type != 'honeypot'",
+            "source": true
+        },
+        "placeholder": {
+            "label": "Placeholder",
+            "show": "type != 'checkbox' && type != 'hidden' && type != 'text' && type != 'captcha' && type != 'honeypot'",
+            "source": true
+        },
+        "equal": {
+            "label": "Equal",
+            "show": "type != 'hidden' && type != 'text' && type != 'captcha' && type != 'honeypot' && type != 'file'",
+            "source": true
+        },
+        "required": {
+            "label": "Required",
+            "type": "checkbox",
+            "show": "type != 'hidden' && type != 'text' && type != 'captcha' && type != 'honeypot'",
+            "source": true
+        },
+        "errormessage": {
+            "label": "Error message",
+            "show": "required && type != 'hidden' && type != 'captcha' && type != 'honeypot'",
+            "source": true
+        },
+        "erroremailmessage": {
+            "label": "Error Email message",
+            "show": "type == 'email'",
+            "source": true
+        },
+        "errorequalmessage": {
+            "label": "Error Equal message",
+            "show": "equal",
+            "source": true
+        },
+        "radionewline": {
+            "label": "Option per row",
+            "type": "checkbox",
+            "show": "type == 'radio'",
+            "source": true
+        },
+        "value": {
+            "label": "Value",
+            "show": "type != 'text' && type != 'captcha' && type != 'honeypot' && type != 'file'",
+            "source": true
+        },
+        "icon": {
+            "label": "Icon",
+            "description": "Pick an optional icon from the icon library.",
+            "type": "icon",
+            "show": "type == 'input' || type == 'email' || type == 'date'",
+            "source": true
+        },
+        "icon_align": {
+            "label": "Icon Alignment",
+            "description": "Choose the icon position.",
+            "type": "select",
+            "options": {
+                "Left": "left",
+                "Right": "right"
+            },
+            "show": "icon && type != 'date'"
+        },
+        "control_min_seconds": {
+            "type": "number",
+            "label": "Min seconds",
+            "default": 1,
+            "description": "Any submission done in less than this number of seconds will be considered invalid.",
+            "show": "type == 'honeypot'"
+        },
+        "honeypot_message": {
+            "label": "Honeypot Field filled message",
+            "default": "Our spam protection has caught you, if you are not a bot please check if the form was filled by automatic filling.",
+            "description": "When a bot fills the field this message is displayed",
+            "show": "type == 'honeypot'"
+        },
+        "honeypot_error": {
+            "label": "Min seconds Message",
+            "default": "Unfortunately, you have been too fast with filling in and our spam filter has caught you. Please wait a moment and press submit again.",
+            "description": "If the form is filled in and submitted too quickly, this error message appears",
+            "show": "type == 'honeypot'"
+        },
+        "content": {
+            "label": "Content",
+            "type": "editor",
+            "show": "type == 'checkbox' || type == 'text'",
+            "source": true
+        },
+        "width_default": {
+            "label": "Phone Portrait",
+            "description": "Set the column width for each breakpoint. Mix fraction widths or combine fixed widths with the <i>Expand</i> value. If no value is selected, the column width of the next smaller screen size is applied. The combination of widths should always take the full width.",
+            "type": "select",
+            "options": "${builder.column_width_options_default}",
+            "source": true
+        },
+        "width_small": {
+            "label": "Phone Landscape",
+            "description": "Set the column width for each breakpoint. Mix fraction widths or combine fixed widths with the <i>Expand</i> value. If no value is selected, the column width of the next smaller screen size is applied. The combination of widths should always take the full width.",
+            "type": "select",
+            "options": "${builder.column_width_options}",
+            "source": true
+        },
+        "width_medium": {
+            "label": "Tablet Landscape",
+            "description": "Set the column width for each breakpoint. Mix fraction widths or combine fixed widths with the <i>Expand</i> value. If no value is selected, the column width of the next smaller screen size is applied. The combination of widths should always take the full width.",
+            "type": "select",
+            "options": "${builder.column_width_options}",
+            "source": true
+        },
+        "width_large": {
+            "label": "Desktop",
+            "description": "Set the column width for each breakpoint. Mix fraction widths or combine fixed widths with the <i>Expand</i> value. If no value is selected, the column width of the next smaller screen size is applied. The combination of widths should always take the full width.",
+            "type": "select",
+            "options": "${builder.column_width_options}",
+            "source": true
+        },
+        "width_xlarge": {
+            "label": "Large Screen",
+            "description": "Select the breakpoint from which the column will start to appear before other columns. On smaller screen sizes, the column will appear in the natural order.",
+            "type": "select",
+            "options": "${builder.column_width_options}",
+            "source": true
+        },
+        "status": "${builder.statusItem}",
+        "source": "${builder.source}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": [
+                        "type",
+                        "title",
+                        "label",
+                        "mustshowlabel",
+                        "placeholder",
+                        "options",
+                        "radionewline",
+                        "mindate",
+                        "maxdate",
+                        "multiple",
+                        "accept",
+                        "capture",
+                        "autofocus",
+                        "control_min_seconds",
+                        "honeypot_message",
+                        "honeypot_error",
+                        "height",
+                        "required",
+                        "errormessage",
+                        "equal",
+                        "errorequalmessage",
+                        "erroremailmessage",
+                        "value",
+                        "icon",
+                        "icon_align",
+                        "content"
+                    ]
+                },
+                {
+                    "title": "Layout",
+                    "fields": [
+                        "width_default",
+                        "width_small",
+                        "width_medium",
+                        "width_large",
+                        "width_xlarge"
+                    ]
+                },
+                "${builder.advancedItem}"
+            ]
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "components": {
+      "kick-sidebar": {
+        "name": "Kick Sidebar",
+        "groups": {
+          "wrapper": "@kick-sidebar-*",
+          "Button Default": "@kick-sidebar-background-default-*",
+          "Button Muted": "@kick-sidebar-background-muted-*",
+          "Button Primary": "@kick-sidebar-background-primary-*",
+          "Button Secondary": "@kick-sidebar-background-secondary-*",
+          "item": "@kick-sidebar-item-*"
+        },
+        "hover": "[class*='kick-sidebar-']",
+        "inspect": "[class*='kick-sidebar'], [class*='kick-sidebar'] > *"
+      }
+    }
+}

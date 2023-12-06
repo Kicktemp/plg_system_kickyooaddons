@@ -1,0 +1,12 @@
+{
+  "panels": {
+    "external-services": {
+      "fields": {
+        "brevo_api": {
+          "label": "Brevo API Token",
+          "description": "Enter your <a href=\"https://account.brevo.com/advanced/api\" target=\"_blank\" rel=\"noopener noreferrer\">Brevo</a> API key for using it with the Brevo element."
+        }
+      }
+    }
+  }
+}

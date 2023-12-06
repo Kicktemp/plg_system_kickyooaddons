@@ -12,7 +12,8 @@ const {merge, isObject, castArray} = require('lodash');
 const {resolve, relative, dirname} = require('path');
 
 module.exports = [
-  './src/structure/plugins/system/kickyooaddons/rollup.config.cjs'
+  './src/structure/plugins/system/kickyooaddons/modules/navigator/rollup.config.cjs',
+  './src/structure/plugins/system/kickyooaddons/modules/brevo/rollup.config.cjs',
 ].reduce((carry, config) => {
 
   if (isObject(config)) {

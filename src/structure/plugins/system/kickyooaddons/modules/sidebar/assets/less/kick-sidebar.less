@@ -1,0 +1,185 @@
+// Name:            Kick Sidebar
+// Description:     This is my custom component
+//
+// Component:       `kick-sidebar`
+//
+// Sub-objects:     `kick-sidebar-item`
+//                  `kick-sidebar-card`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@kick-sidebar-background:                           transparent;
+@kick-sidebar-top:                                  10%;
+@kick-sidebar-left:                                 auto;
+@kick-sidebar-right:                                0%;
+@kick-sidebar-z-index:                              @global-z-index + 10;
+
+@kick-sidebar-item-color:                           @global-emphasis-color;
+@kick-sidebar-item-border-top-left-radius:          @global-border-radius;
+@kick-sidebar-item-border-top-right-radius:         @global-border-radius;
+@kick-sidebar-item-border-bottom-right-radius:      @global-border-radius;
+@kick-sidebar-item-border-bottom-left-radius:       @global-border-radius;
+
+@kick-sidebar-item-font-family:                     @global-primary-font-family;
+@kick-sidebar-item-font-size:                       @global-font-size;
+@kick-sidebar-item-font-style:                      @global-primary-font-style;
+@kick-sidebar-item-font-weight:                     @global-primary-font-weight;
+
+@kick-sidebar-item-icon-size:                       22px;
+
+@kick-sidebar-item-letter-spacing:                  @global-primary-letter-spacing;
+
+@kick-sidebar-item-line-height:                     @global-control-height;
+
+@kick-sidebar-item-margin-vertical:                 4px;
+
+@kick-sidebar-item-padding-horizontal:              @global-gutter;
+
+@kick-sidebar-item-text-transform:                  @global-primary-text-transform;
+@kick-sidebar-item-text-shadow:                     none;
+
+@kick-sidebar-background-default-background:        @global-background;
+@kick-sidebar-background-default-hover-background:  darken(@kick-sidebar-background-default-background, 5%);
+@kick-sidebar-background-default-hover-color:       @global-emphasis-color;;
+@kick-sidebar-background-muted-background:          @global-muted-background;
+@kick-sidebar-background-muted-hover-background:    darken(@kick-sidebar-background-muted-background, 5%);
+@kick-sidebar-background-muted-hover-color:         @global-inverse-color;;
+@kick-sidebar-background-primary-background:        @global-primary-background;
+@kick-sidebar-background-primary-hover-background:  darken(@kick-sidebar-background-primary-background, 5%);
+@kick-sidebar-background-primary-hover-color:       @global-inverse-color;;
+@kick-sidebar-background-secondary-background:      @global-secondary-background;
+@kick-sidebar-background-secondary-hover-background:darken(@kick-sidebar-background-secondary-background, 5%);
+@kick-sidebar-background-secondary-hover-color:     @global-inverse-color;;
+
+
+
+
+
+/* ========================================================================
+   Component: Kick Sidebar
+ ========================================================================== */
+
+.kick-sidebar {
+    position: fixed;
+    top: @kick-sidebar-top;
+    right: @kick-sidebar-right;
+    left: @kick-sidebar-left;
+    z-index: @kick-sidebar-z-index;
+    background: @kick-sidebar-background;
+}
+
+
+.kick-sidebar-item {
+    /* 1 */
+    margin: 0;
+    /* 2 */
+    border: none;
+    /* 3 */
+    overflow: visible;
+    /* 4 */
+    font: inherit;
+    color: @kick-sidebar-item-color;
+    /* 5 */
+    text-transform: none;
+    /* 6 */
+    -webkit-appearance: none;
+    border-top-left-radius: @kick-sidebar-item-border-top-left-radius;
+    border-top-right-radius: @kick-sidebar-item-border-top-right-radius;
+    border-bottom-right-radius: @kick-sidebar-item-border-bottom-right-radius;
+    border-bottom-left-radius: @kick-sidebar-item-border-bottom-left-radius;
+    /* 7 */
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 @kick-sidebar-item-padding-horizontal;
+    vertical-align: middle;
+    font-size: @kick-sidebar-item-font-size;
+    /* 8 */
+    line-height: @kick-sidebar-item-line-height;
+    /* 9 */
+    text-align: center;
+    /* 10 */
+    text-decoration: none;
+    margin-bottom:  @kick-sidebar-item-margin-vertical;
+    cursor: pointer;
+    .hook-kick-sidebar-item();
+
+    svg {
+        height: @kick-sidebar-item-icon-size;
+        width: @kick-sidebar-item-icon-size;
+    }
+
+    .uk-icon {
+        line-height: @kick-sidebar-item-line-height;
+    }
+
+
+
+    &-default {
+        background-color: @kick-sidebar-background-default-background;
+        &:hover {
+            background-color: @kick-sidebar-background-default-hover-background;
+            color: @kick-sidebar-background-default-hover-color;
+        }
+    }
+    &-muted {
+        background-color: @kick-sidebar-background-muted-background;
+        &:hover {
+            background-color: @kick-sidebar-background-muted-hover-background;
+            color: @kick-sidebar-background-muted-hover-color;
+        }
+    }
+    &-primary {
+        background-color: @kick-sidebar-background-primary-background;
+        &:hover {
+            background-color: @kick-sidebar-background-primary-hover-background;
+            color: @kick-sidebar-background-primary-hover-color;
+        }
+    }
+    &-secondary {
+        background-color: @kick-sidebar-background-secondary-background;
+        &:hover {
+            background-color: @kick-sidebar-background-secondary-hover-background;
+            color: @kick-sidebar-background-secondary-hover-color;
+        }
+    }
+}
+
+//
+// Following properties will only be set if they differ from their default value
+//
+
+// Color
+.hook-kick-sidebar-item() when not (@kick-sidebar-item-color = transparent) {
+    color: @kick-sidebar-item-color;
+}
+
+// Typography
+.hook-kick-sidebar-item() when not (@kick-sidebar-item-font-family = inherit) {
+    font-family: @kick-sidebar-item-font-family;
+}
+
+.hook-kick-sidebar-item() when not (@kick-sidebar-item-font-weight = inherit) {
+    font-weight: @kick-sidebar-item-font-weight;
+}
+
+.hook-kick-sidebar-item() when not (@kick-sidebar-item-text-transform = inherit) {
+    text-transform: @kick-sidebar-item-text-transform;
+}
+
+.hook-kick-sidebar-item() when not (@kick-sidebar-item-letter-spacing = inherit) {
+    letter-spacing: @kick-sidebar-item-letter-spacing;
+}
+
+.hook-kick-sidebar-item() when not (@kick-sidebar-item-font-style = inherit) {
+    font-style: @kick-sidebar-item-font-style;
+}
+
+// Shadows
+.hook-kick-sidebar-item() when not (@kick-sidebar-item-text-shadow = none) {
+    text-shadow: @kick-sidebar-item-text-shadow;
+}

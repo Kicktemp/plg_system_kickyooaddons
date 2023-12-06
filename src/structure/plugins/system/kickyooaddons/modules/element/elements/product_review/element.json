@@ -1,0 +1,71 @@
+{
+    "name": "product_review",
+    "title": "Review",
+    "width": 500,
+    "placeholder": {
+        "props": {
+            "question": "Question",
+            "answer": "Answer"
+        }
+    },
+    "fields": {
+        "review": {
+            "label": "Review's name",
+            "source": true
+        },
+        "body": {
+            "label": "Review's body",
+            "type": "textarea",
+            "attrs": {
+                "rows": 4
+            },
+            "source": true
+        },
+        "rating": {
+            "label": "Rating",
+            "type": "number",
+            "default": 0,
+            "modifier": 1,
+            "attrs": {
+                "min": 0,
+                "required": true
+            },
+            "source": true
+        },
+        "date": {
+            "label": "Date",
+            "attrs": {
+                "type": "date"
+            }
+        },
+        "author": {
+            "label": "Author",
+            "source": true
+        },
+        "publisher": {
+            "label": "Publisher",
+            "source": true
+        },
+        "status": "${builder.statusItem}",
+        "source": "${builder.source}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Review",
+                    "fields": [
+                        "review",
+                        "body",
+                        "rating",
+                        "date",
+                        "author",
+                        "publisher"
+                    ]
+                },
+                "${builder.advancedItem}"
+            ]
+        }
+    }
+}

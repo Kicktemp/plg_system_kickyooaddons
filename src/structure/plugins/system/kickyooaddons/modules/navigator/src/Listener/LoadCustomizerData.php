@@ -1,6 +1,6 @@
 <?php
 
-namespace Kicktemp\Yootheme\Navigator\Listener;
+namespace Kicktemp\YOOaddons\Navigator\Src\Listener;
 
 use YOOtheme\Config;
 use YOOtheme\Metadata;
@@ -22,18 +22,6 @@ class LoadCustomizerData
 
 	public function handle(): void
 	{
-		// add locale
-		$locale = strtr($this->config->get('locale.code'), [
-			'de_AT' => 'de_DE',
-			'de_CH' => 'de_DE',
-			'de_LI' => 'de_DE',
-			'de_LU' => 'de_DE',
-			'de_CH_informal' => 'de_DE',
-			'de_DE_formal' => 'de_DE',
-		]);
-
-		$this->translator->addResource(Path::get("../languages/{$locale}.json"));
-
-		$this->metadata->set('script:kicktemp-customizer-core', ['src' => '~kickyoonavigator_url/assets/customizer.min.js', 'defer' => true]);
+		$this->metadata->set('script:kicktemp-customizer-core', ['src' => '~kickyooaddons_url/modules/navigator/assets/customizer.min.js', 'defer' => true]);
 	}
 }

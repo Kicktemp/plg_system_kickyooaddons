@@ -13,6 +13,10 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Installer\InstallerScript;
 
+if (!class_exists('plgSystemKickYooAddonsHelper')) {
+    require_once __DIR__ . '/helper.php';
+}
+
 /**
  * [PACKAGE_NAME] script file.
  *
@@ -21,10 +25,6 @@ use Joomla\CMS\Installer\InstallerScript;
  */
 class plgSystemKickYooAddonsInstallerScript extends InstallerScript
 {
-	const MIN_YTP_VERSION = '4.0.0-beta.11';
-	const MAX_YTP_VERSION = '4.0.99';
-	const MIN_YTP_VERSION_TXT = 'YOOtheme Pro v%s is not supported by [PROJECT_NAME] for YOOtheme Pro plugin. Update to YOOtheme Pro v%s or higher or disable the [PROJECT_NAME] plugin.';
-	const MAX_YTP_VERSION_TXT = 'YOOtheme Pro v%s is not supported by the currently installed version of [PROJECT_NAME] for YOOtheme Pro plugin. Update [PROJECT_NAME] to its latest version before retrying.';
 	protected $minimumPhp = '7.2.5';
 	protected $minimumJoomla = '4.0';
 	protected $deleteFiles = ['/plugins/system/kickyooaddons/src/SettingsListener.php'];
@@ -37,45 +37,15 @@ class plgSystemKickYooAddonsInstallerScript extends InstallerScript
 			return true;
 		}
 
-		$app = Factory::getApplication();
+        try {
+            plgSystemKickYooAddonsHelper::validatePlatform();
+        } catch (\RuntimeException $e) {
+            plgSystemKickYooAddonsHelper::adminNotice($e->getMessage());
 
-		try
-		{
-			self::checkYootheme();
-		}
-		catch (\RuntimeException $e)
-		{
-			$app->enqueueMessage($e->getMessage(), 'warning');
-
-			return false;
-		}
+            return false;
+        }
 	}
 
-	private static function checkYootheme()
-	{
-		$theme = simplexml_load_file(JPATH_ROOT . '/templates/yootheme/templateDetails.xml');
-
-		if ($theme === false)
-		{
-			throw new \RuntimeException('[PROJECT_NAME] for YOOtheme Pro requires YOOtheme Pro theme to be installed and active.');
-		}
-
-		$version = (string) $theme->version;
-
-		if (version_compare($version, self::MIN_YTP_VERSION, 'lt'))
-		{
-			throw new \RuntimeException(
-				sprintf(self::MIN_YTP_VERSION_TXT, $version, self::MIN_YTP_VERSION)
-			);
-		}
-
-		if (version_compare($version, self::MAX_YTP_VERSION, 'gt'))
-		{
-			throw new \RuntimeException(
-				sprintf(self::MAX_YTP_VERSION_TXT, $version)
-			);
-		}
-	}
 
 	/**
 	 * @return void

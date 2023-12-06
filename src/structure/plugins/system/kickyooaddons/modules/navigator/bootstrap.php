@@ -9,14 +9,14 @@
  */
 
 
-namespace Kicktemp\Addons\Navigator;
+namespace Kicktemp\YOOaddons\Navigator;
 
 use YOOtheme\Builder;
 use YOOtheme\Path;
 
 return [
 	'events' => [
-		'customizer.init' => [Listener\LoadCustomizerData::class => ['@handle', 10]],
+		'customizer.init' => [Src\Listener\LoadCustomizerData::class => ['@handle', 10]],
 	],
 
 	'extend' => [

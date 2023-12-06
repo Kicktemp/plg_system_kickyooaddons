@@ -1,0 +1,437 @@
+{
+    "@import": "./element.php",
+    "name": "kickform",
+    "title": "Form",
+    "group": "Kicktemp",
+    "icon": "${url:images/icon.svg}",
+    "iconSmall": "${url:images/iconSmall.svg}",
+    "element": true,
+    "container": true,
+    "width": 500,
+    "defaults": {
+        "label_button": "Submit",
+        "email_copy":  false,
+        "novalidate":  false,
+        "show_label":  true,
+        "show_inmodal":  false,
+        "modal_center":  false,
+        "modal_container":  false,
+        "provider": {
+            "after_submit": "message",
+            "message": "You've been subscribed successfully.",
+            "redirect": ""
+        },
+        "button_style": "primary",
+        "close_style": "default"
+    },
+    "templates": {
+        "render": "./templates/template.php"
+    },
+    "fields": {
+        "content": {
+            "label": "Formfield",
+            "type": "content-items",
+            "item": "kickform_input",
+            "title": "title",
+            "button": "Add Formfield"
+        },
+        "provider.after_submit": {
+            "label": "After Submit",
+            "description": "Select whether a message will be shown or the site will be redirected after clicking the submit button.",
+            "type": "select",
+            "options": {
+                "Notification": "notification",
+                "Show message": "message",
+                "Redirect": "redirect"
+            }
+        },
+        "provider.message": {
+            "label": "Message",
+            "description": "Message shown to the user after submit.",
+            "type": "textarea",
+            "attrs": {
+                "rows": 4
+            },
+            "show": "provider.after_submit == 'message' || provider.after_submit == 'notification'"
+        },
+        "provider.redirect": {
+            "label": "Link",
+            "description": "Link to redirect to after submit.",
+            "type": "link",
+            "filePicker": false,
+            "show": "provider.after_submit == 'redirect'"
+        },
+        "provider.notification.pos": {
+            "label": "Position",
+            "description": "Add one of the following parameters to adjust the notification's position to different corners.",
+            "type": "select",
+            "default": "top-left",
+            "options": {
+                "top-left": "top-left",
+                "top-center": "top-center",
+                "top-right": "top-right",
+                "bottom-left": "bottom-left",
+                "bottom-center": "bottom-center",
+                "bottom-right": "bottom-right"
+            },
+            "show": "provider.after_submit == 'notification'"
+        },
+        "provider.notification.timeout": {
+            "label": "Timeout",
+            "description": "Visibility duration until a notification disappears. If set to 0, notification will not hide automatically.",
+            "type": "number",
+            "default": 5000,
+            "show": "provider.after_submit == 'notification'"
+        },
+        "provider.notification.status": {
+            "label": "Status",
+            "description": "Notification status color.",
+            "default": null,
+            "type": "select",
+            "default": "success",
+            "options": {
+                "Primary": "primary",
+                "Success": "success",
+                "Warning": "warning",
+                "Danger": "danger"
+            },
+            "show": "provider.after_submit == 'notification'"
+        },
+        "horizontal": {
+            "type": "checkbox",
+            "text": "Horizontal form"
+        },
+        "show_label": {
+            "type": "checkbox",
+            "text": "Show Labels"
+        },
+        "novalidate": {
+            "type": "checkbox",
+            "text": "Disable HTML5 validation"
+        },
+        "gap": {
+            "label": "Column Gap",
+            "description": "Set the size of the gap between the grid columns.",
+            "type": "select",
+            "options": {
+                "Small": "small",
+                "Medium": "medium",
+                "Default": ""
+            }
+        },
+        "form_size": {
+            "label": "Size",
+            "description": "Select the form size.",
+            "type": "select",
+            "options": {
+                "Small": "small",
+                "Default": "",
+                "Large": "large"
+            }
+        },
+        "form_style": {
+            "label": "Style",
+            "description": "Select the form style.",
+            "type": "select",
+            "options": {
+                "Default": "",
+                "Blank": "blank"
+            }
+        },
+        "label_button": {
+            "label": "Button",
+            "attrs": {
+                "placeholder": "Send"
+            }
+        },
+        "button_style": {
+            "label": "Style",
+            "description": "Set the button style.",
+            "type": "select",
+            "options": {
+                "Default": "default",
+                "Primary": "primary",
+                "Secondary": "secondary",
+                "Danger": "danger",
+                "Text": "text"
+            }
+        },
+        "button_fullwidth": {
+            "type": "checkbox",
+            "text": "Full width button"
+        },
+        "close_style": {
+            "label": "Close Button Style",
+            "type": "select",
+            "options": {
+                "Close Default": "default",
+                "Close Outside": "outside"
+            },
+            "enable": "show_inmodal"
+        },
+        "modal_id": {
+            "label": "Modal Id",
+            "enable": "show_inmodal",
+            "source": true
+        },
+        "show_inmodal": {
+            "type": "checkbox",
+            "text": "Show form in Modal",
+            "source": true
+        },
+        "modal_header": {
+            "label": "Modal Header",
+            "attrs": {
+                "placeholder": "Title"
+            },
+            "enable": "show_inmodal",
+            "source": true
+        },
+        "modal_center": {
+            "type": "checkbox",
+            "text": "Center modal",
+            "enable": "show_inmodal",
+            "source": true
+        },
+        "modal_container": {
+            "type": "checkbox",
+            "text": "Container modifier",
+            "enable": "show_inmodal",
+            "source": true
+        },
+        "subject": {
+            "label": "Subject",
+            "description": "The Email subject.",
+            "source": true
+        },
+        "body": {
+            "label": "Body",
+            "description": "The Email content body.",
+            "type": "editor",
+            "mode": "text/html",
+            "source": true
+        },
+        "recipients": {
+            "label": "Recipients",
+            "description": "A comma separated list of email recipients.",
+            "source": true
+        },
+        "ccs": {
+            "label": "CCs",
+            "description": "A comma separated list of Carbon Copy Recipients.",
+            "source": true
+        },
+        "bccs": {
+            "label": "BCCs",
+            "description": "A comma separated list of Black Carbon Copy Recipients.",
+            "source": true
+        },
+        "reply_tos": {
+            "label": "Reply Tos",
+            "description": "A comma separated list of Reply To addresses.",
+            "source": true
+        },
+        "from": {
+            "label": "From",
+            "description": "The From Address. Defaults to the site's one.",
+            "source": true
+        },
+        "fromname": {
+            "label": "FromName",
+            "description": "The From Name. Defaults to the site's one.",
+            "source": true
+        },
+        "html": {
+            "text": "Send the email content as HTML?",
+            "type": "checkbox",
+            "source": true
+        },
+        "email_copy": {
+            "text": "Send Copy to Submitter",
+            "type": "checkbox",
+            "source": true
+        },
+        "subject_copy": {
+            "label": "Subject Submitter",
+            "description": "The Email subject.",
+            "show": "email_copy",
+            "source": true
+        },
+        "body_copy": {
+            "label": "Body Submitter",
+            "description": "The Email content body.",
+            "type": "editor",
+            "mode": "text/html",
+            "show": "email_copy",
+            "source": true
+        },
+        "from_copy": {
+            "label": "From Submitter",
+            "description": "The From Address. Defaults to the site's one.",
+            "show": "email_copy",
+            "source": true
+        },
+        "fromname_copy": {
+            "label": "FromName Submitter",
+            "description": "The From Name. Defaults to the site's one.",
+            "source": true
+        },
+        "recipients_copy": {
+            "label": "Recipients Submitter",
+            "description": "A comma separated list of email recipients.",
+            "show": "email_copy",
+            "source": true
+        },
+        "form_info": {
+            "label": "Info",
+            "description": "Each of the coming fields can be filled with a value from the formfields above. Example: {name} or subject: New request from {name} {mail}",
+            "type": "description"
+        },
+        "position": "${builder.position}",
+        "position_left": "${builder.position_left}",
+        "position_right": "${builder.position_right}",
+        "position_top": "${builder.position_top}",
+        "position_bottom": "${builder.position_bottom}",
+        "position_z_index": "${builder.position_z_index}",
+        "margin": "${builder.margin}",
+        "margin_remove_top": "${builder.margin_remove_top}",
+        "margin_remove_bottom": "${builder.margin_remove_bottom}",
+        "maxwidth": "${builder.maxwidth}",
+        "maxwidth_breakpoint": "${builder.maxwidth_breakpoint}",
+        "block_align": "${builder.block_align}",
+        "block_align_breakpoint": "${builder.block_align_breakpoint}",
+        "block_align_fallback": "${builder.block_align_fallback}",
+        "text_align": "${builder.text_align_justify}",
+        "text_align_breakpoint": "${builder.text_align_breakpoint}",
+        "text_align_fallback": "${builder.text_align_justify_fallback}",
+        "animation": "${builder.animation}",
+        "_parallax_button": "${builder._parallax_button}",
+        "visibility": "${builder.visibility}",
+        "name": "${builder.name}",
+        "status": "${builder.status}",
+        "source": "${builder.source}",
+        "id": "${builder.id}",
+        "class": "${builder.cls}",
+        "attributes": "${builder.attrs}",
+        "css": {
+            "label": "CSS",
+            "description": "Enter your own custom CSS. The following selectors will be prefixed automatically for this element: <code>.el-element</code>, <code>.el-input</code>, <code>.el-button</code>",
+            "type": "editor",
+            "editor": "code",
+            "mode": "css",
+            "attrs": {
+                "debounce": 500
+            }
+        }
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": [
+                        "content",
+                        "form_info",
+                        "recipients",
+                        "from",
+                        "fromname",
+                        "reply_tos",
+                        "subject",
+                        "body",
+                        "email_copy",
+                        "subject_copy",
+                        "body_copy",
+                        "from_copy",
+                        "fromname_copy",
+                        "recipients_copy",
+                        "html",
+                        "provider.after_submit",
+                        "provider.message",
+                        "provider.redirect",
+                        "provider.notification.pos",
+                        "provider.notification.timeout",
+                        "provider.notification.status"
+                    ]
+                },
+                {
+                    "title": "Settings",
+                    "fields": [
+                        {
+                            "label": "Send an Email",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "ccs",
+                                "bccs"
+                            ]
+                        },
+                        {
+                            "label": "Form",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "horizontal",
+                                "novalidate",
+                                "show_label",
+                                "gap",
+                                "form_size",
+                                "form_style"
+                            ]
+                        },
+                        {
+                            "label": "Button",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "label_button",
+                                "button_style",
+                                "button_fullwidth"
+                            ]
+                        },
+                        {
+                            "label": "Modal",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "show_inmodal",
+                                "modal_id",
+                                "modal_container",
+                                "modal_center",
+                                "modal_header",
+                                "close_style"
+                            ]
+                        },
+                        {
+                            "label": "General",
+                            "type": "group",
+                            "fields": [
+                                "position",
+                                "position_left",
+                                "position_right",
+                                "position_top",
+                                "position_bottom",
+                                "position_z_index",
+                                "margin",
+                                "margin_remove_top",
+                                "margin_remove_bottom",
+                                "maxwidth",
+                                "maxwidth_breakpoint",
+                                "block_align",
+                                "block_align_breakpoint",
+                                "block_align_fallback",
+                                "text_align",
+                                "text_align_breakpoint",
+                                "text_align_fallback",
+                                "animation",
+                                "_parallax_button",
+                                "visibility"
+                            ]
+                        }
+                    ]
+                },
+                "${builder.advanced}"
+            ]
+        }
+    }
+}

@@ -12,7 +12,21 @@ export const config = {
         src: 'src/structure/',
         glob: 'src/structure/**/**',
         replaceGlob: 'src/structure/**/**.{php,html,xml,php,ini,less,json,js,css}',
-        dest: 'dist/',
+        dest: '../yootheme/dist/',
+      },
+      {
+        casesensitive: true,
+        src: 'src/structure/',
+        glob: 'src/structure/**/**',
+        replaceGlob: 'src/structure/**/**.{php,html,xml,php,ini,less,json,js,css}',
+        dest: '../yootheme/dist4/',
+      },
+      {
+        casesensitive: true,
+        src: 'src/structure/',
+        glob: 'src/structure/**/**',
+        replaceGlob: 'src/structure/**/**.{php,html,xml,php,ini,less,json,js,css}',
+        dest: '../yootheme/dist5/',
       }
     ],
     release: [

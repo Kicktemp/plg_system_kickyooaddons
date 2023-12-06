@@ -17,7 +17,9 @@ use Joomla\CMS\Uri\Uri;
 use YOOtheme\Application;
 use YOOtheme\Path;
 
-
+if (!class_exists('plgSystemKickYooAddonsHelper')) {
+    require_once __DIR__ . '/helper.php';
+}
 
 /**
  * KickYooAddons plugin.
@@ -60,23 +62,34 @@ class plgSystemKickYooAddons extends CMSPlugin
 	 */
 	public function onAfterInitialise ()
 	{
-		// Check if YOOtheme Pro is loaded
-		if (!class_exists(Application::class, false)) {
-			return;
-		}
+        try {
+            plgSystemKickYooAddonsHelper::validatePlatform();
+        } catch (\RuntimeException $e) {
+            plgSystemKickYooAddonsHelper::adminNotice($e->getMessage());
 
-		$root = __DIR__;
-		$rootUrl = Uri::root(true);
+            return;
+        }
 
-		// set alias
-		Path::setAlias('~kickyooaddons', $root);
-		Path::setAlias('~kickyooaddons_url', $rootUrl . '/plugins/system/kickyooaddons');
+        if (!class_exists(Application::class, false)) {
+            return;
+        }
 
-		// register plugin
-		//JLoader::registerNamespace('Kicktemp\\Addons\\', __DIR__ . '/src', false, false, 'psr4');
+		Path::setAlias('~kickyooaddons', __DIR__);
+		Path::setAlias('~kickyooaddons_url', Uri::root(true) . '/plugins/system/kickyooaddons');
 
 
-		app()->load('~kickyooaddons/modules/*/bootstrap.php');
+
+        $modules = ['core', 'element'];
+
+        foreach (['bannersource', 'colors', 'contactsource', 'files', 'form', 'navigator', 'brevo', 'sidebar'] as $addon) {
+            if ($this->params->get($addon, true)) {
+                $modules[] = $addon;
+            }
+        }
+
+        foreach ($modules as $module) {
+            app()->load('~kickyooaddons/modules/{' . $module . '{,-joomla}}/bootstrap.php');
+        }
 	}
 
 	/**
@@ -149,4 +162,18 @@ class plgSystemKickYooAddons extends CMSPlugin
 
 		return true;
 	}
+
+    public function onExtensionBeforeUpdate(string $type, ?SimpleXMLElement $manifest)
+    {
+        if ($manifest) {
+            plgSystemKickYooAddonsHelper::preinstallThemeCheck($manifest);
+        }
+    }
+
+    public function onExtensionBeforeInstall(string $method, string $type, ?SimpleXMLElement $manifest)
+    {
+        if ($manifest) {
+            plgSystemKickYooAddonsHelper::preinstallThemeCheck($manifest);
+        }
+    }
 }

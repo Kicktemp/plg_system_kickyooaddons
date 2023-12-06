@@ -1,0 +1,186 @@
+{
+    "@import": "./element.php",
+    "name": "exitintent",
+    "title": "Exit Intent",
+    "group": "Kicktemp",
+    "icon": "${url:images/icon.svg}",
+    "iconSmall": "${url:images/iconSmall.svg}",
+    "element": true,
+    "container": true,
+    "width": 500,
+    "placeholder": {
+        "props": {
+            "button_style": "default",
+            "title": "Title",
+            "text_align": "left",
+            "exitintent_session": "false",
+            "id": ""
+        }
+    },
+    "templates": {
+        "render": "./templates/template.php",
+        "content": "./templates/content.php"
+    },
+    "fields": {
+        "style": {
+            "label": "Style",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Default": "default",
+                "Muted": "muted",
+                "Primary": "primary",
+                "Secondary": "secondary"
+            }
+        },
+        "text_color": {
+            "label": "Text Color",
+            "description": "Force a light or dark color for text, buttons and controls on the image or video background.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Light": "light",
+                "Dark": "dark"
+            },
+            "source": true
+        },
+        "title": {
+            "label": "Title"
+        },
+        "content": {
+            "label": "Content",
+            "type": "editor",
+            "editor": "text",
+            "source": true
+        },
+        "button_content": {
+            "label": "Button Content",
+            "source": true
+        },
+        "link": "${builder.link}",
+        "link_title": "${builder.link_title}",
+        "link_target": {
+            "label": "Link Target",
+            "type": "select",
+            "default": "",
+            "options": {
+                "Same Window": "",
+                "New Window": "blank",
+                "Modal": "modal"
+            }
+        },
+        "icon": {
+            "label": "Icon",
+            "description": "Pick an optional icon from the icon library.",
+            "type": "icon",
+            "source": true
+        },
+        "icon_align": {
+            "label": "Alignment",
+            "description": "Choose the icon position.",
+            "type": "select",
+            "options": {
+                "Left": "left",
+                "Right": "right"
+            },
+            "enable": "icon"
+        },
+        "button_size": {
+            "label": "Size",
+            "type": "select",
+            "default": "",
+            "options": {
+                "Small": "small",
+                "Default": "",
+                "Large": "large"
+            }
+        },
+        "button_style": {
+            "label": "Style",
+            "description": "Set the button style.",
+            "type": "select",
+            "options": {
+                "Default": "default",
+                "Primary": "primary",
+                "Secondary": "secondary",
+                "Danger": "danger",
+                "Text": "text",
+                "Link": "",
+                "Link Muted": "link-muted",
+                "Link Text": "link-text"
+            }
+        },
+        "id": {
+            "label": "id",
+            "description": "If there are multiple Exit Intent per page, please enter a unique ID."
+        },
+        "exitintent": {
+            "description": "How many days should the cookie be stored? (0 = never)",
+            "default": 0,
+            "label": "Exit-Intent-Cookie"
+        },
+        "exitintent_session": {
+            "label": "Once per Session",
+            "type": "checkbox",
+            "text": "Handle showing pop up once per browser session."
+        },
+        "show_on_delay": {
+            "label": "Show on Delay",
+            "type": "checkbox",
+            "text": "Show pop-up window after loading the document."
+        },
+        "exitintent_delay": {
+            "description": "Waiting time until exit intent becomes active in seconds",
+            "default": 5,
+            "label": "Exit-Intent-Delay"
+        },
+        "text_align": {
+            "label": "Text Alignment",
+            "description": "Center, left and right alignment may depend on a breakpoint and require a fallback.",
+            "type": "select",
+            "default": "",
+            "options": {
+                "None": "",
+                "Left": "left",
+                "Center": "center",
+                "Right": "right",
+                "Justify": "justify"
+            }
+        }
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": [
+                        "style",
+                        "text_color",
+                        "title",
+                        "content",
+                        "button_content",
+                        "link",
+                        "link_title",
+                        "link_target",
+                        "icon",
+                        "icon_align",
+                        "button_size",
+                        "button_style"
+                    ]
+                },
+                {
+                    "title": "Settings",
+                    "fields": [
+                        "id",
+                        "exitintent",
+                        "exitintent_delay",
+                        "show_on_delay",
+                        "exitintent_session",
+                        "text_align"
+                    ]
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,217 @@
+{
+  "name": "jsonld_item",
+  "title": "Item",
+  "width": 500,
+  "fields": {
+    "content": {
+      "label": "Item",
+      "type": "content-items",
+      "item": "jsonld_item",
+      "title": "value",
+      "button": "Add Item"
+    },
+    "key": {
+      "label": "Name",
+      "source": true
+    },
+    "key_1": {
+      "label": "Name",
+      "source": true
+    },
+    "value_1": {
+      "label": "Value",
+      "show": "!image_1",
+      "source": true
+    },
+    "image_1": {
+      "label": "Image",
+      "type": "image",
+      "show": "!value_1",
+      "source": true
+    },
+    "key_2": {
+      "label": "Name",
+      "source": true
+    },
+    "value_2": {
+      "label": "Value",
+      "show": "!image_2",
+      "source": true
+    },
+    "image_2": {
+      "label": "Image",
+      "type": "image",
+      "show": "!value_2",
+      "source": true
+    },
+    "key_3": {
+      "label": "Name",
+      "source": true
+    },
+    "value_3": {
+      "label": "Value",
+      "show": "!image_3",
+      "source": true
+    },
+    "image_3": {
+      "label": "Image",
+      "type": "image",
+      "show": "!value_3",
+      "source": true
+    },
+    "key_4": {
+      "label": "Name",
+      "source": true
+    },
+    "value_4": {
+      "label": "Value",
+      "show": "!image_4",
+      "source": true
+    },
+    "image_4": {
+      "label": "Image",
+      "type": "image",
+      "show": "!value_4",
+      "source": true
+    },
+    "key_5": {
+      "label": "Name",
+      "source": true
+    },
+    "value_5": {
+      "label": "Value",
+      "show": "!image_5",
+      "source": true
+    },
+    "image_5": {
+      "label": "Image",
+      "type": "image",
+      "show": "!value_5",
+      "source": true
+    },
+    "key_6": {
+      "label": "Name",
+      "source": true
+    },
+    "value_6": {
+      "label": "Value",
+      "show": "!image_6",
+      "source": true
+    },
+    "image_6": {
+      "label": "Image",
+      "type": "image",
+      "show": "!value_6",
+      "source": true
+    },
+    "key_7": {
+      "label": "Name",
+      "source": true
+    },
+    "value_7": {
+      "label": "Value",
+      "show": "!image_7",
+      "source": true
+    },
+    "image_7": {
+      "label": "Image",
+      "type": "image",
+      "show": "!value_7",
+      "source": true
+    },
+    "status": "${builder.statusItem}",
+    "source": "${builder.source}"
+  },
+  "fieldset": {
+    "default": {
+      "type": "tabs",
+      "fields": [
+        {
+          "title": "Content",
+          "fields": [
+            {
+              "label": "Items",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "key",
+                "content"
+              ]
+            },
+            {
+              "label": "Field 1",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "key_1",
+                "value_1",
+                "image_1"
+              ]
+            },
+            {
+              "label": "Field 2",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "key_2",
+                "value_2",
+                "image_2"
+              ]
+            },
+            {
+              "label": "Field 3",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "key_3",
+                "value_3",
+                "image_3"
+              ]
+            },
+            {
+              "label": "Field 4",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "key_4",
+                "value_4",
+                "image_4"
+              ]
+            },
+            {
+              "label": "Field 5",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "key_5",
+                "value_5",
+                "image_5"
+              ]
+            },
+            {
+              "label": "Field 6",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "key_6",
+                "value_6",
+                "image_6"
+              ]
+            },
+            {
+              "label": "Field 7",
+              "type": "group",
+              "divider": true,
+              "fields": [
+                "key_7",
+                "value_7",
+                "image_7"
+              ]
+            }
+          ]
+        },
+        "${builder.advancedItem}"
+      ]
+    }
+  }
+}

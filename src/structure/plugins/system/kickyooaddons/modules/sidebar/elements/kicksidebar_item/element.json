@@ -1,0 +1,174 @@
+{
+    "@import": "./element.php",
+    "name": "kicksidebar_item",
+    "title": "Button",
+    "width": 500,
+    "defaults": {
+        "noopener":  false,
+        "modal_center":  false,
+        "modal_container":  false,
+        "close_style": "default",
+        "style": "default",
+        "icon_align": "left"
+    },
+    "placeholder": {
+        "props": {
+            "content": "Button",
+            "link": "#",
+            "icon": ""
+        }
+    },
+    "templates": {
+        "render": "./templates/template.php",
+        "content": "./templates/content.php"
+    },
+    "fields": {
+        "content": {
+            "label": "Content",
+            "source": true
+        },
+        "link": "${builder.link}",
+        "link_title": "${builder.link_title}",
+        "icon": {
+            "label": "Icon",
+            "description": "Pick an optional icon from the icon library.",
+            "type": "icon",
+            "source": true
+        },
+        "style": {
+            "label": "Style",
+            "type": "select",
+            "options": {
+                "Default": "default",
+                "Muted": "muted",
+                "Primary": "primary",
+                "Secondary": "secondary"
+            }
+        },
+        "link_target": {
+            "label": "Target",
+            "type": "select",
+            "options": {
+                "Same Window": "",
+                "New Window": "blank",
+                "Modal": "modal"
+            }
+        },
+        "modalcontent": {
+            "label": "Modal Content",
+            "type": "editor",
+            "source": true,
+            "show": "link_target == 'modal'"
+        },
+        "close_style": {
+            "label": "Close Button Style",
+            "description": "Set the link style.",
+            "type": "select",
+            "options": {
+                "Close Default": "default",
+                "Close Outside": "outside"
+            },
+            "show": "link_target == 'modal'"
+        },
+        "modal_header": {
+            "label": "Modal Header",
+            "attrs": {
+                "placeholder": "Title"
+            },
+            "show": "link_target == 'modal'",
+            "source": true
+        },
+        "uk_toggle": {
+            "type": "checkbox",
+            "text": "Modal Button",
+            "source": true
+        },
+        "modal_center": {
+            "type": "checkbox",
+            "text": "Center modal",
+            "show": "link_target == 'modal'",
+            "source": true
+        },
+        "modal_container": {
+            "type": "checkbox",
+            "text": "Container modifier",
+            "show": "link_target == 'modal'",
+            "source": true
+        },
+        "noopener": {
+            "type": "checkbox",
+            "text": "Link noopener noreferrer",
+            "source": true
+        },
+        "lightbox_width": {
+            "attrs": {
+                "placeholder": "auto"
+            },
+            "enable": "link_target == 'modal'"
+        },
+        "lightbox_height": {
+            "attrs": {
+                "placeholder": "auto"
+            },
+            "enable": "link_target == 'modal'"
+        },
+        "icon_align": {
+            "label": "Alignment",
+            "description": "Choose the icon position.",
+            "type": "select",
+            "options": {
+                "Left": "left",
+                "Right": "right"
+            },
+            "enable": "icon"
+        },
+        "status": "${builder.statusItem}",
+        "source": "${builder.source}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": ["content", "icon", "link", "link_title", "link_target", "uk_toggle", "modalcontent", "modal_container",
+                        "modal_center",
+                        "modal_header",
+                        "close_style"]
+                },
+                {
+                    "title": "Settings",
+                    "fields": [
+                        {
+                            "label": "Button",
+                            "type": "group",
+                            "divider": true,
+                            "fields": ["style"]
+                        },
+                        {
+                            "label": "Link",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "noopener",
+                                {
+                                    "label": "Modal Width/Height",
+                                    "description": "Set the width and height for the modal content, i.e. image, video or iframe.",
+                                    "type": "grid",
+                                    "width": "1-2",
+                                    "fields": ["lightbox_width", "lightbox_height"]
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Icon",
+                            "type": "group",
+                            "fields": ["icon_align"]
+                        }
+                    ]
+                },
+                "${builder.advancedItem}"
+            ]
+        }
+    }
+}

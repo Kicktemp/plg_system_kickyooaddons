@@ -1,0 +1,176 @@
+{
+    "@import": "./element.php",
+    "name": "product",
+    "title": "JSON-LD Product",
+    "group": "Kicktemp",
+    "icon": "${url:images/icon.svg}",
+    "iconSmall": "${url:images/iconSmall.svg}",
+    "element": true,
+    "container": true,
+    "width": 500,
+    "fields": {
+        "productname": {
+            "label": "Name",
+            "source": true
+        },
+        "image": "${builder.image}",
+        "brand": {
+            "label": "Brand",
+            "source": true
+        },
+        "description": {
+            "label": "Product's description",
+            "type": "textarea",
+            "attrs": {
+                "rows": 4
+            },
+            "source": true
+        },
+        "url": {
+            "label": "Url",
+            "type": "link",
+            "source": true
+        },
+        "price": {
+            "label": "Price",
+            "show": "priceCurrency",
+            "source": true
+        },
+        "priceValidUntil": {
+            "label": "Price vaild until",
+            "attrs": {
+                "type": "date"
+            },
+            "source": true,
+            "show": "price && priceCurrency"
+        },
+        "availability": {
+            "label": "Availability",
+            "type": "select",
+            "options": {
+                "Discontinued": "https://schema.org/Discontinued",
+                "InStock": "https://schema.org/InStock",
+                "InStoreOnly": "https://schema.org/InStoreOnly",
+                "LimitedAvailability": "https://schema.org/LimitedAvailability",
+                "OnlineOnly": "https://schema.org/OnlineOnly",
+                "OutOfStock": "https://schema.org/OutOfStock",
+                "PreOrder": "https://schema.org/PreOrder",
+                "PreSale": "https://schema.org/PreSale",
+                "SoldOut": "https://schema.org/SoldOut",
+                "Not specified": ""
+            },
+            "source": true
+        },
+        "priceCurrency": {
+            "label": "Price currency",
+            "type": "select",
+            "options": {
+                "$ United States Dollar": "USD",
+                "£ British Pound Sterling": "GBP",
+                "$ Canadian Dollar": "CAD",
+                "€ Euro": "EUR",
+                "Not specified": ""
+            },
+            "source": true
+        },
+        "itemCondition": {
+            "label": "Item condition",
+            "type": "select",
+            "options": {
+                "New": "https://schema.org/NewCondition",
+                "Used": "https://schema.org/UsedCondition",
+                "Refurbished": "https://schema.org/RefurbishedCondition",
+                "Damaged": "https://schema.org/DamagedCondition",
+                "Not specified": ""
+            },
+            "source": true
+        },
+        "content": {
+            "label": "review",
+            "type": "content-items",
+            "item": "product_review",
+            "title": "review",
+            "button": "Add Review"
+        },
+        "ratingValue": {
+            "label": "Aggregate rating value",
+            "type": "number",
+            "default": 0,
+            "modifier": 1,
+            "attrs": {
+                "min": 0,
+                "required": true
+            },
+            "source": true
+        },
+        "ratingCount": {
+            "label": "Numbers of ratings",
+            "type": "number",
+            "default": 0,
+            "modifier": 1,
+            "attrs": {
+                "min": 0,
+                "required": true
+            },
+            "source": true
+        },
+        "bestRating": {
+            "label": "Highest value allowed",
+            "type": "number",
+            "default": 0,
+            "modifier": 1,
+            "attrs": {
+                "min": 0,
+                "required": true
+            },
+            "source": true
+        },
+        "worstRating": {
+            "label": "Lowest value allowed",
+            "type": "number",
+            "default": 0,
+            "modifier": 1,
+            "attrs": {
+                "min": 0,
+                "required": true
+            },
+            "source": true
+        },
+        "name": "${builder.name}",
+        "status": "${builder.status}",
+        "source": "${builder.source}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Product",
+                    "fields": [
+                        "productname",
+                        "image",
+                        "brand",
+                        "description",
+                        "url",
+                        "priceCurrency",
+                        "price",
+                        "priceValidUntil",
+                        "availability",
+                        "itemCondition"
+                    ]
+                },
+                {
+                    "title": "Reviews",
+                    "fields": [
+                        "ratingValue",
+                        "bestRating",
+                        "worstRating",
+                        "ratingCount",
+                        "content"
+                    ]
+                },
+                "${builder.advanced}"
+            ]
+        }
+    }
+}

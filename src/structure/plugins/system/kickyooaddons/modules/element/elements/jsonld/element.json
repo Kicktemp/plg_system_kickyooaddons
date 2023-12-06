@@ -1,0 +1,54 @@
+{
+    "@import": "./element.php",
+    "name": "jsonld",
+    "title": "JSON-LD",
+    "group": "Kicktemp",
+    "icon": "${url:images/icon.svg}",
+    "iconSmall": "${url:images/iconSmall.svg}",
+    "element": true,
+    "container": true,
+    "width": 500,
+    "defaults": {
+        "debug": false
+    },
+    "templates": {
+        "render": "./templates/template.php"
+    },
+    "fields": {
+        "type": {
+            "label": "Type",
+            "source": true
+        },
+        "content": {
+            "label": "Item",
+            "type": "content-items",
+            "item": "jsonld_item",
+            "title": "key",
+            "button": "Add Item"
+        },
+        "debug": {
+            "type": "checkbox",
+            "text": "Debug",
+            "description": "Show Rich Snippets Preview and Debug link"
+        },
+        "name": "${builder.name}",
+        "status": "${builder.status}",
+        "source": "${builder.source}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Item",
+                    "fields": [
+                        "type",
+                        "content",
+                        "debug"
+                    ]
+                },
+                "${builder.advanced}"
+            ]
+        }
+    }
+}

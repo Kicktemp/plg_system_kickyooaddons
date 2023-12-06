@@ -1,0 +1,39 @@
+{
+    "name": "faq_item",
+    "title": "Question",
+    "width": 500,
+    "placeholder": {
+        "props": {
+            "question": "Question",
+            "answer": "Answer"
+        }
+    },
+    "fields": {
+        "question": {
+            "label": "Question",
+            "source": true
+        },
+        "answer": {
+            "label": "Answer",
+            "type": "editor",
+            "source": true
+        },
+        "status": "${builder.statusItem}",
+        "source": "${builder.source}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "FAQ",
+                    "fields": [
+                        "question",
+                        "answer"
+                    ]
+                },
+                "${builder.advancedItem}"
+            ]
+        }
+    }
+}
