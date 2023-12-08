@@ -28,10 +28,94 @@
 				name="addons"
 				label="PLG_SYSTEM_KICKYOOADDONS_FIELDSET_ADDONS">
 				<field
+						name="bannersource"
+						type="radio"
+						label="PLG_SYSTEM_KICKYOOADDONS_BANNERSOURCE_LABEL"
+						description="PLG_SYSTEM_KICKYOOADDONS_BANNERSOURCE_DESC"
+						class="btn-group btn-group-yesno"
+						default="1"
+						filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+						name="brevo"
+						type="radio"
+						label="PLG_SYSTEM_KICKYOOADDONS_BREVO_LABEL"
+						description="PLG_SYSTEM_KICKYOOADDONS_BREVO_DESC"
+						class="btn-group btn-group-yesno"
+						default="1"
+						filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+						name="colors"
+						type="radio"
+						label="PLG_SYSTEM_KICKYOOADDONS_COLORS_LABEL"
+						description="PLG_SYSTEM_KICKYOOADDONS_COLORS_DESC"
+						class="btn-group btn-group-yesno"
+						default="1"
+						filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+						name="contactsource"
+						type="radio"
+						label="PLG_SYSTEM_KICKYOOADDONS_CONTACTSOURCE_LABEL"
+						description="PLG_SYSTEM_KICKYOOADDONS_CONTACTSOURCE_DESC"
+						class="btn-group btn-group-yesno"
+						default="1"
+						filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+						name="files"
+						type="radio"
+						label="PLG_SYSTEM_KICKYOOADDONS_FILES_LABEL"
+						description="PLG_SYSTEM_KICKYOOADDONS_FILES_DESC"
+						class="btn-group btn-group-yesno"
+						default="1"
+						filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
 						name="form"
 						type="radio"
 						label="PLG_SYSTEM_KICKYOOADDONS_FORM_LABEL"
 						description="PLG_SYSTEM_KICKYOOADDONS_FORM_DESC"
+						class="btn-group btn-group-yesno"
+						default="1"
+						filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+						name="navigator"
+						type="radio"
+						label="PLG_SYSTEM_KICKYOOADDONS_NAVIGATOR_LABEL"
+						description="PLG_SYSTEM_KICKYOOADDONS_NAVIGATOR_DESC"
+						class="btn-group btn-group-yesno"
+						default="1"
+						filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+						name="sidebar"
+						type="radio"
+						label="PLG_SYSTEM_KICKYOOADDONS_SIDEBAR_LABEL"
+						description="PLG_SYSTEM_KICKYOOADDONS_SIDEBAR_DESC"
 						class="btn-group btn-group-yesno"
 						default="1"
 						filter="integer"
