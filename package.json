@@ -65,9 +65,9 @@
     "[PLUGINTYPE]": "system"
   },
   "casesensitive": {
-    "kicktempyootheme": "kickyooaddons",
+    "kickyooaddons": "kickyooaddons",
     "KickYooAddons": "KickYooAddons",
-    "KICKYOOBOILERPLATE": "KICKYOOBOILERPLATE"
+    "KICKYOOADDONS": "KICKYOOADDONS"
   },
   "engines": {
     "node": ">=16.0.0"
