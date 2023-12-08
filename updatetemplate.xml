@@ -8,7 +8,7 @@
   <section>updates</section>
   <version>[VERSION]</version>
   <changelogurl>https://kicktemp.shop/changelog/[ALIAS]</changelogurl>
-  <infourl title="KickYooNavigator Plugin">https://kicktemp.shop/produkte/[ALIAS]</infourl>
+  <infourl title="KickYooAddons">https://kicktemp.shop/produkte/[ALIAS]</infourl>
   <downloads>
     <downloadurl type="full" format="zip"><![CDATA[https://kicktemp.shop/download/[ALIAS]/v[VERSION]]]></downloadurl>
   </downloads>
