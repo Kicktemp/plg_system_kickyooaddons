@@ -19,6 +19,7 @@
     "updateXML": "node ./scripts/tasks/xml.js",
     "download:joomla": "sh ./scripts/joomla.sh",
     "download:joomla4": "sh ./scripts/joomla4.sh",
+    "download:joomla5": "sh ./scripts/joomla5.sh",
     "publishtag": "sh ./scripts/post.sh"
   },
   "repository": {
