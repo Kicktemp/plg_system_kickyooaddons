@@ -20,7 +20,7 @@ return [
 			/** @var Metadata $metadata */
 			$metadata = app(Metadata::class);
 
-			$metadata->set('script:kickyooexitintent-exitintent', ['src' => '~kickyooaddons_url/modules/element/elements/exitintent/app/exitintent.min.js', 'defer' => false]);
+			$metadata->set('script:kickyooexitintent-exitintent', ['src' => '~kickyooaddons_url/modules/Element/elements/exitintent/app/exitintent.min.js', 'defer' => false]);
 		}
 
 	],
