@@ -19,9 +19,11 @@ class LoadSourceTypes
     {
         $query = [
             Type\KickseoQueryType::config(),
+            Type\UrlQueryType::config(),
         ];
 
         $types = [
+            ['Url', Type\UrlType::config()],
             ['Kickseo', Type\KickseoType::config()],
             ['KickseoLocales', Type\KickseoLocalesType::config()],
         ];
