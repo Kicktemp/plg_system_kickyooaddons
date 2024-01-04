@@ -1,0 +1,15 @@
+{
+  "panels": {
+    "external-services": {
+      "fields": {
+        "hubspot_api": {
+          "label": "HubSpot Private app access token",
+          "description": "Enter your <a href=\"https://app.hubspot.com/login/\" target=\"_blank\">HubSpot</a> Private app access token for using it with the KickHubSpotForm element. <strong>Required Scope: forms</strong>"
+        },
+        "hubspot_portalid": {
+          "label": "HubSpot Portal ID"
+        }
+      }
+    }
+  }
+}

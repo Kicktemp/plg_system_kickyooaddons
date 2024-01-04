@@ -100,6 +100,18 @@
 					<option value="0">JNO</option>
 				</field>
 				<field
+						name="hubspot"
+						type="radio"
+						label="PLG_SYSTEM_KICKYOOADDONS_HUPSPOT_LABEL"
+						description="PLG_SYSTEM_KICKYOOADDONS_HUBSPOT_DESC"
+						class="btn-group btn-group-yesno"
+						default="1"
+						filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
 						name="navigator"
 						type="radio"
 						label="PLG_SYSTEM_KICKYOOADDONS_NAVIGATOR_LABEL"

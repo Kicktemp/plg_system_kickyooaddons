@@ -1,0 +1,537 @@
+{
+    "@import": "./element.php",
+    "name": "kickhubspot",
+    "title": "HubSpot",
+    "group": "Kicktemp",
+    "icon": "${url:images/icon.svg}",
+    "iconSmall": "${url:images/iconSmall.svg}",
+    "element": true,
+    "width": 500,
+    "defaults": {
+        "label_button": "Submit",
+        "hideRichText":  false,
+        "showLabekAsPlaceholder":  false,
+        "novalidate":  false,
+        "show_label":  true,
+        "show_inmodal":  false,
+        "modal_center":  false,
+        "modal_container":  false,
+        "provider": {
+            "after_submit": "message",
+            "message": "You've been subscribed successfully.",
+            "redirect": ""
+        },
+        "button_style": "primary",
+        "errorconsent": "Datenschutz akzeptieren",
+        "close_style": "default"
+    },
+    "templates": {
+        "render": "./templates/template.php"
+    },
+    "fields": {
+        "hubspot_guid": {
+            "label": "HubSpot Form Guid",
+            "type": "kicktemp-hubspot-guid"
+        },
+        "content": {
+            "label": "Input",
+            "type": "content-items",
+            "item": "kickhubspot_input",
+            "title": "title",
+            "button": "Add Input"
+        },
+        "showLabekAsPlaceholder": {
+            "text": "Label als Placeholder anzeigen",
+            "type": "checkbox",
+            "source": true
+        },
+        "hideRichText": {
+            "text": "Gruppen Text verbergen",
+            "type": "checkbox",
+            "source": true
+        },
+        "radionewline": {
+            "text": "Radio Option pro Zeile",
+            "type": "checkbox",
+            "source": true
+        },
+        "ckeckboxesnewline": {
+            "text": "Checkboxen pro Zeile",
+            "type": "checkbox",
+            "source": true
+        },
+        "provider.after_submit": {
+            "label": "After Submit",
+            "description": "Select whether a message will be shown or the site will be redirected after clicking the subscribe button.",
+            "type": "select",
+            "options": {
+                "Notification": "notification",
+                "Show message": "message",
+                "Redirect": "redirect"
+            }
+        },
+        "provider.message": {
+            "label": "Message",
+            "description": "Message shown to the user after submit.",
+            "type": "textarea",
+            "attrs": {
+                "rows": 4
+            },
+            "show": "provider.after_submit == 'message' || provider.after_submit == 'notification'"
+        },
+        "provider.redirect": {
+            "label": "Link",
+            "description": "Link to redirect to after submit.",
+            "type": "link",
+            "filePicker": false,
+            "show": "provider.after_submit == 'redirect'"
+        },
+        "provider.notification.pos": {
+            "label": "Position",
+            "description": "Add one of the following parameters to adjust the notification's position to different corners.",
+            "type": "select",
+            "default": "top-left",
+            "options": {
+                "top-left": "top-left",
+                "top-center": "top-center",
+                "top-right": "top-right",
+                "bottom-left": "bottom-left",
+                "bottom-center": "bottom-center",
+                "bottom-right": "bottom-right"
+            },
+            "show": "provider.after_submit == 'notification'"
+        },
+        "provider.notification.timeout": {
+            "label": "Timeout",
+            "description": "Visibility duration until a notification disappears. If set to 0, notification will not hide automatically.",
+            "type": "number",
+            "default": 5000,
+            "show": "provider.after_submit == 'notification'"
+        },
+        "provider.notification.status": {
+            "label": "Status",
+            "description": "Notification status color.",
+            "default": null,
+            "type": "select",
+            "default": "success",
+            "options": {
+                "Primary": "primary",
+                "Success": "success",
+                "Warning": "warning",
+                "Danger": "danger"
+            },
+            "show": "provider.after_submit == 'notification'"
+        },
+        "horizontal": {
+            "type": "checkbox",
+            "text": "Horizontal form"
+        },
+        "show_label": {
+            "type": "checkbox",
+            "text": "show label"
+        },
+        "novalidate": {
+            "type": "checkbox",
+            "text": "disable HTML5 validation"
+        },
+        "gap": {
+            "label": "Column Gap",
+            "description": "Set the size of the gap between the grid columns.",
+            "type": "select",
+            "options": {
+                "Small": "small",
+                "Medium": "medium",
+                "Default": ""
+            }
+        },
+        "form_size": {
+            "label": "Size",
+            "description": "Select the form size.",
+            "type": "select",
+            "options": {
+                "Small": "small",
+                "Default": "",
+                "Large": "large"
+            }
+        },
+        "form_style": {
+            "label": "Style",
+            "description": "Select the form style.",
+            "type": "select",
+            "options": {
+                "Default": "",
+                "Blank": "blank"
+            }
+        },
+        "label_button": {
+            "label": "Button",
+            "attrs": {
+                "placeholder": "Send"
+            }
+        },
+        "button_style": {
+            "label": "Style",
+            "description": "Set the button style.",
+            "type": "select",
+            "options": {
+                "Default": "default",
+                "Primary": "primary",
+                "Secondary": "secondary",
+                "Danger": "danger",
+                "Text": "text"
+            }
+        },
+        "button_fullwidth": {
+            "type": "checkbox",
+            "text": "Full width button"
+        },
+        "close_style": {
+            "label": "Close Button Style",
+            "description": "Set the link style.",
+            "type": "select",
+            "options": {
+                "Close Default": "default",
+                "Close Outside": "outside"
+            },
+            "enable": "show_inmodal"
+        },
+        "modal_id": {
+            "label": "Modal Id",
+            "enable": "show_inmodal",
+            "source": true
+        },
+        "show_inmodal": {
+            "type": "checkbox",
+            "text": "Show form in Modal",
+            "source": true
+        },
+        "modal_header": {
+            "label": "Modal Header",
+            "attrs": {
+                "placeholder": "Title"
+            },
+            "enable": "show_inmodal",
+            "source": true
+        },
+        "modal_center": {
+            "type": "checkbox",
+            "text": "Center modal",
+            "enable": "show_inmodal",
+            "source": true
+        },
+        "modal_container": {
+            "type": "checkbox",
+            "text": "Container modifier",
+            "enable": "show_inmodal",
+            "source": true
+        },
+        "errorconsent": {
+            "label": "Error consent checkbox",
+            "source": true
+        },
+        "errormessage": {
+            "label": "Error message",
+            "source": true
+        },
+        "erroremailmessage": {
+            "label": "Error Email message",
+            "source": true
+        },
+        "errorequalmessage": {
+            "label": "Error Equal message",
+            "source": true
+        },
+        "width_default": {
+            "label": "Phone Portrait",
+            "description": "Set the column width for each breakpoint. Mix fraction widths or combine fixed widths with the <i>Expand</i> value. If no value is selected, the column width of the next smaller screen size is applied. The combination of widths should always take the full width.",
+            "type": "select",
+            "options": "${builder.column_width_options_default}",
+            "source": true
+        },
+        "width_small": {
+            "label": "Phone Landscape",
+            "description": "Set the column width for each breakpoint. Mix fraction widths or combine fixed widths with the <i>Expand</i> value. If no value is selected, the column width of the next smaller screen size is applied. The combination of widths should always take the full width.",
+            "type": "select",
+            "options": "${builder.column_width_options}",
+            "source": true
+        },
+        "width_medium": {
+            "label": "Tablet Landscape",
+            "description": "Set the column width for each breakpoint. Mix fraction widths or combine fixed widths with the <i>Expand</i> value. If no value is selected, the column width of the next smaller screen size is applied. The combination of widths should always take the full width.",
+            "type": "select",
+            "options": "${builder.column_width_options}",
+            "source": true
+        },
+        "width_large": {
+            "label": "Desktop",
+            "description": "Set the column width for each breakpoint. Mix fraction widths or combine fixed widths with the <i>Expand</i> value. If no value is selected, the column width of the next smaller screen size is applied. The combination of widths should always take the full width.",
+            "type": "select",
+            "options": "${builder.column_width_options}",
+            "source": true
+        },
+        "width_xlarge": {
+            "label": "Large Screen",
+            "description": "Select the breakpoint from which the column will start to appear before other columns. On smaller screen sizes, the column will appear in the natural order.",
+            "type": "select",
+            "options": "${builder.column_width_options}",
+            "source": true
+        },
+        "width3_default": {
+            "label": "Phone Portrait",
+            "description": "Set the column width for each breakpoint. Mix fraction widths or combine fixed widths with the <i>Expand</i> value. If no value is selected, the column width of the next smaller screen size is applied. The combination of widths should always take the full width.",
+            "type": "select",
+            "options": "${builder.column_width_options_default}",
+            "source": true
+        },
+        "width3_small": {
+            "label": "Phone Landscape",
+            "description": "Set the column width for each breakpoint. Mix fraction widths or combine fixed widths with the <i>Expand</i> value. If no value is selected, the column width of the next smaller screen size is applied. The combination of widths should always take the full width.",
+            "type": "select",
+            "options": "${builder.column_width_options}",
+            "source": true
+        },
+        "width3_medium": {
+            "label": "Tablet Landscape",
+            "description": "Set the column width for each breakpoint. Mix fraction widths or combine fixed widths with the <i>Expand</i> value. If no value is selected, the column width of the next smaller screen size is applied. The combination of widths should always take the full width.",
+            "type": "select",
+            "options": "${builder.column_width_options}",
+            "source": true
+        },
+        "width3_large": {
+            "label": "Desktop",
+            "description": "Set the column width for each breakpoint. Mix fraction widths or combine fixed widths with the <i>Expand</i> value. If no value is selected, the column width of the next smaller screen size is applied. The combination of widths should always take the full width.",
+            "type": "select",
+            "options": "${builder.column_width_options}",
+            "source": true
+        },
+        "width3_xlarge": {
+            "label": "Large Screen",
+            "description": "Select the breakpoint from which the column will start to appear before other columns. On smaller screen sizes, the column will appear in the natural order.",
+            "type": "select",
+            "options": "${builder.column_width_options}",
+            "source": true
+        },
+        "captcha": {
+            "label": "Captcha",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Honeypot": "honeypot",
+                "Google Captcha": "captcha",
+                "Google Captcha und Honeypot": "honeypotandcaptcha"
+            },
+            "source": true
+        },
+        "control_min_seconds": {
+            "type": "number",
+            "label": "Min seconds",
+            "default": 1,
+            "description": "Any submission done in less than this number of seconds will be considered invalid.",
+            "show": "captcha == 'honeypot' || captcha == 'honeypotandcaptcha'",
+            "source": true
+        },
+        "honeypot_id": {
+            "label": "Honeypot  Fake Field name",
+            "default": "honey_firstname",
+            "description": "When a bot fills the field this message is displayed",
+            "show": "captcha == 'honeypot' || captcha == 'honeypotandcaptcha'"
+        },
+        "honeypot_message": {
+            "label": "Honeypot Field filled message",
+            "default": "Our spam protection has caught you, if you are not a bot please check if the form was filled by automatic filling.",
+            "description": "When a bot fills the field this message is displayed",
+            "show": "captcha == 'honeypot' || captcha == 'honeypotandcaptcha'"
+        },
+        "honeypot_error": {
+            "label": "Min seconds Message",
+            "default": "Unfortunately, you have been too fast with filling in and our spam filter has caught you. Please wait a moment and press submit again.",
+            "description": "If the form is filled in and submitted too quickly, this error message appears",
+            "show": "captcha == 'honeypot' || captcha == 'honeypotandcaptcha'"
+        },
+        "position": "${builder.position}",
+        "position_left": "${builder.position_left}",
+        "position_right": "${builder.position_right}",
+        "position_top": "${builder.position_top}",
+        "position_bottom": "${builder.position_bottom}",
+        "position_z_index": "${builder.position_z_index}",
+        "margin": "${builder.margin}",
+        "margin_remove_top": "${builder.margin_remove_top}",
+        "margin_remove_bottom": "${builder.margin_remove_bottom}",
+        "maxwidth": "${builder.maxwidth}",
+        "maxwidth_breakpoint": "${builder.maxwidth_breakpoint}",
+        "block_align": "${builder.block_align}",
+        "block_align_breakpoint": "${builder.block_align_breakpoint}",
+        "block_align_fallback": "${builder.block_align_fallback}",
+        "text_align": "${builder.text_align_justify}",
+        "text_align_breakpoint": "${builder.text_align_breakpoint}",
+        "text_align_fallback": "${builder.text_align_justify_fallback}",
+        "animation": "${builder.animation}",
+        "_parallax_button": "${builder._parallax_button}",
+        "visibility": "${builder.visibility}",
+        "name": "${builder.name}",
+        "status": "${builder.status}",
+        "source": "${builder.source}",
+        "id": "${builder.id}",
+        "class": "${builder.cls}",
+        "attributes": "${builder.attrs}",
+        "css": {
+            "label": "CSS",
+            "description": "Enter your own custom CSS. The following selectors will be prefixed automatically for this element: <code>.el-element</code>, <code>.el-input</code>, <code>.el-button</code>",
+            "type": "editor",
+            "editor": "code",
+            "mode": "css",
+            "attrs": {
+                "debounce": 500
+            }
+        }
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": [
+                        "hubspot_guid",
+                        "content",
+                        "provider.after_submit",
+                        "provider.message",
+                        "provider.redirect",
+                        "provider.notification.pos",
+                        "provider.notification.timeout",
+                        "provider.notification.status"
+                    ]
+                },
+                {
+                    "title": "Settings",
+                    "fields": [
+                        {
+                            "label": "Spam-Protection",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "captcha",
+                                "control_min_seconds",
+                                "honeypot_message",
+                                "honeypot_error"
+                            ]
+                        },
+                        {
+                            "label": "Send an Email",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "from",
+                                "reply_tos",
+                                "ccs",
+                                "bccs"
+                            ]
+                        },
+                        {
+                            "label": "Layout 1-2",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "width_default",
+                                "width_small",
+                                "width_medium",
+                                "width_large",
+                                "width_xlarge"
+                            ]
+                        },
+                        {
+                            "label": "Layout 1-3",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "width3_default",
+                                "width3_small",
+                                "width3_medium",
+                                "width3_large",
+                                "width3_xlarge"
+                            ]
+                        },
+                        {
+                            "label": "Error Messages",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "errorconsent",
+                                "errormessage",
+                                "erroremailmessage",
+                                "errorequalmessage"
+                            ]
+                        },
+                        {
+                            "label": "Form",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "hideRichText",
+                                "radionewline",
+                                "ckeckboxesnewline",
+                                "horizontal",
+                                "novalidate",
+                                "showLabekAsPlaceholder",
+                                "show_label",
+                                "gap",
+                                "form_size",
+                                "form_style"
+                            ]
+                        },
+                        {
+                            "label": "Button",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "label_button",
+                                "button_style",
+                                "button_fullwidth"
+                            ]
+                        },
+                        {
+                            "label": "Modal",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "show_inmodal",
+                                "modal_id",
+                                "modal_container",
+                                "modal_center",
+                                "modal_header",
+                                "close_style"
+                            ]
+                        },
+                        {
+                            "label": "General",
+                            "type": "group",
+                            "fields": [
+                                "position",
+                                "position_left",
+                                "position_right",
+                                "position_top",
+                                "position_bottom",
+                                "position_z_index",
+                                "margin",
+                                "margin_remove_top",
+                                "margin_remove_bottom",
+                                "maxwidth",
+                                "maxwidth_breakpoint",
+                                "block_align",
+                                "block_align_breakpoint",
+                                "block_align_fallback",
+                                "text_align",
+                                "text_align_breakpoint",
+                                "text_align_fallback",
+                                "animation",
+                                "_parallax_button",
+                                "visibility"
+                            ]
+                        }
+                    ]
+                },
+                "${builder.advanced}"
+            ]
+        }
+    }
+}

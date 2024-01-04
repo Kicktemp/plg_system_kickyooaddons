@@ -81,7 +81,7 @@ class plgSystemKickYooAddons extends CMSPlugin
 
         $modules = ['core', 'element'];
 
-        foreach (['bannersource', 'colors', 'contactsource', 'files', 'form', 'navigator', 'brevo', 'sidebar'] as $addon) {
+        foreach (['bannersource', 'colors', 'contactsource', 'files', 'form', 'hubspot', 'navigator', 'brevo', 'sidebar'] as $addon) {
             if ($this->params->get($addon, true)) {
                 $modules[] = $addon;
             }

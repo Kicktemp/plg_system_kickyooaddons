@@ -1,0 +1,228 @@
+{
+    "@import": "./element.php",
+    "name": "kickhubspot_input",
+    "title": "Input",
+    "width": 500,
+    "defaults": {
+        "type": "input"
+    },
+    "templates": {
+        "render": "./templates/template.php"
+    },
+    "fields": {
+        "hubspot_form": {
+            "label": "HubSpot Fields",
+            "type": "kicktemp-hubspot-fields"
+        },
+        "type": {
+            "label": "Type",
+            "type": "select",
+            "options": {
+                "Input": "input",
+                "Textarea": "textarea",
+                "Select": "select",
+                "EMail": "email",
+                "Date": "date",
+                "Hidden": "hidden",
+                "Radio": "radio",
+                "Checkbox": "checkbox",
+                "Text": "text"
+            },
+            "source": true
+        },
+        "options": {
+            "label": "Options",
+            "type": "content-items",
+            "item": "kickselect_option",
+            "title": "text",
+            "show": "type == 'select' || type == 'radio'",
+            "button": "Add Option"
+        },
+        "multiple": {
+            "label": "multiple",
+            "type": "checkbox",
+            "show": "type == 'select'",
+            "source": true
+        },
+        "autofocus": {
+            "label": "autofocus",
+            "type": "checkbox",
+            "show": "type == 'select'",
+            "source": true
+        },
+        "mindate": {
+            "label": "Min",
+            "description": "Value can't be less than min.",
+            "show": "type == 'date'",
+            "attrs": {
+                "type": "date"
+            }
+        },
+        "maxdate": {
+            "label": "Max",
+            "description": "Value can't be more than max.",
+            "show": "type == 'date'",
+            "attrs": {
+                "type": "date"
+            }
+        },
+        "height": {
+            "label": "Size",
+            "show": "type == 'select' || type == 'textarea'",
+            "source": true
+        },
+        "mustshowlabel": {
+            "label": "Label anzeigen",
+            "description": "Wenn in den Einstellungen Label deaktiviert sind, wird dieses Label dennoch angezeigt",
+            "type": "checkbox",
+            "show": "label && type != 'hidden' && type != 'text'",
+            "source": true
+        },
+        "placeholder": {
+            "label": "Placeholder",
+            "show": "type != 'checkbox' && type != 'hidden' && type != 'text'",
+            "source": true
+        },
+        "equal": {
+            "label": "Equal",
+            "show": "type != 'hidden' && type != 'text'",
+            "source": true
+        },
+        "required": {
+            "label": "Required",
+            "type": "checkbox",
+            "show": "type != 'hidden' && type != 'text'",
+            "source": true
+        },
+        "errormessage": {
+            "label": "Error message",
+            "show": "required && type != 'hidden'",
+            "source": true
+        },
+        "erroremailmessage": {
+            "label": "Error Email message",
+            "show": "type == 'email'",
+            "source": true
+        },
+        "errorequalmessage": {
+            "label": "Error Equal message",
+            "show": "equal",
+            "source": true
+        },
+        "radionewline": {
+            "label": "Option pro Zeile",
+            "type": "checkbox",
+            "show": "type == 'radio'",
+            "source": true
+        },
+        "value": {
+            "label": "Value",
+            "show": "type != 'text'",
+            "source": true
+        },
+        "icon": {
+            "label": "Icon",
+            "description": "Pick an optional icon.",
+            "type": "icon",
+            "show": "type == 'input' || type == 'email' || type == 'date'",
+            "source": true
+        },
+        "icon_align": {
+            "label": "Icon Alignment",
+            "description": "Choose the icon position.",
+            "type": "select",
+            "options": {
+                "Left": "left",
+                "Right": "right"
+            },
+            "show": "icon && type != 'date'"
+        },
+        "content": {
+            "label": "Content",
+            "type": "editor",
+            "show": "type == 'checkbox' || type == 'text'",
+            "source": true
+        },
+        "width_default": {
+            "label": "Phone Portrait",
+            "description": "Set the column width for each breakpoint. Mix fraction widths or combine fixed widths with the <i>Expand</i> value. If no value is selected, the column width of the next smaller screen size is applied. The combination of widths should always take the full width.",
+            "type": "select",
+            "options": "${builder.column_width_options_default}",
+            "source": true
+        },
+        "width_small": {
+            "label": "Phone Landscape",
+            "description": "Set the column width for each breakpoint. Mix fraction widths or combine fixed widths with the <i>Expand</i> value. If no value is selected, the column width of the next smaller screen size is applied. The combination of widths should always take the full width.",
+            "type": "select",
+            "options": "${builder.column_width_options}",
+            "source": true
+        },
+        "width_medium": {
+            "label": "Tablet Landscape",
+            "description": "Set the column width for each breakpoint. Mix fraction widths or combine fixed widths with the <i>Expand</i> value. If no value is selected, the column width of the next smaller screen size is applied. The combination of widths should always take the full width.",
+            "type": "select",
+            "options": "${builder.column_width_options}",
+            "source": true
+        },
+        "width_large": {
+            "label": "Desktop",
+            "description": "Set the column width for each breakpoint. Mix fraction widths or combine fixed widths with the <i>Expand</i> value. If no value is selected, the column width of the next smaller screen size is applied. The combination of widths should always take the full width.",
+            "type": "select",
+            "options": "${builder.column_width_options}",
+            "source": true
+        },
+        "width_xlarge": {
+            "label": "Large Screen",
+            "description": "Select the breakpoint from which the column will start to appear before other columns. On smaller screen sizes, the column will appear in the natural order.",
+            "type": "select",
+            "options": "${builder.column_width_options}",
+            "source": true
+        },
+        "status": "${builder.statusItem}",
+        "source": "${builder.source}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": [
+                        "hubspot_form",
+                        "type",
+                        "mustshowlabel",
+                        "placeholder",
+                        "options",
+                        "radionewline",
+                        "mindate",
+                        "maxdate",
+                        "multiple",
+                        "autofocus",
+                        "control_min_seconds",
+                        "height",
+                        "required",
+                        "errormessage",
+                        "equal",
+                        "errorequalmessage",
+                        "erroremailmessage",
+                        "value",
+                        "icon",
+                        "icon_align",
+                        "content"
+                    ]
+                },
+                {
+                    "title": "Layout",
+                    "fields": [
+                        "width_default",
+                        "width_small",
+                        "width_medium",
+                        "width_large",
+                        "width_xlarge"
+                    ]
+                },
+                "${builder.advancedItem}"
+            ]
+        }
+    }
+}
