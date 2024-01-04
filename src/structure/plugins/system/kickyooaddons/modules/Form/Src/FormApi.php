@@ -149,10 +149,10 @@ class FormApi
 			$return['redirect'] = Route::_($settings['redirect']);
 		}
 		elseif ($settings['after_submit'] === 'notification') {
-			$return['notification']['pos'] = Route::_($settings['notification']['pos']);
-			$return['notification']['timeout'] = Route::_($settings['notification']['timeout']);
-			$return['notification']['status'] = Route::_($settings['notification']['status']);
-			$return['notification']['message'] = $translator->trans($settings['message']);
+            $return['notification']['pos'] = $settings['notification']['pos'];
+            $return['notification']['timeout'] = $settings['notification']['timeout'];
+            $return['notification']['status'] = $settings['notification']['status'];
+            $return['notification']['message'] = $translator->trans($settings['message']);
 		} else {
 			$return['message'] = $translator->trans($settings['message']);
 		}
