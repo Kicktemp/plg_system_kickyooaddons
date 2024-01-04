@@ -9,6 +9,10 @@ use YOOtheme\Translator;
 
 class LoadCustomizerData
 {
+    public Config $config;
+    public Metadata $metadata;
+    public Translator $translator;
+
 	public function __construct(Config $config, Metadata $metadata, Translator $translator)
 	{
 		$this->config = $config;

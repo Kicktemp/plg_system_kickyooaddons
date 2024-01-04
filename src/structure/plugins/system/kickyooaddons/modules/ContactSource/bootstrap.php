@@ -19,6 +19,7 @@ return [
 	'events' => [
 		'source.init' => [Src\Listener\LoadSourceTypes::class => '@handle'],
 		'builder.template' => [Src\Listener\MatchTemplate::class => '@handle'],
+        'builder.template.load' => [Src\Listener\LoadTemplateUrl::class => '@handle'],
 		BuilderConfig::class => [Src\Listener\LoadBuilderConfig::class => '@handle'],
 	],
 ];
