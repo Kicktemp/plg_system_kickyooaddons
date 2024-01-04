@@ -11,30 +11,16 @@ class LoadCustomizerData
 {
 	public Config $config;
 	public Metadata $metadata;
-	public Translator $translator;
 
-	public function __construct(Config $config, Metadata $metadata, Translator $translator)
+	public function __construct(Config $config, Metadata $metadata)
 	{
 		$this->config = $config;
 		$this->metadata = $metadata;
-		$this->translator = $translator;
 	}
 
 	public function handle(): void
 	{
 		$this->config->addFile('customizer', Path::get('../../config/customizer.json'));
-
-		$this->metadata->set('script:kicktemp-customizer-core', ['src' => '~kickyoobrevo_url/assets/customizer.min.js', 'defer' => true]);
-		// add locale
-		$locale = strtr($this->config->get('locale.code'), [
-			'de_AT' => 'de_DE',
-			'de_CH' => 'de_DE',
-			'de_LI' => 'de_DE',
-			'de_LU' => 'de_DE',
-			'de_CH_informal' => 'de_DE',
-			'de_DE_formal' => 'de_DE',
-		]);
-
-		$this->translator->addResource(Path::get("../languages/{$locale}.json"));
+        $this->metadata->set('script:kicktemp-customizer-brevo', ['src' => '~kickyooaddons_url/modules/Brevo/assets/customizer.min.js', 'defer' => true]);
 	}
 }
