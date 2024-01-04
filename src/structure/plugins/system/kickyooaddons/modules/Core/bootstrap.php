@@ -13,5 +13,6 @@ namespace Kicktemp\YOOaddons\Core;
 return [
 	'events' => [
 		'customizer.init' => [Src\Listener\LoadCustomizerData::class => ['@handle', 10]],
+        'source.init' => [Src\Listener\LoadSourceTypes::class => '@handle'],
 	],
 ];
