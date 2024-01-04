@@ -22,6 +22,6 @@ class LoadCustomizerData
 
 	public function handle(): void
 	{
-		$this->metadata->set('script:kicktemp-customizer-core', ['src' => '~kickyooaddons_url/modules/navigator/assets/customizer.min.js', 'defer' => true]);
+		$this->metadata->set('script:kicktemp-customizer-core', ['src' => '~kickyooaddons_url/modules/Navigator/assets/customizer.min.js', 'defer' => true]);
 	}
 }
