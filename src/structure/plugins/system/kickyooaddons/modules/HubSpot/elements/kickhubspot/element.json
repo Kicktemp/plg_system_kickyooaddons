@@ -70,6 +70,11 @@
                 "Redirect": "redirect"
             }
         },
+        "provider.override": {
+            "text": "HubSpot can Override Message or Redirect",
+            "description": "HubSpot Form Option Override After Submit",
+            "type": "checkbox"
+        },
         "provider.message": {
             "label": "Message",
             "description": "Message shown to the user after submit.",
@@ -395,6 +400,7 @@
                         "hubspot_guid",
                         "content",
                         "provider.after_submit",
+                        "provider.override",
                         "provider.message",
                         "provider.redirect",
                         "provider.notification.pos",

@@ -32,7 +32,7 @@ class HubSpotApi
     protected $portalId;
 
     protected $apiEndpoint = '';
-    protected $apiFromsEndpoint = '';
+    protected $apiFormsEndpoint = '';
 
     protected $guid = '';
 
@@ -69,7 +69,7 @@ class HubSpotApi
         }
 
         $this->apiEndpoint = "https://api.hubapi.com/marketing/v3";
-        $this->apiFromsEndpoint = "https://api.hsforms.com/submissions/v3";
+        $this->apiFormsEndpoint = "https://api.hsforms.com/submissions/v3";
     }
 
     public function fields(Request $request, Response $response)
@@ -216,12 +216,15 @@ class HubSpotApi
             ];
         }
 
-        $body['legalConsentOptions'] = [
-            'consent' => [
-                'consentToProcess' => (boolean) $request('consentToProcess', false),
-                'text' => $settings['legalConsentOptions']['consentToProcessCheckboxLabel'],
-            ]
-        ];
+        if (isset($settings['legalConsentOptions']['type']) && $settings['legalConsentOptions']['type'] !== 'none')
+        {
+            $body['legalConsentOptions'] = [
+                'consent' => [
+                    'consentToProcess' => (boolean) $request('consentToProcess', false),
+                    'text' => $settings['legalConsentOptions']['consentToProcessCheckboxLabel'],
+                ]
+            ];
+        }
 
         $subscriptions = $request('subscription', false);
         $subs = [];
@@ -247,6 +250,17 @@ class HubSpotApi
 
         $url = "integration/secure/submit/" . $this->portalId . '/' . $settings['guid'];
         $return = $this->post($url, $body);
+
+        if ($settings['override'])
+        {
+            // TODO klären ob after_submit überschrieben werden soll
+            if (isset($return['data']['inlineMessage']) && $return['data']['inlineMessage'] !== '') {
+                $settings['message'] = $return['data']['inlineMessage'];
+            } elseif (isset($return['data']['redirectUri']) && $return['data']['redirectUri'] !== '') {
+                $settings['redirect'] = $return['data']['redirectUri'];
+                $settings['after_submit'] = 'redirect';
+            }
+        }
 
         if (!$return['success'])
         {
@@ -319,7 +333,7 @@ class HubSpotApi
                 $response = $this->client->get("{$url}?{$query}", compact('headers'));
                 break;
             case 'POST':
-                $url = "{$this->apiFromsEndpoint}/{$name}";
+                $url = "{$this->apiFormsEndpoint}/{$name}";
                 $body = json_encode($args);
                 $response = $this->client->post("{$url}", $body, compact('headers'));
                 break;
