@@ -5,7 +5,7 @@
     "group": "Kicktemp",
     "icon": "${url:images/icon.svg}",
     "iconSmall": "${url:images/iconSmall.svg}",
-    "element": true,
+    "element": false,
     "container": true,
     "width": 500,
     "defaults": {
