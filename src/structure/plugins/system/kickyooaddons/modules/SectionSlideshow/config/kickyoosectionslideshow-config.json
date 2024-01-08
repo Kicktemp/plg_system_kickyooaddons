@@ -1,0 +1,308 @@
+{
+  "title": "Settings",
+  "width": 500,
+  "fields": {
+    "kicktemp_slideshow.slideshow_height": {
+      "label": "Height",
+      "description": "The slideshow always takes up full width, and the height will adapt automatically based on the defined ratio. Alternatively, the height can adapt to the height of the viewport. <br><br>Note: Make sure, no height is set in the section settings when using one of the viewport options.",
+      "type": "select",
+      "options": {
+        "Auto": "",
+        "Viewport": "full",
+        "Viewport (Minus 20%)": "percent",
+        "Viewport (Minus the following section)": "section"
+      }
+    },
+    "kicktemp_slideshow.text_color": {
+      "label": "Text Color",
+      "description": "Set light or dark color mode for text, buttons and controls.",
+      "type": "select",
+      "options": {
+        "None": "",
+        "Light": "light",
+        "Dark": "dark"
+      }
+    },
+    "kicktemp_slideshow.slideshow_box_shadow": {
+      "label": "Box Shadow",
+      "description": "Select the slideshow's box shadow size.",
+      "type": "select",
+      "options": {
+        "None": "",
+        "Small": "small",
+        "Medium": "medium",
+        "Large": "large",
+        "X-Large": "xlarge"
+      }
+    },
+    "kicktemp_slideshow.slideshow_animation": {
+      "label": "Transition",
+      "description": "Select the transition between two slides.",
+      "type": "select",
+      "options": {
+        "Slide": "",
+        "Pull": "pull",
+        "Push": "push",
+        "Fade": "fade",
+        "Scale": "scale"
+      }
+    },
+    "kicktemp_slideshow.slideshow_velocity": {
+      "label": "Velocity",
+      "description": "Set the velocity in pixels per millisecond.",
+      "type": "range",
+      "attrs": {
+        "min": 0.2,
+        "max": 3,
+        "step": 0.1,
+        "placeholder": "1"
+      }
+    },
+    "kicktemp_slideshow.slideshow_autoplay": {
+      "label": "Autoplay",
+      "type": "checkbox",
+      "text": "Enable autoplay"
+    },
+    "kicktemp_slideshow.slideshow_autoplay_pause": {
+      "type": "checkbox",
+      "text": "Pause autoplay on hover",
+      "enable": "kicktemp_slideshow.slideshow_autoplay"
+    },
+    "kicktemp_slideshow.slideshow_autoplay_interval": {
+      "label": "Interval",
+      "description": "Set the autoplay interval in seconds.",
+      "type": "range",
+      "attrs": {
+        "min": 5,
+        "max": 15,
+        "step": 1,
+        "placeholder": "7"
+      },
+      "enable": "kicktemp_slideshow.slideshow_autoplay"
+    },
+    "kicktemp_slideshow.nav": {
+      "label": "Navigation",
+      "description": "Select the navigation type.",
+      "type": "select",
+      "options": {
+        "None": "",
+        "Dotnav": "dotnav"
+      }
+    },
+    "kicktemp_slideshow.nav_below": {
+      "type": "checkbox",
+      "text": "Show below slideshow",
+      "enable": "kicktemp_slideshow.nav"
+    },
+    "kicktemp_slideshow.nav_vertical": {
+      "type": "checkbox",
+      "text": "Vertical navigation",
+      "enable": "kicktemp_slideshow.nav && !kicktemp_slideshow.nav_below"
+    },
+    "kicktemp_slideshow.nav_position": {
+      "label": "Position",
+      "description": "Select the position of the navigation.",
+      "type": "select",
+      "options": {
+        "Top Left": "top-left",
+        "Top Right": "top-right",
+        "Center Left": "center-left",
+        "Center Right": "center-right",
+        "Bottom Left": "bottom-left",
+        "Bottom Center": "bottom-center",
+        "Bottom Right": "bottom-right"
+      },
+      "show": "kicktemp_slideshow.nav && !kicktemp_slideshow.nav_below"
+    },
+    "kicktemp_slideshow.nav_align": {
+      "label": "Position",
+      "description": "Align the navigation's items.",
+      "type": "select",
+      "options": {
+        "Left": "left",
+        "Center": "center",
+        "Right": "right"
+      },
+      "show": "kicktemp_slideshow.nav && kicktemp_slideshow.nav_below"
+    },
+    "kicktemp_slideshow.nav_position_margin": {
+      "label": "Margin",
+      "description": "Apply a margin between the navigation and the slideshow container.",
+      "type": "select",
+      "options": {
+        "None": "",
+        "Small": "small",
+        "Medium": "medium",
+        "Large": "large"
+      },
+      "show": "kicktemp_slideshow.nav && !kicktemp_slideshow.nav_below"
+    },
+    "kicktemp_slideshow.nav_margin": {
+      "label": "Margin",
+      "description": "Set the vertical margin.",
+      "type": "select",
+      "options": {
+        "Small": "small",
+        "Default": "",
+        "Medium": "medium"
+      },
+      "show": "kicktemp_slideshow.nav && kicktemp_slideshow.nav_below"
+    },
+    "kicktemp_slideshow.nav_breakpoint": {
+      "label": "Breakpoint",
+      "description": "Display the navigation only on this device width and larger.",
+      "type": "select",
+      "options": {
+        "Always": "",
+        "Small (Phone Landscape)": "s",
+        "Medium (Tablet Landscape)": "m",
+        "Large (Desktop)": "l",
+        "X-Large (Large Screens)": "xl"
+      },
+      "enable": "kicktemp_slideshow.nav"
+    },
+    "kicktemp_slideshow.nav_color": {
+      "label": "Color",
+      "description": "Set light or dark color if the navigation is below the slideshow.",
+      "type": "select",
+      "options": {
+        "None": "",
+        "Light": "light",
+        "Dark": "dark"
+      },
+      "enable": "kicktemp_slideshow.nav && kicktemp_slideshow.nav_below"
+    },
+    "kicktemp_slideshow.slidenav": {
+      "label": "Position",
+      "description": "Select the position of the slidenav.",
+      "type": "select",
+      "options": {
+        "None": "",
+        "Default": "default",
+        "Outside": "outside",
+        "Top Left": "top-left",
+        "Top Right": "top-right",
+        "Center Left": "center-left",
+        "Center Right": "center-right",
+        "Bottom Left": "bottom-left",
+        "Bottom Center": "bottom-center",
+        "Bottom Right": "bottom-right"
+      }
+    },
+    "kicktemp_slideshow.slidenav_hover": {
+      "type": "checkbox",
+      "text": "Show on hover only",
+      "enable": "kicktemp_slideshow.slidenav"
+    },
+    "kicktemp_slideshow.slidenav_large": {
+      "type": "checkbox",
+      "text": "Larger style",
+      "enable": "kicktemp_slideshow.slidenav"
+    },
+    "kicktemp_slideshow.slidenav_margin": {
+      "label": "Margin",
+      "description": "Apply a margin between the slidenav and the slideshow container.",
+      "type": "select",
+      "options": {
+        "None": "",
+        "Small": "small",
+        "Medium": "medium",
+        "Large": "large"
+      },
+      "enable": "kicktemp_slideshow.slidenav"
+    },
+    "kicktemp_slideshow.slidenav_breakpoint": {
+      "label": "Breakpoint",
+      "description": "Display the slidenav only on this device width and larger.",
+      "type": "select",
+      "options": {
+        "Always": "",
+        "Small (Phone Landscape)": "s",
+        "Medium (Tablet Landscape)": "m",
+        "Large (Desktop)": "l",
+        "X-Large (Large Screens)": "xl"
+      },
+      "enable": "kicktemp_slideshow.slidenav"
+    },
+    "kicktemp_slideshow.slidenav_outside_breakpoint": {
+      "label": "Outside Breakpoint",
+      "description": "Display the slidenav only outside on this device width and larger. Otherwise it will be displayed inside.",
+      "type": "select",
+      "options": {
+        "Small (Phone Landscape)": "s",
+        "Medium (Tablet Landscape)": "m",
+        "Large (Desktop)": "l",
+        "X-Large (Large Screens)": "xl"
+      },
+      "enable": "kicktemp_slideshow.slidenav == 'outside'"
+    },
+    "kicktemp_slideshow.slidenav_outside_color": {
+      "label": "Outside Color",
+      "description": "Set light or dark color if the slidenav is outside of the slideshow.",
+      "type": "select",
+      "options": {
+        "None": "",
+        "Light": "light",
+        "Dark": "dark"
+      },
+      "enable": "kicktemp_slideshow.slidenav == 'outside'"
+    }
+  },
+  "fieldset": {
+    "default": {
+      "fields": [
+        {
+          "label": "Slideshow",
+          "type": "group",
+          "divider": true,
+          "fields": [
+            "kicktemp_slideshow.slideshow_height",
+            "kicktemp_slideshow.slideshow_box_shadow"
+          ]
+        },
+        {
+          "label": "Animation",
+          "type": "group",
+          "divider": true,
+          "fields": [
+            "kicktemp_slideshow.slideshow_animation",
+            "kicktemp_slideshow.slideshow_velocity",
+            "kicktemp_slideshow.slideshow_autoplay",
+            "kicktemp_slideshow.slideshow_autoplay_pause",
+            "kicktemp_slideshow.slideshow_autoplay_interval"
+          ]
+        },
+        {
+          "label": "Navigation",
+          "type": "group",
+          "divider": true,
+          "fields": [
+            "kicktemp_slideshow.nav",
+            "kicktemp_slideshow.nav_below",
+            "kicktemp_slideshow.nav_vertical",
+            "kicktemp_slideshow.nav_position",
+            "kicktemp_slideshow.nav_align",
+            "kicktemp_slideshow.nav_position_margin",
+            "kicktemp_slideshow.nav_margin",
+            "kicktemp_slideshow.nav_breakpoint",
+            "kicktemp_slideshow.nav_color"
+          ]
+        },
+        {
+          "label": "Slidenav",
+          "type": "group",
+          "divider": true,
+          "fields": [
+            "kicktemp_slideshow.slidenav",
+            "kicktemp_slideshow.slidenav_hover",
+            "kicktemp_slideshow.slidenav_large",
+            "kicktemp_slideshow.slidenav_margin",
+            "kicktemp_slideshow.slidenav_breakpoint",
+            "kicktemp_slideshow.slidenav_outside_breakpoint",
+            "kicktemp_slideshow.slidenav_outside_color"
+          ]
+        }
+      ]
+    }
+  }
+}
