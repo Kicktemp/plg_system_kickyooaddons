@@ -1,0 +1,217 @@
+{
+    "@import": "./element.php",
+    "name": "kickfaved",
+    "title": "Faved",
+    "group": "Kicktemp",
+    "icon": "${url:images/icon.svg}",
+    "iconSmall": "${url:images/iconSmall.svg}",
+    "element": true,
+    "width": 500,
+    "defaults": {
+        "group": "watchlist",
+        "add_text": "Added to watch list",
+        "remove_text": "Remove from watch list",
+        "option": {
+            "expired": 30,
+            "timeout": 5000,
+            "pos": "top-right",
+            "addstatus": "success",
+            "removestatus": "warning"
+        },
+        "icon_width": 60,
+        "margin": "default"
+    },
+    "placeholder": {
+        "props": {
+            "icon": "star"
+        }
+    },
+    "templates": {
+        "render": "./templates/template.php",
+        "content": "./templates/content.php"
+    },
+    "fields": {
+        "group": {
+            "label": "Bookmark Group",
+            "source": true
+        },
+        "articleid": {
+            "label": "Article ID",
+            "source": true
+        },
+        "add_text": {
+            "label": "Add Text",
+            "description": "This text is displayed when the item is added to the watch list.",
+            "source": true
+        },
+        "option.expired": {
+            "label": "Expired",
+            "description": "How long should the entry be saved on the watch list? (in days)",
+            "type": "range",
+            "attrs": {
+                "min": 1,
+                "max": 365,
+                "step": 1,
+                "placeholder": "30"
+            }
+        },
+        "remove_text": {
+            "label": "Remote Text",
+            "description": "This text is displayed when the item is removed from the watch list.",
+            "source": true
+        },
+        "icon": {
+            "label": "Icon",
+            "description": "Click on the pencil to pick an icon from the icon library.",
+            "type": "icon",
+            "source": true
+        },
+        "icon_width": {
+            "label": "Icon Width",
+            "description": "Set the icon width.",
+            "enable": "link_style != 'button'"
+        },
+        "option.pos": {
+            "label": "Position",
+            "description": "Add one of the following parameters to adjust the notification's position to different corners.",
+            "type": "select",
+            "options": {
+                "top-left": "top-left",
+                "top-center": "top-center",
+                "top-right": "top-right",
+                "bottom-left": "bottom-left",
+                "bottom-center": "bottom-center",
+                "bottom-right": "bottom-right"
+            }
+        },
+        "option.timeout": {
+            "label": "Timeout",
+            "description": "Visibility duration until a notification disappears. If set to 0, notification will not hide automatically.",
+            "type": "number"
+        },
+        "option.addstatus": {
+            "label": "Add Status",
+            "description": "Add: Notification status color.",
+            "default": null,
+            "type": "select",
+            "options": {
+                "Primary": "primary",
+                "Success": "success",
+                "Warning": "warning",
+                "Danger": "danger"
+            }
+        },
+        "option.removestatus": {
+            "label": "Remove Status",
+            "description": "Remove: Notification status color.",
+            "default": null,
+            "type": "select",
+            "default": "warning",
+            "options": {
+                "Primary": "primary",
+                "Success": "success",
+                "Warning": "warning",
+                "Danger": "danger"
+            }
+        },
+        "position": "${builder.position}",
+        "position_left": "${builder.position_left}",
+        "position_right": "${builder.position_right}",
+        "position_top": "${builder.position_top}",
+        "position_bottom": "${builder.position_bottom}",
+        "position_z_index": "${builder.position_z_index}",
+        "margin": "${builder.margin}",
+        "margin_remove_top": "${builder.margin_remove_top}",
+        "margin_remove_bottom": "${builder.margin_remove_bottom}",
+        "maxwidth": "${builder.maxwidth}",
+        "maxwidth_breakpoint": "${builder.maxwidth_breakpoint}",
+        "block_align": "${builder.block_align}",
+        "block_align_breakpoint": "${builder.block_align_breakpoint}",
+        "block_align_fallback": "${builder.block_align_fallback}",
+        "text_align": "${builder.text_align}",
+        "text_align_breakpoint": "${builder.text_align_breakpoint}",
+        "text_align_fallback": "${builder.text_align_fallback}",
+        "animation": "${builder.animation}",
+        "_parallax_button": "${builder._parallax_button}",
+        "visibility": "${builder.visibility}",
+        "name": "${builder.name}",
+        "status": "${builder.status}",
+        "source": "${builder.source}",
+        "id": "${builder.id}",
+        "class": "${builder.cls}",
+        "attributes": "${builder.attrs}",
+        "css": {
+            "label": "CSS",
+            "description": "Enter your own custom CSS. The following selectors will be prefixed automatically for this element: <code>.el-element</code>",
+            "type": "editor",
+            "editor": "code",
+            "mode": "css",
+            "attrs": {
+                "debounce": 500,
+                "hints": [".el-element"]
+            }
+        },
+        "transform": "${builder.transform}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": ["icon", "group", "articleid"]
+                },
+                {
+                    "title": "Settings",
+                    "fields": [
+                        {
+                            "label": "Notification",
+                            "type": "group",
+                            "divider": true,
+                            "fields": ["add_text", "option.addstatus", "remove_text", "option.removestatus", "option.pos", "option.timeout"]
+                        },
+                        {
+                            "label": "Icon",
+                            "type": "group",
+                            "divider": true,
+                            "fields": ["icon_width"]
+                        },
+                        {
+                            "label": "Cookie",
+                            "type": "group",
+                            "divider": true,
+                            "fields": ["option.expired"]
+                        },
+                        {
+                            "label": "General",
+                            "type": "group",
+                            "fields": [
+                                "position",
+                                "position_left",
+                                "position_right",
+                                "position_top",
+                                "position_bottom",
+                                "position_z_index",
+                                "margin",
+                                "margin_remove_top",
+                                "margin_remove_bottom",
+                                "maxwidth",
+                                "maxwidth_breakpoint",
+                                "block_align",
+                                "block_align_breakpoint",
+                                "block_align_fallback",
+                                "text_align",
+                                "text_align_breakpoint",
+                                "text_align_fallback",
+                                "animation",
+                                "_parallax_button",
+                                "visibility"
+                            ]
+                        }
+                    ]
+                },
+                "${builder.advanced}"
+            ]
+        }
+    }
+}

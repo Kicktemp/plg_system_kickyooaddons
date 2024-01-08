@@ -1,0 +1,12 @@
+{
+    "components": {
+      "kick-faved": {
+        "name": "Kick Faved",
+        "groups": {
+          "Fill": "@kick-faved-fill-*"
+        },
+        "hover": "[class*='kick-faved-']",
+        "inspect": "[class*='kick-faved'], [class*='kick-faved'] > *"
+      }
+    }
+}
