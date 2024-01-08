@@ -8,7 +8,7 @@
  * @link       [AUTHOR_URL]
  */
 
-namespace Kicktemp\Addons\Element;
+namespace Kicktemp\YOOaddons\Element;
 
 use YOOtheme\Builder;
 use YOOtheme\Path;
