@@ -66,10 +66,16 @@ class ArticleHelper
         {
             $items = (isset($_COOKIE[$args['group']])) ? json_decode($_COOKIE[$args['group']]): null;
 
+            if (empty($items))
+            {
+                return null;
+            }
+
             foreach ($items as $item)
             {
                 $args['article'][] =  (int) $item->id;
             }
+
         }
 
         $props = [
