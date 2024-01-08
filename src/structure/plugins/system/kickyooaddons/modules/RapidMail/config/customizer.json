@@ -1,0 +1,16 @@
+{
+  "panels": {
+    "external-services": {
+      "fields": {
+        "rapidmail_user": {
+          "label": "rapidmail api username",
+          "description": "Enter your <a href=\"https://my.rapidmail.de/api/v3/userlist.html#/\" target=\"_blank\" rel=\"noopener noreferrer\">rapidmail API</a> username for using it with the rapidmail element."
+        },
+        "rapidmail_password": {
+          "label": "rapidmail api password",
+          "description": "Enter your <a href=\"https://my.rapidmail.de/api/v3/userlist.html#/\" target=\"_blank\" rel=\"noopener noreferrer\">rapidmail API</a> password for using it with the rapidmail element."
+        }
+      }
+    }
+  }
+}
