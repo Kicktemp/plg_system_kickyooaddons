@@ -1,6 +1,6 @@
 {
   "name": "KickYooAddons",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "",
   "type": "module",
   "scripts": {
@@ -58,10 +58,10 @@
     "[ALIAS]": "kick-yootheme-pro-addons",
     "[AUTHOR]": "Kicktemp GmbH",
     "[AUTHOR_EMAIL]": "hello@kicktemp.com",
-    "[COPYRIGHT]": "Copyright © 2023 Kicktemp GmbH. All rights reserved.",
+    "[COPYRIGHT]": "Copyright © 2024 Kicktemp GmbH. All rights reserved.",
     "[LICENSE]": "GNU General Public License version 2 or later; see LICENSE.txt",
     "[AUTHOR_URL]": "https://kicktemp.com",
-    "[DATE]": "08.12.2023",
+    "[DATE]": "10.01.2024",
     "[PLUGINTYPE]": "system"
   },
   "casesensitive": {
