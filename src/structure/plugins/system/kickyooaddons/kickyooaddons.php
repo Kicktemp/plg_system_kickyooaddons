@@ -53,6 +53,25 @@ class plgSystemKickYooAddons extends CMSPlugin
 	 */
 	protected $autoloadLanguage = true;
 
+    /**
+     *
+     * @var array
+     */
+    protected $modulus = [
+        'Brevo',
+        'Colors',
+        'ContactSource',
+        'FavedSource',
+        'Files',
+        'Form',
+        'HubSpot',
+        'Navigator',
+        'RapidMail',
+        'SectionSlideshow',
+        'SectionSwitcher',
+        'Sidebar'
+    ];
+
 	/**
 	 * onAfterInitialise.
 	 *
@@ -77,12 +96,10 @@ class plgSystemKickYooAddons extends CMSPlugin
 		Path::setAlias('~kickyooaddons', __DIR__);
 		Path::setAlias('~kickyooaddons_url', Uri::root(true) . '/plugins/system/kickyooaddons');
 
+        $modules = ['Core', 'Element'];
 
-
-        $modules = ['core', 'element'];
-
-        foreach (['bannersource', 'brevo', 'colors', 'contactsource', 'favedsource', 'files', 'form', 'hubspot', 'navigator', 'rapidmail', 'sectionslideshow', 'sectionswitcher', 'sidebar'] as $addon) {
-            if ($this->params->get($addon, true)) {
+        foreach ($this->modulus as $addon) {
+            if ($this->params->get(strtolower($addon), true)) {
                 $modules[] = $addon;
             }
         }

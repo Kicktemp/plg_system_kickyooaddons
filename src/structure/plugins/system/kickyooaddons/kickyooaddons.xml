@@ -124,6 +124,30 @@
 					<option value="0">JNO</option>
 				</field>
 				<field
+						name="rapidmail"
+						type="radio"
+						label="PLG_SYSTEM_KICKYOOADDONS_RAPIDMAIL_LABEL"
+						description="PLG_SYSTEM_KICKYOOADDONS_RAPIDMAIL_DESC"
+						class="btn-group btn-group-yesno"
+						default="1"
+						filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+						name="sectionslideshow"
+						type="radio"
+						label="PLG_SYSTEM_KICKYOOADDONS_SECTIONSLIDESHOW_LABEL"
+						description="PLG_SYSTEM_KICKYOOADDONS_SECTIONSLIDESHOW_DESC"
+						class="btn-group btn-group-yesno"
+						default="1"
+						filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
 						name="sectionswitcher"
 						type="radio"
 						label="PLG_SYSTEM_KICKYOOADDONS_SECTIONSWITCHER_LABEL"
