@@ -65,7 +65,6 @@ class plgSystemKickYooAddonsInstallerScript extends InstallerScript
 	 *
 	 * @since   4.0.0v1
 	 */
-
 	public function postflight($install_type, $parent)
 	{
 		if (!in_array($install_type, ['install', 'update']))
