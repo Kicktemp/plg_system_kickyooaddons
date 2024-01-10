@@ -1,6 +1,6 @@
 {
     "@import": "./element.php",
-    "name": "kickyooaddons_opengraph",
+    "name": "opengraph",
     "title": "Open Graph",
     "group": "Kicktemp",
     "icon": "${url:images/icon.svg}",
@@ -15,7 +15,7 @@
         "content": {
             "label": "Properties",
             "type": "content-items",
-            "item": "kickyooaddons_opengraph_item",
+            "item": "opengraph_item",
             "title": "property",
             "button": "Add Property"
         },
