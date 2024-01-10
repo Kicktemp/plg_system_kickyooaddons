@@ -28,43 +28,8 @@ $button->attr($props['link_target'] == 'modal' ? [
 ] : [
     'href' => ['{link}'],
     'target' => ['_blank {@link_target}'],
-    'uk-scroll' => strpos($props['link'], '#') === 0,
+    'uk-scroll' => str_contains((string) $props['link'], '#'),
 ]);
-
-$inputvalues = [];
-if ($props['toggle'] && $props['toggle'] !== '' && count($children))
-{
-    $input = 'UIkit.util.$("#' .$props['toggle'] .' [name=%s]").value="%s";' ;
-    $textarea = 'UIkit.util.$("#' .$props['toggle'] .' [name=%s]").innterText="%s";' ;
-    $checkbox = 'UIkit.util.$("#' .$props['toggle'] .' [name=%s]").checked;' ;
-
-    foreach ($children as $child)
-    {
-        $name = $child->props['text'];
-        $type = $child->props['type'];
-        $value = addslashes($child->props['value']);
-
-        switch ($type)
-        {
-            case 'textarea':
-	            $inputvalues[] = sprintf('UIkit.util.$("#' .$props['toggle'] .' [name=%s]").innerText="%s"', $name, $value);
-                break;
-            case 'checkbox':
-	            $inputvalues[] = sprintf('UIkit.util.$("#' .$props['toggle'] .' [name=%s]").checked = true', $name, $value);
-                break;
-            default:
-	            $inputvalues[] = sprintf('UIkit.util.$("#' .$props['toggle'] .' [name=%s]").value="%s"', $name, $value);
-                break;
-        }
-    }
-
-	if (count($inputvalues))
-	{
-		$button->attr([
-			'onclick' => implode(';', $inputvalues)
-		]);
-	}
-}
 ?>
 
 

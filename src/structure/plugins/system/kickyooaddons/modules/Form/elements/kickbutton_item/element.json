@@ -23,14 +23,6 @@
             "label": "Content",
             "source": true
         },
-        "input_value": {
-            "label": "Value",
-            "type": "content-items",
-            "item": "kickinput_value",
-            "title": "text",
-            "show": "toggle",
-            "button": "Add Value"
-        },
         "toggle": {
             "label": "Modal Id",
             "source": true
@@ -101,7 +93,6 @@
                     "fields": [
                         "content",
                         "toggle",
-                        "input_value",
                         "link",
                         "link_title",
                         "icon"
