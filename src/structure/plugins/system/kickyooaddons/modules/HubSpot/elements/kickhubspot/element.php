@@ -10,7 +10,16 @@ return [
 
 	'transforms' => [
 
-		'render' => function ($node) {
+		'render' => function ($node, $params) {
+            if ((!isset($node->attrs['data-id']) || $node->attrs['data-id'] === '')
+                && (!empty($params['prefix']) || !empty($params['parent']))
+            )
+            {
+                $prefix = empty($params['data-id']) ? "{$params['prefix']}#" : "{$params['data-id']}-";
+
+                $node->attrs = $node->attrs ?? [];
+                $node->attrs['data-id'] = $params['data-id'] = $prefix . $params['i'];
+            }
 
 			$app = Factory::getApplication();
 
@@ -22,7 +31,6 @@ return [
 
             $provider = (array) $node->props['provider'];
             $form = array();
-
 
 			if ($node->props['captcha'] === 'captcha' || $node->props['captcha'] === 'honeypotandcaptcha')
 			{
