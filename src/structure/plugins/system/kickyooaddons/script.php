@@ -25,7 +25,7 @@ if (!class_exists('plgSystemKickYooAddonsHelper')) {
  */
 class plgSystemKickYooAddonsInstallerScript extends InstallerScript
 {
-	protected $minimumPhp = '7.2.5';
+	protected $minimumPhp = '7.4';
 	protected $minimumJoomla = '4.0';
 	protected $deleteFiles = ['/plugins/system/kickyooaddons/src/SettingsListener.php'];
 
@@ -45,7 +45,6 @@ class plgSystemKickYooAddonsInstallerScript extends InstallerScript
             return false;
         }
 	}
-
 
 	/**
 	 * @return void
