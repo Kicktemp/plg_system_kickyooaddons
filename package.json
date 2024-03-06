@@ -1,6 +1,6 @@
 {
   "name": "KickYooAddons",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "",
   "type": "module",
   "scripts": {
@@ -61,7 +61,7 @@
     "[COPYRIGHT]": "Copyright © 2024 Kicktemp GmbH. All rights reserved.",
     "[LICENSE]": "GNU General Public License version 2 or later; see LICENSE.txt",
     "[AUTHOR_URL]": "https://kicktemp.com",
-    "[DATE]": "10.01.2024",
+    "[DATE]": "31.01.2024",
     "[PLUGINTYPE]": "system"
   },
   "casesensitive": {

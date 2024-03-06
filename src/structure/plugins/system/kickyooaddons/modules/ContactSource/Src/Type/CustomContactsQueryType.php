@@ -10,7 +10,7 @@
 
 namespace Kicktemp\YOOaddons\ContactSource\Src\Type;
 
-use Kicktemp\Yootheme\ContactSource\ContactHelper;
+use Kicktemp\YOOaddons\ContactSource\Src\ContactHelper;
 
 use function YOOtheme\trans;
 
