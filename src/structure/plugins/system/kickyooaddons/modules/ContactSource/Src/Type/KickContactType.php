@@ -378,7 +378,7 @@ class KickContactType
 		{
 			$html[] = '<li class="el-item">
             <div class="uk-grid-small uk-child-width-expand uk-flex-nowrap uk-flex-top uk-grid" uk-grid>
-                <div class="uk-width-auto uk-first-column"><span class="el-image uk-icon" uk-icon="icon: <phone>;"></span>
+                <div class="uk-width-auto uk-first-column"><span class="el-image uk-icon" uk-icon="icon: phone;"></span>
                 </div>
                 <div>
                     <div class="el-content uk-panel"><a href="tel:' . preg_replace("/[^0-9|+]/", "", $contact->mobile) . '" itemprop="mobile" rel="noopener noreferrer">' . $contact->mobile . '</a></div>

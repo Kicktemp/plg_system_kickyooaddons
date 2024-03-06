@@ -8,7 +8,7 @@
  * @link       [AUTHOR_URL]
  */
 
-namespace Kicktemp\Yootheme\ContactSource;
+namespace Kicktemp\YOOaddons\ContactSource\Src;
 
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;

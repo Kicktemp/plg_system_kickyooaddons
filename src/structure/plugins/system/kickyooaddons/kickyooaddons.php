@@ -64,6 +64,7 @@ class plgSystemKickYooAddons extends CMSPlugin
         'FavedSource',
         'Files',
         'Form',
+        'LoomHQ',
         'HubSpot',
         'Navigator',
         'RapidMail',

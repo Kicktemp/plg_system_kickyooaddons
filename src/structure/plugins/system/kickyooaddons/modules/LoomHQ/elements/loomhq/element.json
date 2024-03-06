@@ -1,0 +1,200 @@
+{
+    "@import": "./element.php",
+    "name": "loomhq",
+    "title": "Loom HQ",
+    "group": "Kicktemp",
+    "icon": "${url:images/icon.svg}",
+    "iconSmall": "${url:images/iconSmall.svg}",
+    "element": true,
+    "width": 500,
+    "defaults": {
+        "margin": "default"
+    },
+    "placeholder": {
+        "props": {
+            "video": "${url:~yootheme/theme/assets/images/element-video-placeholder.mp4}"
+        }
+    },
+    "templates": {
+        "render": "./templates/template.php",
+        "content": "./templates/content.php"
+    },
+    "fields": {
+        "video": {
+            "label": "Video",
+            "description": "Enter a link from <a href=\"https://www.loom.com/looms/videos\" target=\"_blank\">Loom</a>.",
+            "source": true
+        },
+        "video_width": {
+            "label": "Width"
+        },
+        "video_height": {
+            "label": "Height"
+        },
+        "video_owner": {
+            "type": "checkbox",
+            "text": "Hide Owner",
+            "enable": "video"
+        },
+        "video_share": {
+            "type": "checkbox",
+            "text": "Hide Share",
+            "enable": "video"
+        },
+        "video_title": {
+            "type": "checkbox",
+            "text": "Hide Title",
+            "enable": "video"
+        },
+        "video_topbar": {
+            "type": "checkbox",
+            "text": "Hide Embed TopBar",
+            "enable": "video"
+        },
+        "video_lazyload": {
+            "type": "checkbox",
+            "text": "Lazy load video",
+            "enable": "video"
+        },
+        "video_box_shadow": {
+            "label": "Box Shadow",
+            "description": "Select the video box shadow size.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Small": "small",
+                "Medium": "medium",
+                "Large": "large",
+                "X-Large": "xlarge"
+            }
+        },
+        "video_box_decoration": {
+            "label": "Box Decoration",
+            "description": "Select the video box decoration style.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Default": "default",
+                "Primary": "primary",
+                "Secondary": "secondary",
+                "Floating Shadow": "shadow",
+                "Mask": "mask"
+            }
+        },
+        "video_box_decoration_inverse": {
+            "type": "checkbox",
+            "text": "Inverse style",
+            "enable": "$match(video_box_decoration, '^(default|primary|secondary)$')"
+        },
+        "position": "${builder.position}",
+        "position_left": "${builder.position_left}",
+        "position_right": "${builder.position_right}",
+        "position_top": "${builder.position_top}",
+        "position_bottom": "${builder.position_bottom}",
+        "position_z_index": "${builder.position_z_index}",
+        "margin": "${builder.margin}",
+        "margin_remove_top": "${builder.margin_remove_top}",
+        "margin_remove_bottom": "${builder.margin_remove_bottom}",
+        "maxwidth": "${builder.maxwidth}",
+        "maxwidth_breakpoint": "${builder.maxwidth_breakpoint}",
+        "block_align": "${builder.block_align}",
+        "block_align_breakpoint": "${builder.block_align_breakpoint}",
+        "block_align_fallback": "${builder.block_align_fallback}",
+        "text_align": "${builder.text_align}",
+        "text_align_breakpoint": "${builder.text_align_breakpoint}",
+        "text_align_fallback": "${builder.text_align_fallback}",
+        "animation": "${builder.animation}",
+        "_parallax_button": "${builder._parallax_button}",
+        "visibility": "${builder.visibility}",
+        "container_padding_remove": "${builder.container_padding_remove}",
+        "name": "${builder.name}",
+        "status": "${builder.status}",
+        "source": "${builder.source}",
+        "id": "${builder.id}",
+        "class": "${builder.cls}",
+        "attributes": "${builder.attrs}",
+        "css": {
+            "label": "CSS",
+            "description": "Enter your own custom CSS. The following selectors will be prefixed automatically for this element: <code>.el-element</code>",
+            "type": "editor",
+            "editor": "code",
+            "mode": "css",
+            "attrs": {
+                "debounce": 500,
+                "hints": [".el-element"]
+            }
+        },
+        "transform": "${builder.transform}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": [
+                        "video",
+                        {
+                            "description": "Set the video dimensions.",
+                            "name": "_video_dimension",
+                            "type": "grid",
+                            "width": "1-2",
+                            "fields": ["video_width", "video_height"]
+                        },
+                        "video_owner",
+                        "video_share",
+                        "video_title",
+                        "video_topbar",
+                        "video_lazyload",
+                        "video_autoplay",
+                        "video_poster"
+                    ]
+                },
+                {
+                    "title": "Settings",
+                    "fields": [
+                        {
+                            "label": "Video",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "video_box_shadow",
+                                "video_box_decoration",
+                                "video_box_decoration_inverse",
+                                "video_poster_focal_point"
+                            ]
+                        },
+                        {
+                            "label": "General",
+                            "type": "group",
+                            "fields": [
+                                "position",
+                                "position_left",
+                                "position_right",
+                                "position_top",
+                                "position_bottom",
+                                "position_z_index",
+                                "margin",
+                                "margin_remove_top",
+                                "margin_remove_bottom",
+                                "maxwidth",
+                                "maxwidth_breakpoint",
+                                "block_align",
+                                "block_align_breakpoint",
+                                "block_align_fallback",
+                                "text_align",
+                                "text_align_breakpoint",
+                                "text_align_fallback",
+                                "animation",
+                                "_parallax_button",
+                                "visibility",
+                                "container_padding_remove"
+                            ]
+                        }
+                    ]
+                },
+                "${builder.advanced}"
+            ]
+        }
+    }
+}

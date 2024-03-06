@@ -6,7 +6,7 @@ use Joomla\CMS\Categories\CategoryNode;
 use Joomla\CMS\Helper\TagsHelper;
 use Joomla\CMS\Tree\NodeInterface;
 use Joomla\Component\Content\Site\Helper\RouteHelper;
-use Kicktemp\Yootheme\ContactSource\ContactHelper;
+use Kicktemp\YOOaddons\ContactSource\Src\ContactHelper;
 use YOOtheme\Builder\Joomla\Source\TagHelper;
 use YOOtheme\Path;
 use YOOtheme\View;
