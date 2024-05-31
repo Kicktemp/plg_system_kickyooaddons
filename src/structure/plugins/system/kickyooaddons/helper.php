@@ -16,7 +16,7 @@ abstract class plgSystemKickYooAddonsHelper
 {
     const MIN_PHP_VERSION = '7.4';
     const MIN_YTP_VERSION = '4.0.0';
-    const MAX_YTP_VERSION = '4.3.99';
+    const MAX_YTP_VERSION = '4.4.99';
     const MIN_JOOMLA_VERSION = '4.0';
 
     public static function adminNotice(string $message): void
