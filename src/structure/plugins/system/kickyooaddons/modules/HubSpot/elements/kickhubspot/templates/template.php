@@ -380,6 +380,7 @@ if (isset($hubspot->legalConsentOptions->type))
 	switch ($consentType)
 	{
 		case 'explicit_consent_to_process':
+		case 'implicit_consent_to_process':
 			if ($consentTexts['privacyText'])
 			{
 				$children[] = $consentTexts['privacyText'];
@@ -428,8 +429,8 @@ if (isset($hubspot->legalConsentOptions->type))
 				$children[] = $consentTexts['consentToProcessFooterText'];
 			}
 			break;
-		case 'implicit_consent_to_process':
-			break;
+		//case 'implicit_consent_to_process':
+		//	break;
 	}
 }
 

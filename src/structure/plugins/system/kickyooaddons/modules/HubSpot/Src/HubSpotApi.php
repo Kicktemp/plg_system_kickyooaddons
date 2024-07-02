@@ -121,7 +121,7 @@ class HubSpotApi
         try
         {
 
-            if ($result = $this->get('forms', ['limit' => '100', 'offset' => '0', 'sort' => 'desc']) and $result['success'])
+            if ($result = $this->get('forms', ['limit' => '200', 'offset' => '0', 'sort' => 'desc']) and $result['success'])
             {
                 $forms = $result['data']['results'];
             }
@@ -216,16 +216,6 @@ class HubSpotApi
             ];
         }
 
-        if (isset($settings['legalConsentOptions']['type']) && $settings['legalConsentOptions']['type'] !== 'none')
-        {
-            $body['legalConsentOptions'] = [
-                'consent' => [
-                    'consentToProcess' => (boolean) $request('consentToProcess', false),
-                    'text' => $settings['legalConsentOptions']['consentToProcessCheckboxLabel'],
-                ]
-            ];
-        }
-
         $subscriptions = $request('subscription', false);
         $subs = [];
 
@@ -235,18 +225,47 @@ class HubSpotApi
                 $subs[$subscription] = true;
         }
 
-        if (isset($settings['legalConsentOptions']['communicationsCheckboxes'])
-            && count($settings['legalConsentOptions']['communicationsCheckboxes']))
+        if (isset($settings['legalConsentOptions']['type']) && $settings['legalConsentOptions']['type'] === 'explicit_consent_to_process')
         {
-            foreach ($settings['legalConsentOptions']['communicationsCheckboxes'] as $communication)
+            $body['legalConsentOptions'] = [
+                'consent' => [
+                    'consentToProcess' => (boolean) $request('consentToProcess', false),
+                    'text' => $settings['legalConsentOptions']['consentToProcessCheckboxLabel'],
+                ]
+            ];
+
+            if (isset($settings['legalConsentOptions']['communicationsCheckboxes'])
+                && count($settings['legalConsentOptions']['communicationsCheckboxes']))
             {
-                $body['legalConsentOptions']['consent']['communications'][] = [
+                foreach ($settings['legalConsentOptions']['communicationsCheckboxes'] as $communication)
+                {
+
+                    $body['legalConsentOptions']['consent']['communications'][] = [
+                        'value' => key_exists($communication['subscriptionTypeId'], $subs),
+                        'subscriptionTypeId' => $communication['subscriptionTypeId'],
+                        'text' => $communication['label'],
+                    ];
+                }
+            }
+        } elseif (isset($settings['legalConsentOptions']['type'])
+            && $settings['legalConsentOptions']['type'] === 'implicit_consent_to_process'
+            && isset($settings['legalConsentOptions']['communicationsCheckboxes'])
+            && count($settings['legalConsentOptions']['communicationsCheckboxes'])
+        ) {
+            $communication = $settings['legalConsentOptions']['communicationsCheckboxes'][0];
+            $body['legalConsentOptions'] = [
+                'legitimateInterest' => [
                     'value' => key_exists($communication['subscriptionTypeId'], $subs),
                     'subscriptionTypeId' => $communication['subscriptionTypeId'],
-                    'text' => $communication['label'],
-                ];
-            }
+                    'legalBasis' => 'CUSTOMER',
+                    'text' => $communication['label']
+                ]
+            ];
         }
+
+
+
+
 
         $url = "integration/secure/submit/" . $this->portalId . '/' . $settings['guid'];
         $return = $this->post($url, $body);
