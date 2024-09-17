@@ -1,11 +1,11 @@
 <?php
 /**
- * @package    plg_system_kickyoohubspot
+ * @package    [PACKAGE_NAME]
  *
- * @author     Kicktemp GmbH <hello@kicktemp.com>
- * @copyright  Copyright © 2022 Kicktemp GmbH. All rights reserved.
- * @license    GNU General Public License version 2 or later; see LICENSE.txt
- * @link       https://kicktemp.com
+ * @author     [AUTHOR] <[AUTHOR_EMAIL]>
+ * @copyright  [COPYRIGHT]
+ * @license    [LICENSE]
+ * @link       [AUTHOR_URL]
  */
 
 use Joomla\CMS\Captcha\Captcha;

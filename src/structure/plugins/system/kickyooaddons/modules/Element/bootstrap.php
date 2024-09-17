@@ -3,7 +3,7 @@
  * @package    [PACKAGE_NAME]
  *
  * @author     [AUTHOR] <[AUTHOR_EMAIL]>
- * @copyright  [AUTHOR_URL]
+ * @copyright  [COPYRIGHT]
  * @license    [LICENSE]
  * @link       [AUTHOR_URL]
  */
