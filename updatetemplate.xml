@@ -20,6 +20,6 @@
   </tags>
   <maintainer>Kicktemp GmbH</maintainer>
   <maintainerurl>https://kicktemp.com</maintainerurl>
-  <php_minimum>7.2.5</php_minimum>
+  <php_minimum>7.4</php_minimum>
   <targetplatform name="joomla" version="((4\.(0|1|2|3|4))|(5\.(0|1|2|3|4)))"/>
 </update>
