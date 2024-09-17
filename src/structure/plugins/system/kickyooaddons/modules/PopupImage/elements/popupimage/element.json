@@ -1,0 +1,164 @@
+{
+    "@import": "./element.php",
+    "name": "popupimage",
+    "title": "Pop-up Image",
+    "group": "Kicktemp",
+    "icon": "${url:images/icon.svg}",
+    "iconSmall": "${url:images/iconSmall.svg}",
+    "element": true,
+    "width": 500,
+    "defaults": {
+        "close_style": "default"
+    },
+    "placeholder": {
+        "props": {
+            "image": "${url:~yootheme/theme/assets/images/element-image-placeholder.png}"
+        }
+    },
+    "templates": {
+        "render": "./templates/template.php",
+        "content": "./templates/content.php"
+    },
+    "fields": {
+        "image": "${builder.image}",
+        "image_width": {
+            "label": "Width",
+            "type": "number",
+            "attrs": {
+                "placeholder": "auto"
+            },
+            "enable": "image"
+        },
+        "image_height": {
+            "label": "Height",
+            "type": "number",
+            "attrs": {
+                "placeholder": "auto"
+            },
+            "enable": "image"
+        },
+        "image_alt": {
+            "label": "Image Alt",
+            "description": "Enter the image alt attribute.",
+            "source": true,
+            "enable": "image"
+        },
+        "image_loading": {
+            "label": "Loading",
+            "description": "By default, images are loaded lazy. Enable eager loading for images in the initial viewport.",
+            "type": "checkbox",
+            "text": "Load image eagerly"
+        },
+        "link": "${builder.link}",
+        "link_aria_label": "${builder.link_aria_label}",
+        "link_target": {
+            "label": "Link Target",
+            "type": "select",
+            "options": {
+                "Same Window": "",
+                "New Window": "blank"
+            }
+        },
+        "image_focal_point": {
+            "label": "Focal Point",
+            "description": "Set a focal point to adjust the image focus when cropping.",
+            "type": "select",
+            "options": {
+                "Top Left": "top-left",
+                "Top Center": "top-center",
+                "Top Right": "top-right",
+                "Center Left": "center-left",
+                "Center Center": "",
+                "Center Right": "center-right",
+                "Bottom Left": "bottom-left",
+                "Bottom Center": "bottom-center",
+                "Bottom Right": "bottom-right"
+            },
+            "source": true
+        },
+        "popupimage": {
+            "description": "How many days should the cookie be stored? (0 = never)",
+            "default": 0,
+            "label": "Exit-Intent-Cookie"
+        },
+        "popupimage_session": {
+            "label": "Once per Session",
+            "type": "checkbox",
+            "text": "Handle showing pop up once per browser session."
+        },
+        "show_on_delay": {
+            "label": "Show on Delay",
+            "type": "checkbox",
+            "text": "Show pop-up window after loading the document."
+        },
+        "popupimage_delay": {
+            "description": "Waiting time until exit intent becomes active in seconds",
+            "default": 5,
+            "label": "Exit-Intent-Delay"
+        },
+        "close_style": {
+            "label": "Close Button Style",
+            "type": "select",
+            "options": {
+                "Close Default": "default",
+                "Close Outside": "outside"
+            }
+        }
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": [
+                        "image",
+                        {
+                            "description": "Setting just one value preserves the original proportions. The image will be resized and cropped automatically, and where possible, high resolution images will be auto-generated.",
+                            "name": "_image_dimension",
+                            "type": "grid",
+                            "width": "1-2",
+                            "fields": ["image_width", "image_height"]
+                        },
+                        "image_alt",
+                        "link",
+                        "link_aria_label"
+                    ]
+                },
+                {
+                    "title": "Settings",
+                    "fields": [
+                        {
+                            "label": "Pop-up",
+                            "type": "group",
+                            "fields": [
+                                "close_style",
+                                "popupimage",
+                                "popupimage_delay",
+                                "show_on_delay",
+                                "popupimage_session"
+                            ]
+                        },
+                        {
+                            "label": "Image",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "image_focal_point",
+                                "image_loading"
+                            ]
+                        },
+                        {
+                            "label": "Link",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "link_target"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

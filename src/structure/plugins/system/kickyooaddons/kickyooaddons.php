@@ -58,6 +58,7 @@ class plgSystemKickYooAddons extends CMSPlugin
      * @var array
      */
     protected $modulus = [
+        'AsanaTask',
         'Brevo',
         'Colors',
         'ContactSource',
@@ -67,6 +68,7 @@ class plgSystemKickYooAddons extends CMSPlugin
         'LoomHQ',
         'HubSpot',
         'Navigator',
+        'PopupImage',
         'RapidMail',
         'SectionSlideshow',
         'SectionSwitcher',
@@ -97,7 +99,7 @@ class plgSystemKickYooAddons extends CMSPlugin
 		Path::setAlias('~kickyooaddons', __DIR__);
 		Path::setAlias('~kickyooaddons_url', Uri::root(true) . '/plugins/system/kickyooaddons');
 
-        $modules = ['Core', 'Element'];
+        $modules = [];
 
         foreach ($this->modulus as $addon) {
             if ($this->params->get(strtolower($addon), true)) {

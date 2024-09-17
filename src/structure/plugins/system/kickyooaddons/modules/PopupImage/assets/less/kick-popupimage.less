@@ -1,0 +1,45 @@
+// Name:            Kick Pop-up Image
+// Description:     This is my custom component
+//
+// Component:       `kick-popupimage`
+//
+// Sub-objects:     `kick-popupimage-item`
+//                  `kick-popupimage-card`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@kick-popupimage-background:                           transparent;
+@kick-popupimage-top:                                  10%;
+@kick-popupimage-left:                                 auto;
+@kick-popupimage-bottom:                               auto;
+@kick-popupimage-right:                                0%;
+@kick-popupimage-z-index:                              @global-z-index + 10;
+@kick-popupimage-padding:                              0px;
+
+@kick-popupimage-close-color:                          @global-emphasis-color;
+
+
+
+
+/* ========================================================================
+   Component: Kick Sidebar
+ ========================================================================== */
+
+.kick-popupimage {
+    position: fixed;
+    top: @kick-popupimage-top;
+    bottom: @kick-popupimage-bottom;
+    right: @kick-popupimage-right;
+    left: @kick-popupimage-left;
+    z-index: @kick-popupimage-z-index;
+    background: @kick-popupimage-background;
+    padding: @kick-popupimage-padding;
+}
+
+.kick-popupimage-close {
+    color: @kick-popupimage-close-color;
+}

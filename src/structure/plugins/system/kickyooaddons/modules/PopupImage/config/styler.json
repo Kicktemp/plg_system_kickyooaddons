@@ -1,0 +1,13 @@
+{
+    "components": {
+      "kick-popupimage": {
+        "name": "Kick Pop-up Image",
+        "groups": {
+          "wrapper": "@kick-popupimage-*",
+          "Close Button": "@kick-popupimage-close-*"
+        },
+        "hover": "[class*='kick-popupimage-']",
+        "inspect": "[class*='kick-popupimage'], [class*='kick-popupimage'] > *"
+      }
+    }
+}
