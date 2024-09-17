@@ -85,7 +85,7 @@ abstract class plgSystemKickYooAddonsHelper
         ) {
             throw new \RuntimeException(
                 sprintf(
-                    'YOOtheme Pro v%s is not supported by [PROJECT_NAME] plugin, disable Essentials before retrying.',
+                    'YOOtheme Pro v%s is not supported by [PROJECT_NAME] plugin, disable [PROJECT_NAME] before retrying.',
                     $version
                 )
             );
