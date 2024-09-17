@@ -1,7 +1,7 @@
 {
     "components": {
       "kick-sidebar": {
-        "name": "Kick Sidebar",
+        "name": "Sidebar",
         "groups": {
           "wrapper": "@kick-sidebar-*",
           "Button Default": "@kick-sidebar-background-default-*",
