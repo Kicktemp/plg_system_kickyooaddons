@@ -16,7 +16,6 @@ module.exports = [
   './src/structure/plugins/system/kickyooaddons/modules/Brevo/rollup.config.cjs',
   './src/structure/plugins/system/kickyooaddons/modules/HubSpot/rollup.config.cjs',
   './src/structure/plugins/system/kickyooaddons/modules/RapidMail/rollup.config.cjs',
-  './src/structure/plugins/system/kickyooaddons/modules/AsanaTask/rollup.config.cjs',
 ].reduce((carry, config) => {
 
   if (isObject(config)) {
