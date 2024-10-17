@@ -10,6 +10,7 @@
 
 namespace Kicktemp\YOOaddons\Form;
 
+use Kicktemp\YOOaddons\Form\Src\FormApi;
 use YOOtheme\Builder;
 use YOOtheme\Config;
 
@@ -36,8 +37,8 @@ return [
 	],
 
 	'services' => [
-		Src\FormApi::class => function (Config $config) {
-			return new Src\FormApi(
+		FormApi::class => function (Config $config) {
+			return new FormApi(
 				$config('app.secret')
 			);
 		},
