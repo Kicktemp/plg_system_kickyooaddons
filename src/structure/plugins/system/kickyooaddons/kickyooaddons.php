@@ -58,7 +58,7 @@ class plgSystemKickYooAddons extends CMSPlugin
      * @var array
      */
     protected $modulus = [
-        'AsanaTask',
+        'BannerSource',
         'Brevo',
         'Colors',
         'ContactSource',
