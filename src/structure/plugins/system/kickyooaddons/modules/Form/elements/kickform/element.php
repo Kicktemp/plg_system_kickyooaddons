@@ -56,9 +56,15 @@ return [
 			// check captcha is active
 			foreach ($node->children as $child)
 			{
-				if ($child->props['type'] === 'captcha')
+                if ($child->props['type'] === 'session')
+                {
+                    $form['joomlasession'] = true;
+                }
+
+
+                if ($child->props['type'] === 'captcha')
 				{
-					if (is_null($child->props['title']))
+                    if (is_null($child->props['title']) || empty($child->props['title']))
 					{
 						$child->props['title'] = $node->attrs['data-id'];
 					}

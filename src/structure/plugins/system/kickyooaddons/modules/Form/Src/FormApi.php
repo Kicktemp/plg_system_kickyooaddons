@@ -17,12 +17,14 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Mail\MailHelper;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Router\Route;
+use Joomla\CMS\Session\Session;
 use Joomla\Event\DispatcherInterface;
 use RuntimeException;
 use YOOtheme\Encrypter;
 use YOOtheme\Http\Request;
 use YOOtheme\Http\Response;
 use YOOtheme\Translator;
+use YOOtheme\Url;
 
 class FormApi
 {
@@ -90,6 +92,14 @@ class FormApi
 			$settings[$settingField] = $this->_parseTags($settings[$settingField], $data);
 		}
 
+        if (isset($settings['joomlasession']) and $settings['joomlasession']) {
+            $valid = Session::checkToken('post');
+
+            if (!$valid) {
+                return $response->withJson(Text::_('JINVALID_TOKEN_NOTICE'), 403);
+            }
+        }
+
 		if (isset($settings['kick_honeypot']) and $settings['kick_honeypot'])
 		{
 			$time = $settings['kick_honeypot'];
@@ -107,7 +117,12 @@ class FormApi
 			$seconds = ($now->getTimestamp() - $time->getTimestamp());
 			$minSeconds = $settings['min_seconds'] ?? 1;
 			if ($seconds < $minSeconds) {
-				return $response->withJson(Text::_($settings['kick_honeypoterror']), 403);
+                $return = [
+                    'success' => false,
+                    'wait' => $minSeconds - $seconds,
+                    'statusText' => Text::_($settings['kick_honeypoterror'])
+                ];
+                return $response->withJson($return, 403);
 			}
 
 			if (isset($settings['kick_honeypotfield']) && isset($data[$settings['kick_honeypotfield']]) && $data[$settings['kick_honeypotfield']] !== "") {
@@ -123,7 +138,14 @@ class FormApi
 				$default = $app->get('captcha');
 				$captcha = Captcha::getInstance($default, array('namespace' => 'kickform'));
 
-				$captcha->checkAnswer($data['g-recaptcha-response']);
+                if ($default === 'recaptcha') {
+                    $captcha->checkAnswer($data['g-recaptcha-response']);
+                } elseif ($default === 'easycalccheckcaptcha') {
+                    if (!$captcha->checkAnswer($data[$settings['captcha']])) {
+                        $message = Factory::getApplication()->getMessageQueue()[0]['message'];
+                        return $response->withJson($message, 403);
+                    }
+                }
 			}
 			catch (\RuntimeException $e)
 			{
@@ -153,6 +175,12 @@ class FormApi
 		}
 
         Factory::getApplication()->triggerEvent('onKickyooaddonsAfterSubmit', ['plg_system_kickyooaddons.formsubmit', $data, $settings, $files]);
+
+        if (isset( $settings['kick_honeypot'])) {
+            $settings['kick_honeypot'] = (new DateTime())->format('U');
+            $return['settings'] = $this->encodeData($settings);
+            $return['actionurl'] = Url::route('theme/kickform/submit', ['hash' => $this->getHash($return['settings'])]);
+        }
 
 		if ($settings['after_submit'] === 'redirect') {
 			$return['redirect'] = Route::_($settings['redirect']);

@@ -274,6 +274,7 @@
         "fromname_copy": {
             "label": "FromName Submitter",
             "description": "The From Name. Defaults to the site's one.",
+            "show": "email_copy",
             "source": true
         },
         "recipients_copy": {

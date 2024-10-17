@@ -33,7 +33,8 @@
                 "Text": "text",
                 "File": "file",
                 "Honeypot": "honeypot",
-                "Captcha": "captcha"
+                "Captcha": "captcha",
+                "Joomla Session": "session"
             },
             "source": true
         },
@@ -96,35 +97,35 @@
         },
         "label": {
             "label": "Label",
-            "show": "type != 'honeypot' && type != 'hidden' && type != 'text' && type != 'checkbox' && type != 'captcha'",
+            "show": "type != 'honeypot' && type != 'hidden' && type != 'text' && type != 'checkbox' && type != 'captcha' && type != 'session'",
             "source": true
         },
         "mustshowlabel": {
             "label": "Show Label",
             "description": "If labels are disabled in the settings, this label will still be displayed",
             "type": "checkbox",
-            "show": "label && type != 'hidden' && type != 'text' && type != 'captcha' && type != 'honeypot'",
+            "show": "label && type != 'hidden' && type != 'text' && type != 'captcha' && type != 'honeypot' && type != 'session'",
             "source": true
         },
         "placeholder": {
             "label": "Placeholder",
-            "show": "type != 'checkbox' && type != 'hidden' && type != 'text' && type != 'captcha' && type != 'honeypot'",
+            "show": "type != 'checkbox' && type != 'hidden' && type != 'text' && type != 'captcha' && type != 'honeypot' && type != 'session'",
             "source": true
         },
         "equal": {
             "label": "Equal",
-            "show": "type != 'hidden' && type != 'text' && type != 'captcha' && type != 'honeypot' && type != 'file'",
+            "show": "type != 'hidden' && type != 'text' && type != 'captcha' && type != 'honeypot' && type != 'file' && type != 'session'",
             "source": true
         },
         "required": {
             "label": "Required",
             "type": "checkbox",
-            "show": "type != 'hidden' && type != 'text' && type != 'captcha' && type != 'honeypot'",
+            "show": "type != 'hidden' && type != 'text' && type != 'captcha' && type != 'honeypot' && type != 'session'",
             "source": true
         },
         "errormessage": {
             "label": "Error message",
-            "show": "required && type != 'hidden' && type != 'captcha' && type != 'honeypot'",
+            "show": "required && type != 'hidden' && type != 'captcha' && type != 'honeypot' && type != 'session'",
             "source": true
         },
         "erroremailmessage": {
@@ -145,7 +146,7 @@
         },
         "value": {
             "label": "Value",
-            "show": "type != 'text' && type != 'captcha' && type != 'honeypot' && type != 'file'",
+            "show": "type != 'text' && type != 'captcha' && type != 'honeypot' && type != 'file' && type != 'session'",
             "source": true
         },
         "icon": {

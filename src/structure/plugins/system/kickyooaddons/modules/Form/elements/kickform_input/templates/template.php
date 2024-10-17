@@ -2,6 +2,7 @@
 // Display
 use Joomla\CMS\Captcha\Captcha;
 use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
 
 if (!isset($props['selected']))
 {
@@ -59,7 +60,9 @@ $input = $this->el('input', [
 		'uk-form-{form_style}',
 	],
 
-	'id' => $props['title'],
+    'id' => [
+        '{title}'
+    ],
 
 	'name' => [
 		'{title}'
@@ -133,7 +136,9 @@ $textarea = $this->el('textarea', [
 		'uk-form-{form_style}',
 	],
 
-	'id' => $props['title'],
+	'id' => [
+        '{title}'
+    ],
 
 	'name' => [
 		'{title}'
@@ -246,8 +251,8 @@ $file = $this->el('input', [
 	'multiple'  => (bool) $props['multiple'] ?? null,
 ]);
 ?>
-<?php if ($props['type'] !== 'hidden'): ?>
-	<?= $width($props) ?>
+<?php if ($props['type'] !== 'hidden' && $props['type'] !== 'honeypot' && $props['type'] !== 'session'): ?>
+    <?= $width($props) ?>
 <?php endif; ?>
 <?php
 if ($props['label'] !== '' && $props['type'] !== 'radio' && ($element['show_label'] || (!$element['show_label'] && $props['mustshowlabel'])))
@@ -259,9 +264,8 @@ $icon = ($props['icon']) ? $inputicon($props) . '</span>' : '';
 switch ($props['type'])
 {
 	case 'input':
-
 		echo $this
-			->el('div', ['class' => ['uk-form-controls uk-inline uk-display-block']], $icon . $input($props, $attrs))
+			->el('div', ['class' => ['uk-form-controls uk-inline uk-display-block']], $icon . $input($props, ['id' => $props['title']]))
 			->render($props);
 		break;
 	case 'date':
@@ -371,7 +375,9 @@ switch ($props['type'])
 
 		$captcha = Captcha::getInstance($default, array('namespace' => 'kickform'));
 
-		echo $captcha->display($props['title'], $props['title']);
+        if ($default !== 'recaptcha') echo '<div class="uk-form-controls uk-inline uk-display-block">';
+        echo $captcha->display($props['title'], $props['title']);
+        if ($default !== 'recaptcha')  echo '</div>';
 		break;
     case 'file':
 	    echo $this
@@ -383,8 +389,11 @@ switch ($props['type'])
             )
 		    ->render($props);
         break;
+    case 'session':
+        echo HTMLHelper::_('form.token');
+        break;
 }
 ?>
-<?php if ($props['type'] !== 'hidden'): ?>
+<?php if ($props['type'] !== 'hidden' && $props['type'] !== 'honeypot' && $props['type'] !== 'session'): ?>
     </div>
 <?php endif; ?>

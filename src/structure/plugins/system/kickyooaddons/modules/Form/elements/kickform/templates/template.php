@@ -90,7 +90,7 @@ $closebutton = $this->el('button', [
 <?php endif ?>
 
 <?= $el($props, $attrs) ?>
-<form class="<?= ($props['horizontal']) ? 'uk-form-horizontal ' : ''?>uk-form uk-panel js-form-form" method="post"<?= $this->attrs($form) ?> xmlns="http://www.w3.org/1999/html"<?= ($props['novalidate']) ? ' novalidate' : '' ?><?= (isset($props['attachment']) && $props['attachment']) ? ' enctype="multipart/form-data"' : '' ?>>
+<form class="<?= ($props['horizontal']) ? 'uk-form-horizontal ' : ''?>uk-form uk-panel js-kickyooaddonsform-form" method="post"<?= $this->attrs($form) ?> xmlns="http://www.w3.org/1999/html"<?= ($props['novalidate']) ? ' novalidate' : '' ?><?= (isset($props['attachment']) && $props['attachment']) ? ' enctype="multipart/form-data"' : '' ?>>
         <?= $grid($props) ?>
             <?php foreach ($children as $child) : ?>
                 <?= $builder->render($child, ['element' => $props]) ?>
