@@ -8,7 +8,7 @@
  * @link       [AUTHOR_URL]
  */
 
-namespace Kicktemp\Yootheme\BannerSource;
+namespace Kicktemp\YOOaddons\BannerSource\Src;
 
 use Joomla\CMS\Environment\Browser;
 use Joomla\Component\Banners\Administrator\Helper\BannersHelper as BannersComponentHelper;
@@ -77,7 +77,7 @@ class BannerHelper
 		}
 
 		if (!empty($args['cid'])) {
-			$model->setState('filter.client_id', (array) $args['cid']);
+			$model->setState('filter.client_id', (int) $args['cid']);
 		}
 
 		if (!empty($args['catid'])) {

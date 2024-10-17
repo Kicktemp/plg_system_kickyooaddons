@@ -8,7 +8,7 @@
  * @link       [AUTHOR_URL]
  */
 
-namespace Kicktemp\Yootheme\BannerSource;
+namespace Kicktemp\YOOaddons\BannerSource\Src;
 
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
@@ -54,7 +54,7 @@ class BannersModel extends BaseModel
 		$query      = $db->getQuery(true);
 		$ordering   = $this->getState('filter.ordering');
 		$tagSearch  = $this->getState('filter.tag_search');
-		$cid        = (int) $this->getState('filter.client_id');
+		$cid        = $this->getState('filter.client_id');
 		$categoryId = $this->getState('filter.category_id');
 		$keywords   = $this->getState('filter.keywords');
 		$randomise  = ($ordering === 'random');

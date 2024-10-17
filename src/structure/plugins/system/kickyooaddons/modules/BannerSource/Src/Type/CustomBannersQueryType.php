@@ -10,7 +10,7 @@
 
 namespace Kicktemp\YOOaddons\BannerSource\Src\Type;
 
-use Kicktemp\Yootheme\BannerSource\BannerHelper;
+use Kicktemp\YOOaddons\BannerSource\Src\BannerHelper;
 
 use function YOOtheme\trans;
 
