@@ -11,16 +11,18 @@
 namespace Kicktemp\YOOaddons\Form\Src;
 
 use DateTime;
-use Joomla\CMS\Factory;
 use Joomla\CMS\Captcha\Captcha;
+use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Mail\MailHelper;
+use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Router\Route;
+use Joomla\Event\DispatcherInterface;
+use RuntimeException;
 use YOOtheme\Encrypter;
 use YOOtheme\Http\Request;
 use YOOtheme\Http\Response;
 use YOOtheme\Translator;
-use RuntimeException;
 
 class FormApi
 {
@@ -75,7 +77,12 @@ class FormApi
 
 		$files = $request->getUploadedFiles();
 
-		foreach ($this->parseSettings as $settingField) {
+        // Process the content plugins.
+        PluginHelper::importPlugin('content');
+        Factory::getApplication()->triggerEvent('onKickyooaddonsBeforeSubmit', ['plg_system_kickyooaddons.formsubmit', $data, $settings, $files]);
+
+
+        foreach ($this->parseSettings as $settingField) {
 			if (!($settings[$settingField] ?? false)) {
 				continue;
 			}
@@ -144,6 +151,8 @@ class FormApi
 		} catch (\Exception $e) {
 			return $response->withJson($e->getMessage(), 400);
 		}
+
+        Factory::getApplication()->triggerEvent('onKickyooaddonsAfterSubmit', ['plg_system_kickyooaddons.formsubmit', $data, $settings, $files]);
 
 		if ($settings['after_submit'] === 'redirect') {
 			$return['redirect'] = Route::_($settings['redirect']);
