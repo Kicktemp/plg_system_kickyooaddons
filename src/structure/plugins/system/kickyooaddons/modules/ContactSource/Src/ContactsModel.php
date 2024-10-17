@@ -198,8 +198,17 @@ class ContactsModel extends ListModel
 			->select('parent.title AS parent_title, parent.id AS parent_id, parent.path AS parent_route, parent.alias AS parent_alias')
 			->leftJoin($db->quoteName('#__categories', 'parent'), 'parent.id = c.parent_id');
 
+        // Filter by state
+        $state = $this->getState('filter.published');
 
-		$params      = $this->getState('params');
+        if (is_numeric($state)) {
+            $query->where($db->quoteName('a.published') . ' = :published');
+            $query->bind(':published', $state, ParameterType::INTEGER);
+        } else {
+            $query->whereIn($db->quoteName('c.published'), [0,1,2]);
+        }
+
+        $params      = $this->getState('params');
 		$orderby_sec = $params->get('orderby_sec');
 
 		// Filter by access level.
