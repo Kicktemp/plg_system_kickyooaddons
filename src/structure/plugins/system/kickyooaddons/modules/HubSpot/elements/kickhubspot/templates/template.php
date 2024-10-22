@@ -449,7 +449,7 @@ $children = array_merge((array) $children, $spamfields);
 	<?php endif ?>
 
 	<?= $el($props, $attrs) ?>
-    <form class="<?= ($props['horizontal']) ? 'uk-form-horizontal ' : '' ?>uk-form uk-panel js-form-form"
+    <form class="<?= ($props['horizontal']) ? 'uk-form-horizontal ' : '' ?>uk-form uk-panel js-kickyooaddonshubspot-form"
           method="post"<?= $this->attrs($form) ?>
           xmlns="http://www.w3.org/1999/html"<?= ($props['novalidate']) ? ' novalidate' : '' ?>>
 		<?= $grid($props) ?>
@@ -461,9 +461,11 @@ if ($props['captcha'] === 'captcha' || $props['captcha'] === 'honeypotandcaptcha
 {
 	$app = Factory::getApplication();
 	$default = $app->get('captcha');
-	$captcha = Captcha::getInstance($default, array('namespace' => 'kickform'));
+	$captcha = Captcha::getInstance($default, array('namespace' => 'kickhubspot'));
 
+    if ($default !== 'recaptcha') echo '<div class="uk-form-controls uk-inline uk-display-block">';
     echo $captcha->display($props['captchatitle'], $props['captchatitle']);
+    if ($default !== 'recaptcha')  echo '</div>';
 }
 ?>
 		<?= $this

@@ -14,12 +14,15 @@ use DateTime;
 use Joomla\CMS\Captcha\Captcha;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Router\Route;
+use Joomla\CMS\Session\Session;
 use YOOtheme\Encrypter;
 use YOOtheme\Http\Request;
 use YOOtheme\Http\Response;
 use YOOtheme\HttpClientInterface;
 use YOOtheme\Translator;
+use YOOtheme\Url;
 
 class HubSpotApi
 {
@@ -158,6 +161,20 @@ class HubSpotApi
 
         $data = $request->getParsedBody();
 
+        // Process the content plugins.
+        PluginHelper::importPlugin('content');
+        Factory::getApplication()->triggerEvent('onKickyooaddonsBeforeSubmit', ['plg_system_kickyooaddons.hubspotsubmit', $data, $settings]);
+
+
+        if (isset($settings['joomlasession']) and $settings['joomlasession']) {
+            $valid = Session::checkToken('post');
+
+            if (!$valid) {
+                return $response->withJson(Text::_('JINVALID_TOKEN_NOTICE'), 403);
+            }
+        }
+
+
         if (isset($settings['kick_honeypot']) and $settings['kick_honeypot'])
         {
             $time = $settings['kick_honeypot'];
@@ -175,7 +192,12 @@ class HubSpotApi
             $seconds = ($now->getTimestamp() - $time->getTimestamp());
             $minSeconds = $settings['min_seconds'] ?? 1;
             if ($seconds < $minSeconds) {
-                return $response->withJson(Text::_($settings['kick_honeypoterror']), 403);
+                $return = [
+                    'success' => false,
+                    'wait' => $minSeconds - $seconds,
+                    'statusText' => Text::_($settings['kick_honeypoterror'])
+                ];
+                return $response->withJson($return, 403);
             }
 
             if (isset($settings['kick_honeypotfield']) && isset($data[$settings['kick_honeypotfield']]) && $data[$settings['kick_honeypotfield']] !== "") {
@@ -189,9 +211,16 @@ class HubSpotApi
             {
                 $app = Factory::getApplication();
                 $default = $app->get('captcha');
-                $captcha = Captcha::getInstance($default, array('namespace' => 'kickform'));
+                $captcha = Captcha::getInstance($default, array('namespace' => 'kickhubspot'));
 
-                $captcha->checkAnswer($data['g-recaptcha-response']);
+                if ($default === 'recaptcha') {
+                    $captcha->checkAnswer($data['g-recaptcha-response']);
+                } elseif ($default === 'easycalccheckcaptcha') {
+                    if (!$captcha->checkAnswer($data[$settings['captcha']])) {
+                        $message = Factory::getApplication()->getMessageQueue()[0]['message'];
+                        return $response->withJson($message, 403);
+                    }
+                }
             }
             catch (\RuntimeException $e)
             {
@@ -263,10 +292,6 @@ class HubSpotApi
             ];
         }
 
-
-
-
-
         $url = "integration/secure/submit/" . $this->portalId . '/' . $settings['guid'];
         $return = $this->post($url, $body);
 
@@ -281,9 +306,17 @@ class HubSpotApi
             }
         }
 
+        Factory::getApplication()->triggerEvent('onKickyooaddonsAfterSubmit', ['plg_system_kickyooaddons.hubspotsubmit', $data, $settings]);
+
         if (!$return['success'])
         {
             return $response->withJson('', 400);
+        }
+
+        if (isset( $settings['kick_honeypot'])) {
+            $settings['kick_honeypot'] = (new DateTime())->format('U');
+            $return['settings'] = $this->encodeData($settings);
+            $return['actionurl'] = Url::route('theme/kickhubspot/hubsubmit', ['hash' => $this->getHash($return['settings'])]);
         }
 
         if ($settings['after_submit'] === 'redirect')
