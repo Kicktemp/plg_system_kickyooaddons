@@ -25,13 +25,16 @@ class FormListener
 		'description_list',
 		'gallery',
 		'grid',
-		'grid_item',
 		'headline',
 		'map',
 		'panel',
-		'panel-slider_item',
-		'popover_item',
+		'panel-slider',
+		'popover',
+		'overlay',
+		'overlay-slider',
 		'section',
+		'slideshow',
+		'switcher',
 		'table',
 		'text',
 	];
@@ -61,6 +64,14 @@ class FormListener
 			$type['fields']['title_color']['options']['Senary']     = 'senary';
 		}
 
+        if (Arr::has($type, 'fields.meta_color.options'))
+        {
+            $type['fields']['meta_color']['options']['Tertiary']   = 'tertiary';
+            $type['fields']['meta_color']['options']['Quaternary'] = 'quaternary';
+            $type['fields']['meta_color']['options']['Quinary']    = 'quinary';
+            $type['fields']['meta_color']['options']['Senary']     = 'senary';
+        }
+
 		// Text
 		if (Arr::has($type, 'fields.text_color.options'))
 		{
@@ -79,7 +90,8 @@ class FormListener
 			$type['fields']['button_style']['options']['Senary']     = 'senary';
 		}
 
-		// Grid Item, Panel Slider Item, Panel
+		// JSON: Panel, Panel Slider, Grid
+        // Template: Panel, Panel Slider Item, Grid Item
 		if (Arr::has($type, 'fields.panel_style.options'))
 		{
 			$type['fields']['panel_style']['options']['Card Tertiary']   = 'card-tertiary';
@@ -92,7 +104,7 @@ class FormListener
 			$type['fields']['panel_style']['options']['Tile Senary']     = 'tile-senary';
 		}
 
-		// Popover Item
+		// Popover
 		if (Arr::has($type, 'fields.card_style.options'))
 		{
 			$type['fields']['card_style']['options']['Tertiary']   = 'tertiary';

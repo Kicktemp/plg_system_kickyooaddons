@@ -8,9 +8,9 @@
 
       <select v-show="fields.length && guid !== ''" v-model="value" v-bind="attributes" class="uk-select">
         <option disabled value="">{{ $t('Select a Field') }}</option>
+        <option value="nohubspotfield">{{ $t('Custom Field') }}</option>
         <option v-for="option in fields" :key="option.value" :value="option.value">{{ option.text }} <sup v-if="option.required">*</sup>({{ option.fieldType }})</option>
       </select>
-
 
       <p v-show="fields.length" class="uk-text-muted uk-margin-small">{{ $t('Select the Field to Map Form Input.') }}</p>
 

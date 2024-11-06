@@ -65,9 +65,9 @@ if (count((array) $children))
 
 <?php if ($props['debug']) :?>
     <pre>
-<?php foreach ($properties as $property): ?>
-	<?= '&lt;meta ' . ArrayHelper::toString($property) . '&gt;'; ?><br>
-<?php endforeach; ?>
+    <?php foreach ($properties as $index => $property): ?>
+        <?= '&lt;meta ' . ArrayHelper::toString($property) . '&gt;' . ($index < count($properties) - 1 ? '<br>' : ''); ?>
+    <?php endforeach; ?>
     </pre>
 	<?php $link = 'https://developers.facebook.com/tools/debug/?q=' . urlencode(Uri::current()); ?>
 	<?= '<a href="' . $link . '" class="uk-button uk-button-primary" target="_blank">Open Facebook Object Debugger</a>'; ?>

@@ -62,16 +62,19 @@ class plgSystemKickYooAddons extends CMSPlugin
         'Brevo',
         'Colors',
         'ContactSource',
+        'Element',
         'FavedSource',
         'Files',
         'Form',
-        'LoomHQ',
         'HubSpot',
+        'JsonLd',
+        'LoomHQ',
         'Navigator',
+        'OpenGraph',
         'PopupImage',
         'RapidMail',
-        'SectionSlideshow',
-        'SectionSwitcher',
+        //'SectionSlideshow',
+        //'SectionSwitcher',
         'Sidebar'
     ];
 
@@ -99,7 +102,7 @@ class plgSystemKickYooAddons extends CMSPlugin
 		Path::setAlias('~kickyooaddons', __DIR__);
 		Path::setAlias('~kickyooaddons_url', Uri::root(true) . '/plugins/system/kickyooaddons');
 
-        $modules = [];
+        $modules = ['Core'];
 
         foreach ($this->modulus as $addon) {
             if ($this->params->get(strtolower($addon), true)) {

@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Installer\InstallerScript;
 
-if (!class_exists('plgSystemKickYooAddonsHelper')) {
+if (file_exists(__DIR__ . '/helper.php') && !class_exists('plgSystemKickYooAddonsHelper')) {
     require_once __DIR__ . '/helper.php';
 }
 
@@ -27,7 +27,9 @@ class plgSystemKickYooAddonsInstallerScript extends InstallerScript
 {
 	protected $minimumPhp = '7.4';
 	protected $minimumJoomla = '4.0';
-	protected $deleteFiles = ['/plugins/system/kickyooaddons/src/SettingsListener.php'];
+	protected $deleteFiles = [
+        '/plugins/system/kickyooaddons/src/SettingsListener.php'
+    ];
 
 
 	public function preflight($type, $parent)

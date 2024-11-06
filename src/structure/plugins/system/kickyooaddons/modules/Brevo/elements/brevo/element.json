@@ -296,7 +296,7 @@
             "source": true
         },
         "modal_icon_align": {
-            "label": "Alignment",
+            "label": "Icon Alignment",
             "description": "Choose the icon position.",
             "type": "select",
             "options": {

@@ -1,6 +1,6 @@
 {
   "name": "KickYooAddons",
-  "version": "0.0.4",
+  "version": "1.0.5",
   "description": "",
   "type": "module",
   "scripts": {
@@ -61,7 +61,7 @@
     "[COPYRIGHT]": "Copyright © 2024 Kicktemp GmbH. All rights reserved.",
     "[LICENSE]": "GNU General Public License version 2 or later; see LICENSE.txt",
     "[AUTHOR_URL]": "https://kicktemp.com",
-    "[DATE]": "02.07.2024",
+    "[DATE]": "17.10.2024",
     "[PLUGINTYPE]": "system"
   },
   "casesensitive": {
@@ -88,7 +88,8 @@
     "lodash": "^4.17.21",
     "path": "^0.12.7",
     "rollup": "^3.28.1",
-    "rollup-plugin-vue": "^5.0.0"
+    "rollup-plugin-vue": "^5.0.0",
+    "strip-json-comments": "^5.0.1"
   },
   "overrides": {
     "babel-plugin-lodash": {

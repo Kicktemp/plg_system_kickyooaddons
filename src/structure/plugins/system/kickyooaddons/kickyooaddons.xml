@@ -76,6 +76,18 @@
 					<option value="0">JNO</option>
 				</field>
 				<field
+						name="element"
+						type="radio"
+						label="PLG_SYSTEM_KICKYOOADDONS_ELEMENT_LABEL"
+						description="PLG_SYSTEM_KICKYOOADDONS_ELEMENT_DESC"
+						class="btn-group btn-group-yesno"
+						default="1"
+						filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
 						name="favedsource"
 						type="radio"
 						label="PLG_SYSTEM_KICKYOOADDONS_FAVEDSOURCE_LABEL"
@@ -124,6 +136,18 @@
 					<option value="0">JNO</option>
 				</field>
 				<field
+						name="jsonld"
+						type="radio"
+						label="PLG_SYSTEM_KICKYOOADDONS_JSONLD_LABEL"
+						description="PLG_SYSTEM_KICKYOOADDONS_JSONLD_DESC"
+						class="btn-group btn-group-yesno"
+						default="1"
+						filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
 						name="loomhq"
 						type="radio"
 						label="PLG_SYSTEM_KICKYOOADDONS_LOOMHQ_LABEL"
@@ -140,6 +164,18 @@
 						type="radio"
 						label="PLG_SYSTEM_KICKYOOADDONS_NAVIGATOR_LABEL"
 						description="PLG_SYSTEM_KICKYOOADDONS_NAVIGATOR_DESC"
+						class="btn-group btn-group-yesno"
+						default="1"
+						filter="integer"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+						name="opengraph"
+						type="radio"
+						label="PLG_SYSTEM_KICKYOOADDONS_OPENGRAPH_LABEL"
+						description="PLG_SYSTEM_KICKYOOADDONS_OPENGRAPH_DESC"
 						class="btn-group btn-group-yesno"
 						default="1"
 						filter="integer"
