@@ -9,7 +9,6 @@ use Kicktemp\YOOaddons\HubSpot\Src\HubSpotApi;
 return [
 
 	'transforms' => [
-
 		'render' => function ($node, $params) {
             if ((!isset($node->attrs['data-id']) || $node->attrs['data-id'] === '')
                 && (!empty($params['prefix']) || !empty($params['parent']))
@@ -28,6 +27,10 @@ return [
              * @var Metadata  $meta
              */
             list($controller, $meta) = app(HubSpotApi::class, Metadata::class);
+
+            if (!$controller->isKeyCorrect()) {
+                return false;
+            }
 
             $provider = (array) $node->props['provider'];
             $form = array();

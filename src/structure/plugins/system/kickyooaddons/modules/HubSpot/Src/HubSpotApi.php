@@ -65,12 +65,6 @@ class HubSpotApi
         $this->portalId   = $portalId;
         $this->client     = $client;
         $this->translator = $translator;
-
-        if (strpos($apiKey, '-') === false)
-        {
-            throw new \Exception('Invalid API key.');
-        }
-
         $this->apiEndpoint = "https://api.hubapi.com/marketing/v3";
         $this->apiFormsEndpoint = "https://api.hsforms.com/submissions/v3";
     }
@@ -443,5 +437,14 @@ class HubSpotApi
     public function getHash(string $data): string
     {
         return hash('fnv132', hash_hmac('sha1', $data, $this->secret));
+    }
+
+    public function isKeyCorrect()
+    {
+        if($this->apiKey !== '') {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
