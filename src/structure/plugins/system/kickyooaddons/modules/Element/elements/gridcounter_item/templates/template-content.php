@@ -100,7 +100,7 @@ $cell_content = $this->el('div', [
             <?php if ($element['title_color'] == 'background') : ?>
             <span class="uk-text-background"><?= $props['title'] ?></span>
             <?php elseif ($element['title_decoration'] == 'line') : ?>
-            <span><?= $props['title'] ?></span>
+            <span class="countup"><?= $props['title'] ?></span>
             <?php else : ?>
             <span class="countup">
             <?= $props['title'] ?>

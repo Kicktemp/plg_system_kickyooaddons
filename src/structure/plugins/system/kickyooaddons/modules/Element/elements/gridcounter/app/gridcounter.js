@@ -38,7 +38,8 @@ const animateCountUp = el => {
   UIkit.util.$$('.countup').forEach(function(el) {
     UIkit.scrollspy(el, { repeat: false });
     UIkit.util.on(el,'inview', function(){
-      animateCountUp(el);
+      if (Number.isInteger(parseInt(el.innerHTML)))
+        animateCountUp(el);
     });
   });
 }(UIkit.util);
