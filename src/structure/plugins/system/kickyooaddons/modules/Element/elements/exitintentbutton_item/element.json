@@ -23,14 +23,6 @@
             "label": "Content",
             "source": true
         },
-        "input_value": {
-            "label": "Value",
-            "type": "content-items",
-            "item": "kickinput_value",
-            "title": "text",
-            "show": "toggle",
-            "button": "Add Value"
-        },
         "toggle": {
             "label": "Modal id",
             "source": true
@@ -101,10 +93,9 @@
                     "fields": [
                         "content",
                         "toggle",
-                        "input_value",
-                        "link",
                         "link_title",
-                        "icon"
+                        "icon",
+                        "icon_align"
                     ]
                 },
                 {
@@ -116,31 +107,6 @@
                             "divider": true,
                             "fields": [
                                 "button_style"
-                            ]
-                        },
-                        {
-                            "label": "Link",
-                            "type": "group",
-                            "divider": true,
-                            "fields": [
-                                "link_target",
-                                {
-                                    "label": "Modal Width/Height",
-                                    "description": "Set the width and height for the lightbox content, i.e. image, video or iframe.",
-                                    "type": "grid",
-                                    "width": "1-2",
-                                    "fields": [
-                                        "lightbox_width",
-                                        "lightbox_height"
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "label": "Icon",
-                            "type": "group",
-                            "fields": [
-                                "icon_align"
                             ]
                         }
                     ]

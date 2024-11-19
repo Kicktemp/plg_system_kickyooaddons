@@ -40,10 +40,40 @@ $head_container = $this->el('div', [
 		'uk-{text_color}',
 	],
 ]);
+
+// Modal
+$modal = $this->el('div', [
+    'class' => [
+        'uk-flex-top {@modal_center}',
+        'uk-modal-container {@modal_container}',
+    ],
+
+    'id' => [
+        'exit_{id}'
+    ],
+
+    'uk-modal' => true
+]);
+
+$modaldialog = $this->el('div', [
+    'class' => [
+        'uk-modal-dialog',
+        'uk-margin-auto-vertical {@modal_center}',
+    ],
+]);
+
+// Close Button
+$closebutton = $this->el('button', [
+
+    'class' => [
+        'uk-modal-close-{close_style}'
+    ],
+]);
+
 ?>
-<div id="exit_<?= $props['id'] ?>" uk-modal>
-    <div class="uk-modal-dialog">
-        <button class="uk-modal-close-outside" type="button" uk-close></button>
+<?= $modal($props) ?>
+<?= $modaldialog($props) ?>
+<?= $closebutton($props, ['type' => 'button', 'uk-close' => true]) ?></button>
 	    <?= $head_container($props) ?>
             <h2 class="uk-modal-title uk-text-center"><?= $props['title'] ?></h2>
         </div>

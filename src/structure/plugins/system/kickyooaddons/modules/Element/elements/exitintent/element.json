@@ -8,6 +8,11 @@
     "element": true,
     "container": true,
     "width": 500,
+    "defaults": {
+        "modal_center":  false,
+        "modal_container":  false,
+        "close_style": "default"
+    },
     "placeholder": {
         "props": {
             "button_style": "default",
@@ -146,6 +151,22 @@
                 "Right": "right",
                 "Justify": "justify"
             }
+        },
+        "modal_center": {
+            "type": "checkbox",
+            "text": "Center modal"
+        },
+        "modal_container": {
+            "type": "checkbox",
+            "text": "Container modifier"
+        },
+        "close_style": {
+            "label": "Close Button Style",
+            "type": "select",
+            "options": {
+                "Close Default": "default",
+                "Close Outside": "outside"
+            }
         }
     },
     "fieldset": {
@@ -155,8 +176,6 @@
                 {
                     "title": "Content",
                     "fields": [
-                        "style",
-                        "text_color",
                         "title",
                         "content",
                         "button_content",
@@ -172,12 +191,32 @@
                 {
                     "title": "Settings",
                     "fields": [
-                        "id",
-                        "exitintent",
-                        "exitintent_delay",
-                        "show_on_delay",
-                        "exitintent_session",
-                        "text_align"
+                        {
+                            "label": "Exit Intent",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "exitintent",
+                                "exitintent_delay",
+                                "show_on_delay",
+                                "exitintent_session"
+                            ]
+                        },
+                        {
+                            "label": "Modal",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "id",
+                                "style",
+                                "text_color",
+                                "modal_id",
+                                "modal_container",
+                                "modal_center",
+                                "close_style",
+                                "text_align"
+                            ]
+                        }
                     ]
                 }
             ]
