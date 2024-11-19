@@ -22,6 +22,7 @@ class LoadSourceTypes
 		$query = [
 			Type\CategoryContactQueryType::config(),
 			Type\CustomContactsQueryType::config(),
+			Type\KickContactQueryType::config(),
 		];
 
 		$types = [
