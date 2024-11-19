@@ -25,35 +25,50 @@
             "description": "Enter a link from <a href=\"https://www.loom.com/looms/videos\" target=\"_blank\">Loom</a>.",
             "source": true
         },
+        "video_timestamps": {
+            "label": "Timestamps",
+            "description": "Start the video at a specified timestamp. (80s or 1m20s)",
+            "enable": "video"
+        },
         "video_width": {
             "label": "Width"
         },
         "video_height": {
             "label": "Height"
         },
-        "video_owner": {
+        "video_muted": {
             "type": "checkbox",
-            "text": "Hide Owner",
+            "text": "Starts the video muted.",
+            "enable": "video"
+        },
+        "video_autoplay": {
+            "type": "checkbox",
+            "text": "Immediately plays the embedded video",
             "enable": "video"
         },
         "video_share": {
             "type": "checkbox",
-            "text": "Hide Share",
-            "enable": "video"
-        },
-        "video_title": {
-            "type": "checkbox",
-            "text": "Hide Title",
+            "text": "Hides the button that links out to the video URL.",
             "enable": "video"
         },
         "video_topbar": {
             "type": "checkbox",
-            "text": "Hide Embed TopBar",
+            "text": "Hides the top bar of the embedded video which includes the title, owner, and share link.",
             "enable": "video"
         },
-        "video_lazyload": {
+        "video_title": {
             "type": "checkbox",
-            "text": "Lazy load video",
+            "text": "Hides the video title.",
+            "enable": "video"
+        },
+        "video_owner": {
+            "type": "checkbox",
+            "text": "Hides the video creator's avatar before the video plays.",
+            "enable": "video"
+        },
+        "video_speed": {
+            "type": "checkbox",
+            "text": "Hides the speed of the video.",
             "enable": "video"
         },
         "video_box_shadow": {
@@ -141,13 +156,14 @@
                             "width": "1-2",
                             "fields": ["video_width", "video_height"]
                         },
-                        "video_owner",
-                        "video_share",
-                        "video_title",
-                        "video_topbar",
-                        "video_lazyload",
+                        "video_timestamps",
+                        "video_muted",
                         "video_autoplay",
-                        "video_poster"
+                        "video_share",
+                        "video_topbar",
+                        "video_title",
+                        "video_owner",
+                        "video_speed"
                     ]
                 },
                 {

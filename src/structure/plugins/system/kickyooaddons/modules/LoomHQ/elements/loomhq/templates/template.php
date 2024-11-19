@@ -24,20 +24,39 @@ function iframeLoom($link, $props, $params = [], $defaults = true)
 
     if (preg_match(REGEX_LOOM, $link, $matches)) {
 
-        if (!empty($props['video_owner'])) {
-            $params['hide_owner'] = true;
-        }
-        if (!empty($props['video_share'])) {
-            $params['hide_share'] = true;
+        if (!empty($props['video_timestamps'])) {
+            $params['t'] = $props['video_timestamps'];
         }
 
-        if (!empty($props['video_title'])) {
-            $params['hide_title'] = true;
+        if (!empty($props['video_muted'])) {
+            $params['muted'] = 'true';
+        }
+
+        if (!empty($props['video_autoplay'])) {
+            $params['autoplay'] = 'true';
+        }
+
+        if (!empty($props['video_share'])) {
+            $params['hide_share'] = 'true';
         }
 
         if (!empty($props['video_topbar'])) {
             $params['hideEmbedTopBar'] = true;
         }
+
+        if (!empty($props['video_title'])) {
+            $params['hide_title'] = 'true';
+        }
+
+        if (!empty($props['video_owner'])) {
+            $params['hide_owner'] = 'true';
+        }
+
+        if (!empty($props['video_speed'])) {
+            $params['hide_speed'] = 'true';
+        }
+
+
 
         return Url::to(
             "https://loom.com/embed/{$matches[1]}",
@@ -95,34 +114,11 @@ if ($iframe = iframeLoom($props['video'], $props, [],false)) {
     $video = $this->el('video', [
 
         'src' => $props['video'],
-        'controls' => $props['video_controls'],
-        'loop' => $props['video_loop'],
-        'muted' => $props['video_muted'],
-        'playsinline' => $props['video_playsinline'],
         'preload' => ['none {@video_lazyload}'],
-        $props['video_autoplay'] === 'inview' ? 'uk-video' : 'autoplay' => $props['video_autoplay'],
 
     ]);
 
-    if ($props['video_poster']) {
-
-        if ($props['video_width'] || $props['video_height']) {
-
-            $thumbnail = [$props['video_width'], $props['video_height'], ''];
-            if (!empty($props['video_poster_focal_point'])) {
-                [$y, $x] = explode('-', $props['video_poster_focal_point']);
-                $thumbnail += [3 => $x, 4 => $y];
-            }
-
-            $props['video_poster'] = (string) (new Uri($props['video_poster']))->withFragment('thumbnail=' . implode(',', $thumbnail));
-
-        }
-
-        $video->attr([
-            'poster' => $imageProvider->getUrl($props['video_poster']),
-        ]);
-
-    } elseif ($props['video_width'] && $props['video_height']) {
+    if ($props['video_width'] && $props['video_height']) {
         $video->attr(['style' => ["aspect-ratio: {$props['video_width']} / {$props['video_height']};"]]);
     }
 
