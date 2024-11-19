@@ -28,7 +28,19 @@ class plgSystemKickYooAddonsInstallerScript extends InstallerScript
 	protected $minimumPhp = '7.4';
 	protected $minimumJoomla = '4.0';
 	protected $deleteFiles = [
-        '/plugins/system/kickyooaddons/src/SettingsListener.php'
+        '/plugins/system/kickyooaddons/src/SettingsListener.php',
+        '/plugins/system/kickyooaddons/modules/Element/elements/exitintentbutton_item/templates/template-lightbox.php'
+    ];
+
+	protected $deleteFolders = [
+        '/plugins/system/kickyooaddons/modules/Element/elements/faq',
+        '/plugins/system/kickyooaddons/modules/Element/elements/faq_item',
+        '/plugins/system/kickyooaddons/modules/Element/elements/jsonld',
+        '/plugins/system/kickyooaddons/modules/Element/elements/jsonld_item',
+        '/plugins/system/kickyooaddons/modules/Element/elements/product',
+        '/plugins/system/kickyooaddons/modules/Element/elements/product_review',
+        '/plugins/system/kickyooaddons/modules/Element/elements/opengraph',
+        '/plugins/system/kickyooaddons/modules/Element/elements/opengraph_item',
     ];
 
 
