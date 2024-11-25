@@ -1,0 +1,47 @@
+{
+    "@import": "./element.php",
+    "name": "kickhubspotselect_option",
+    "title": "Option",
+    "width": 500,
+    "defaults": {
+        "type": "input"
+    },
+    "placeholder": {
+        "props": {
+            "text": "Text",
+            "value": "Value"
+        }
+    },
+    "fields": {
+        "text": {
+            "label": "Option Text",
+            "source": true
+        },
+        "value": {
+            "label": "Option Value",
+            "source": true
+        },
+        "disabled": {
+            "label": "Disabled",
+            "type": "checkbox",
+            "source": true
+        },
+        "source": "${builder.source}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Option",
+                    "fields": [
+                        "text",
+                        "value",
+                        "disabled"
+                    ]
+                },
+                "${builder.advancedItem}"
+            ]
+        }
+    }
+}

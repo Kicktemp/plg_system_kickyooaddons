@@ -33,7 +33,7 @@
         "options": {
             "label": "Options",
             "type": "content-items",
-            "item": "kickselect_option",
+            "item": "kickhubspotselect_option",
             "title": "text",
             "show": "type == 'select' || type == 'radio'",
             "button": "Add Option"
