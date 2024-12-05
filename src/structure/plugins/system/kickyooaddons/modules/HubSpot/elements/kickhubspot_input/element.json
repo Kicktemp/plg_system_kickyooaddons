@@ -14,6 +14,11 @@
             "label": "HubSpot Fields",
             "type": "kicktemp-hubspot-fields"
         },
+        "hubspot_insert": {
+            "label": "Einfügen nach",
+            "type": "kicktemp-hubspot-insert",
+            "show": "hubspot_form == 'nohubspotfield'"
+        },
         "type": {
             "label": "Type",
             "type": "select",
@@ -69,6 +74,16 @@
         "height": {
             "label": "Size",
             "show": "type == 'select' || type == 'textarea'",
+            "source": true
+        },
+        "title": {
+            "label": "Name",
+            "show": "hubspot_form == 'nohubspotfield'",
+            "source": true
+        },
+        "label": {
+            "label": "Label",
+            "show": "hubspot_form == 'nohubspotfield' || type != 'honeypot' && type != 'hidden' && type != 'text' && type != 'checkbox' && type != 'captcha' && type != 'session'",
             "source": true
         },
         "mustshowlabel": {
@@ -189,7 +204,10 @@
                     "title": "Content",
                     "fields": [
                         "hubspot_form",
+                        "hubspot_insert",
                         "type",
+                        "title",
+                        "label",
                         "mustshowlabel",
                         "placeholder",
                         "options",

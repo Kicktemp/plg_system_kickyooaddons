@@ -289,7 +289,7 @@ class HubSpotApi
         $url = "integration/secure/submit/" . $this->portalId . '/' . $settings['guid'];
         $return = $this->post($url, $body);
 
-        if ($settings['override'])
+        if (isset($settings['override']) && $settings['override'])
         {
             // TODO klären ob after_submit überschrieben werden soll
             if (isset($return['data']['inlineMessage']) && $return['data']['inlineMessage'] !== '') {

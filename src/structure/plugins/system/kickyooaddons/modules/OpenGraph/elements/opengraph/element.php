@@ -20,12 +20,6 @@ return [
 				$doc->setMetaData('og:url', Uri::current(), 'property');
 			}
 
-			if (!is_null($fbid = $node->props['facebookid']) && $fbid !== '')
-			{
-				$doc->setMetaData('fb:app:id', $fbid, 'property');
-			}
-
-
 			if (count((array) $node->children))
 			{
 				foreach ($node->children as $child)

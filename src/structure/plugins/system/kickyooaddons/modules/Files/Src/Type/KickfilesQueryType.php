@@ -2,8 +2,10 @@
 
 namespace Kicktemp\YOOaddons\Files\Src\Type;
 
+use Joomla\CMS\HTML\HTMLHelper;
 use YOOtheme\Builder\Joomla\Fields\FieldsHelper;
 use YOOtheme\Builder\Source\Filesystem\FileHelper;
+use YOOtheme\Path;
 use function YOOtheme\app;
 use function YOOtheme\trans;
 
@@ -183,6 +185,8 @@ class KickfilesQueryType
 		    }
 	    }
 
+        $images  = json_decode($item->images);
+
 	    if (!is_null($item) && isset($item->id) && !empty($args['pattern']))
 	    {
 		    $args['pattern'] = str_replace('{id}', $item->id, $args['pattern']);
@@ -192,6 +196,20 @@ class KickfilesQueryType
 	    {
 		    $args['pattern'] = str_replace('{alias}', $item->alias, $args['pattern']);
 	    }
+
+        if (!is_null($item) && isset($images->image_intro) && $images->image_intro !== '' && !empty($args['pattern']))
+        {
+            $intro_image = HTMLHelper::_('cleanImageURL', $images->image_intro);
+            $intro_path = Path::parse($intro_image->url);
+            $args['pattern'] = str_replace('{intro_image}', $intro_path['dirname'], $args['pattern']);
+        }
+
+        if (!is_null($item) && isset($images->image_fulltext) && $images->image_fulltext !== '' && !empty($args['pattern']))
+        {
+            $image_fulltext = HTMLHelper::_('cleanImageURL', $images->image_fulltext);
+            $fulltext_path = Path::parse($image_fulltext->url);
+            $args['pattern'] = str_replace('{image_fulltext}', $fulltext_path['dirname'], $args['pattern']);
+        }
 
 		$files = [];
 		$images = app(FileHelper::class)->query($args);

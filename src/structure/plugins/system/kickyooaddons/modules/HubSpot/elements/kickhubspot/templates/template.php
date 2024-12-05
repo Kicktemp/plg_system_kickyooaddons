@@ -71,12 +71,31 @@ $hubspot          = $props['hubspot_guid'];
 $submitButtonText = $hubspot->displayOptions->submitButtonText;
 
 // Override Hubspot Fields
+$atthebeginning = [];
+$attheend = [];
+$insertfields = [];
 $overridefields = [];
 $spamfields = [];
 foreach ($children as $child)
 {
-	$key                  = $child->props['hubspot_form'];
-	$overridefields[$key] = $child;
+	$key = $child->props['hubspot_form'];
+    $insertType = $child->props['hubspot_insert'];
+
+    if ($key === 'nohubspotfield') {
+        switch ($insertType) {
+            case 'atthebeginning':
+                $atthebeginning[] = $child;
+                break;
+            case 'attheend':
+                $attheend[] = $child;
+                break;
+            default:
+                $insertfields[$insertType][] = $child;
+                break;
+        }
+    } else {
+        $overridefields[$key] = $child;
+    }
 
     if (in_array($child->props['type'], array('honeypot', 'captcha')))
     {
@@ -288,14 +307,22 @@ foreach ($hubspot->fieldGroups as $group)
 					}
 
 					$overridefields[$field->name]->props['title'] = $field->name;
-					$overridefields[$field->name]->props['label'] = $field->label;
-					$children[]                                   = $overridefields[$field->name];
+
+                    if ($overridefields[$field->name]->props['label'] == '') {
+					    $overridefields[$field->name]->props['label'] = $field->label;
+                    }
+
+                    $children[]                                   = $overridefields[$field->name];
 				}
 				else
 				{
 					$children[] = $input;
 				}
 			}
+
+            if (isset($insertfields[$field->name])) {
+                $children = array_merge($children, $insertfields[$field->name]);
+            }
 		}
 	}
 }
@@ -434,7 +461,7 @@ if (isset($hubspot->legalConsentOptions->type))
 	}
 }
 
-$children = array_merge((array) $children, $spamfields);
+$children = array_merge($atthebeginning, (array) $children, $attheend, $spamfields);
 ?>
 <?php if ($props['show_inmodal']) : ?>
 <?= $modal($props) ?>

@@ -221,7 +221,7 @@ $checkbox = $this->el('input', [
 	<?= $width($props) ?>
 <?php endif; ?>
 <?php
-if ($props['label'] !== '' && $props['type'] !== 'radio' && $props['type'] !== 'checkboxes' && ($element['show_label'] || (!$element['show_label'] && $props['mustshowlabel'])))
+if ($props['label'] !== '' && $props['type'] !== 'radio' &&  $props['type'] !== 'hidden' && $props['type'] !== 'checkboxes' && ($element['show_label'] || (!$element['show_label'] && $props['mustshowlabel'])))
 {
 	echo '<label class="uk-form-label" for="' . $props['title'] . '">' . $props['label'] . '</label>';
 }

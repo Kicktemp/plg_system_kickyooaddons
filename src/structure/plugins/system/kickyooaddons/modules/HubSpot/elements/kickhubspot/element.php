@@ -95,8 +95,7 @@ return [
                 ]),
             ];
 
-            $meta->set('script:form', ['src' => Path::get('../../app/form.min.js'), 'defer' => true, 'version' => '[VERSION]']);
-			$meta->set('script:form', ['src' => Path::get('../../../Form/app/form.min.js'), 'defer' => true]);
+			$meta->set('script:hubspotform', ['src' => Path::get('../../app/form.min.js'), 'defer' => true]);
 		},
 
 	],

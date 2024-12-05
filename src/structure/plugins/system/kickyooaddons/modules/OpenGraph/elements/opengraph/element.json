@@ -29,10 +29,6 @@
             "text": "Add OG Url",
             "description": "Add og:url property with the current URL"
         },
-        "facebookid": {
-            "label": "Facebook ID",
-            "description": "Add fb:app:id property with Facebook ID as value"
-        },
         "name": "${builder.name}",
         "status": "${builder.status}",
         "source": "${builder.source}"
@@ -46,7 +42,6 @@
                     "fields": [
                         "content",
                         "og_url",
-                        "facebookid",
                         "debug"
                     ]
                 },
